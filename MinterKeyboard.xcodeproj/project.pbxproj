@@ -1,0 +1,1482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08840524AC39060D2F599A78 /* Pods_MinterKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54DBABACF222D16CAF2BE13 /* Pods_MinterKeyboard.framework */; };
+		C79501A8F3FEFE7D90058EDB /* Pods_WalletKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D35E96BBB6157CA0F7E7129 /* Pods_WalletKeyboard.framework */; };
+		FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C4F822B4E25C005D7275 /* AppDelegate.swift */; };
+		FA07C4FB22B4E25C005D7275 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C4FA22B4E25C005D7275 /* ViewController.swift */; };
+		FA07C4FE22B4E25C005D7275 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA07C4FC22B4E25C005D7275 /* Main.storyboard */; };
+		FA07C50022B4E25E005D7275 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07C4FF22B4E25E005D7275 /* Assets.xcassets */; };
+		FA07C50322B4E25E005D7275 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA07C50122B4E25E005D7275 /* LaunchScreen.storyboard */; };
+		FA07C50E22B4E25E005D7275 /* MinterKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C50D22B4E25E005D7275 /* MinterKeyboardTests.swift */; };
+		FA07C52322B4E35C005D7275 /* WalletKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FA07C51C22B4E35C005D7275 /* WalletKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA07C52A22B4FB89005D7275 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C52922B4FB89005D7275 /* KeyboardViewModel.swift */; };
+		FA07C52C22B4FBAF005D7275 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C52B22B4FBAF005D7275 /* Session.swift */; };
+		FA57092B22B5780B00F5D0DD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C52B22B4FBAF005D7275 /* Session.swift */; };
+		FA57093022B579DE00F5D0DD /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C52922B4FB89005D7275 /* KeyboardViewModel.swift */; };
+		FA57093522B57B2200F5D0DD /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57093422B57B2200F5D0DD /* BalanceView.swift */; };
+		FA57093622B57B2200F5D0DD /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57093422B57B2200F5D0DD /* BalanceView.swift */; };
+		FA57093822B57B3500F5D0DD /* BalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57093722B57B3500F5D0DD /* BalanceView.xib */; };
+		FA57093922B57B3500F5D0DD /* BalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57093722B57B3500F5D0DD /* BalanceView.xib */; };
+		FA57093B22B57B6200F5D0DD /* DelegateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57093A22B57B6200F5D0DD /* DelegateView.swift */; };
+		FA57093C22B57B6200F5D0DD /* DelegateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57093A22B57B6200F5D0DD /* DelegateView.swift */; };
+		FA57093E22B57B6F00F5D0DD /* DelegateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57093D22B57B6F00F5D0DD /* DelegateView.xib */; };
+		FA57093F22B57B6F00F5D0DD /* DelegateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57093D22B57B6F00F5D0DD /* DelegateView.xib */; };
+		FA57094122B57BC500F5D0DD /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094022B57BC500F5D0DD /* SendView.swift */; };
+		FA57094222B57BC500F5D0DD /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094022B57BC500F5D0DD /* SendView.swift */; };
+		FA57094422B57BD200F5D0DD /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57094322B57BD200F5D0DD /* SendView.xib */; };
+		FA57094522B57BD200F5D0DD /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57094322B57BD200F5D0DD /* SendView.xib */; };
+		FA57094722B57BF600F5D0DD /* ConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094622B57BF600F5D0DD /* ConvertView.swift */; };
+		FA57094822B57BF600F5D0DD /* ConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094622B57BF600F5D0DD /* ConvertView.swift */; };
+		FA57094A22B57C0000F5D0DD /* ConvertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57094922B57C0000F5D0DD /* ConvertView.xib */; };
+		FA57094B22B57C0000F5D0DD /* ConvertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57094922B57C0000F5D0DD /* ConvertView.xib */; };
+		FA57094D22B6260000F5D0DD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094C22B6260000F5D0DD /* ViewModel.swift */; };
+		FA57094E22B6260000F5D0DD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094C22B6260000F5D0DD /* ViewModel.swift */; };
+		FA57095122B63A2500F5D0DD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57095022B63A2500F5D0DD /* AccountManager.swift */; };
+		FA57095222B63A2500F5D0DD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57095022B63A2500F5D0DD /* AccountManager.swift */; };
+		FA57095522B66A1300F5D0DD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57095422B66A1300F5D0DD /* HeaderView.swift */; };
+		FA57095622B66A1300F5D0DD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57095422B66A1300F5D0DD /* HeaderView.swift */; };
+		FA57095822B66A2100F5D0DD /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57095722B66A2100F5D0DD /* HeaderView.xib */; };
+		FA57095922B66A2100F5D0DD /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57095722B66A2100F5D0DD /* HeaderView.xib */; };
+		FA57095A22B6725100F5D0DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07C4FF22B4E25E005D7275 /* Assets.xcassets */; };
+		FA57095E22B67D7C00F5D0DD /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57095D22B67D7C00F5D0DD /* DefaultTextField.swift */; };
+		FA57095F22B67D7C00F5D0DD /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57095D22B67D7C00F5D0DD /* DefaultTextField.swift */; };
+		FA5A4E2C22BD749C002EAD92 /* CurrencyNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E2A22BD749C002EAD92 /* CurrencyNumberFormatter.swift */; };
+		FA5A4E2D22BD749C002EAD92 /* TransactionDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E2B22BD749C002EAD92 /* TransactionDateFormatter.swift */; };
+		FA5A4E2F22BD7500002EAD92 /* Decimal+Fractional.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E2E22BD7500002EAD92 /* Decimal+Fractional.swift */; };
+		FA5A4E3022BD7570002EAD92 /* CurrencyNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E2A22BD749C002EAD92 /* CurrencyNumberFormatter.swift */; };
+		FA5A4E3122BD7572002EAD92 /* Decimal+Fractional.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E2E22BD7500002EAD92 /* Decimal+Fractional.swift */; };
+		FA5A4E3322BD80D9002EAD92 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E3222BD80D9002EAD92 /* String+.swift */; };
+		FA5A4E3422BD80D9002EAD92 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E3222BD80D9002EAD92 /* String+.swift */; };
+		FA5A4E3722BE1B62002EAD92 /* SentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E3622BE1B62002EAD92 /* SentView.swift */; };
+		FA5A4E3922BE1B7A002EAD92 /* SentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A4E3822BE1B7A002EAD92 /* SentView.xib */; };
+		FA5A4E3B22BE231D002EAD92 /* ShareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A4E3A22BE231D002EAD92 /* ShareKeyboard.swift */; };
+		FAB0D28622C769B8002945E2 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77B0122BB8853005D771A /* UITextField+.swift */; };
+		FAB0D28722C76D4E002945E2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392522BFEC550077E181 /* Configuration.swift */; };
+		FAB0D28822C76D4E002945E2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392522BFEC550077E181 /* Configuration.swift */; };
+		FAB0D28A22C7A009002945E2 /* UIColor+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D28922C7A009002945E2 /* UIColor+Defaults.swift */; };
+		FAB0D28C22C7B897002945E2 /* PrivateKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D28B22C7B897002945E2 /* PrivateKey+.swift */; };
+		FAB0D28D22C7B897002945E2 /* PrivateKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D28B22C7B897002945E2 /* PrivateKey+.swift */; };
+		FAB0D2EB22C8F31E002945E2 /* CDAlertHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D2E522C8F31E002945E2 /* CDAlertHeaderView.swift */; };
+		FAB0D2EF22C8F31F002945E2 /* CDAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D2E722C8F31E002945E2 /* CDAlertView.swift */; };
+		FAB0D2F122C8F31F002945E2 /* LayoutConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D2E822C8F31E002945E2 /* LayoutConstraintsExtension.swift */; };
+		FAB0D2F322C8F31F002945E2 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0D2E922C8F31E002945E2 /* ImageHelper.swift */; };
+		FAB0D30E22C8F325002945E2 /* warningFilled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F622C8F325002945E2 /* warningFilled@3x.png */; };
+		FAB0D30F22C8F325002945E2 /* warningFilled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F622C8F325002945E2 /* warningFilled@3x.png */; };
+		FAB0D31022C8F325002945E2 /* notificationFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F722C8F325002945E2 /* notificationFilled@2x.png */; };
+		FAB0D31122C8F325002945E2 /* notificationFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F722C8F325002945E2 /* notificationFilled@2x.png */; };
+		FAB0D31222C8F325002945E2 /* error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F822C8F325002945E2 /* error@3x.png */; };
+		FAB0D31322C8F325002945E2 /* error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F822C8F325002945E2 /* error@3x.png */; };
+		FAB0D31422C8F325002945E2 /* notificationOutline@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F922C8F325002945E2 /* notificationOutline@1x.png */; };
+		FAB0D31522C8F325002945E2 /* notificationOutline@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2F922C8F325002945E2 /* notificationOutline@1x.png */; };
+		FAB0D31622C8F325002945E2 /* warningOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FA22C8F325002945E2 /* warningOutline@2x.png */; };
+		FAB0D31722C8F325002945E2 /* warningOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FA22C8F325002945E2 /* warningOutline@2x.png */; };
+		FAB0D31822C8F325002945E2 /* warningOutline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FB22C8F325002945E2 /* warningOutline@3x.png */; };
+		FAB0D31922C8F325002945E2 /* warningOutline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FB22C8F325002945E2 /* warningOutline@3x.png */; };
+		FAB0D31A22C8F325002945E2 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FC22C8F325002945E2 /* error@2x.png */; };
+		FAB0D31B22C8F325002945E2 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FC22C8F325002945E2 /* error@2x.png */; };
+		FAB0D31C22C8F325002945E2 /* notificationFilled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FD22C8F325002945E2 /* notificationFilled@3x.png */; };
+		FAB0D31D22C8F325002945E2 /* notificationFilled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FD22C8F325002945E2 /* notificationFilled@3x.png */; };
+		FAB0D31E22C8F325002945E2 /* warningFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FE22C8F325002945E2 /* warningFilled@2x.png */; };
+		FAB0D31F22C8F325002945E2 /* warningFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FE22C8F325002945E2 /* warningFilled@2x.png */; };
+		FAB0D32022C8F325002945E2 /* alarmOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FF22C8F325002945E2 /* alarmOutline@2x.png */; };
+		FAB0D32122C8F325002945E2 /* alarmOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D2FF22C8F325002945E2 /* alarmOutline@2x.png */; };
+		FAB0D32222C8F325002945E2 /* alarmFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30022C8F325002945E2 /* alarmFilled@2x.png */; };
+		FAB0D32322C8F325002945E2 /* alarmFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30022C8F325002945E2 /* alarmFilled@2x.png */; };
+		FAB0D32422C8F325002945E2 /* alarmFilled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30122C8F325002945E2 /* alarmFilled@3x.png */; };
+		FAB0D32522C8F325002945E2 /* alarmFilled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30122C8F325002945E2 /* alarmFilled@3x.png */; };
+		FAB0D32622C8F325002945E2 /* check@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30222C8F325002945E2 /* check@1x.png */; };
+		FAB0D32722C8F325002945E2 /* check@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30222C8F325002945E2 /* check@1x.png */; };
+		FAB0D32822C8F325002945E2 /* alarmOutline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30322C8F325002945E2 /* alarmOutline@3x.png */; };
+		FAB0D32922C8F325002945E2 /* alarmOutline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30322C8F325002945E2 /* alarmOutline@3x.png */; };
+		FAB0D32A22C8F325002945E2 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30422C8F325002945E2 /* check@2x.png */; };
+		FAB0D32B22C8F325002945E2 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30422C8F325002945E2 /* check@2x.png */; };
+		FAB0D32C22C8F325002945E2 /* check@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30522C8F325002945E2 /* check@3x.png */; };
+		FAB0D32D22C8F325002945E2 /* check@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30522C8F325002945E2 /* check@3x.png */; };
+		FAB0D32E22C8F325002945E2 /* alarmFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30622C8F325002945E2 /* alarmFilled@1x.png */; };
+		FAB0D32F22C8F325002945E2 /* alarmFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30622C8F325002945E2 /* alarmFilled@1x.png */; };
+		FAB0D33022C8F325002945E2 /* alarmOutline@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30722C8F325002945E2 /* alarmOutline@1x.png */; };
+		FAB0D33122C8F325002945E2 /* alarmOutline@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30722C8F325002945E2 /* alarmOutline@1x.png */; };
+		FAB0D33222C8F325002945E2 /* notificationOutline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30822C8F325002945E2 /* notificationOutline@3x.png */; };
+		FAB0D33322C8F325002945E2 /* notificationOutline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30822C8F325002945E2 /* notificationOutline@3x.png */; };
+		FAB0D33422C8F325002945E2 /* error@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30922C8F325002945E2 /* error@1x.png */; };
+		FAB0D33522C8F325002945E2 /* error@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30922C8F325002945E2 /* error@1x.png */; };
+		FAB0D33622C8F325002945E2 /* warningFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30A22C8F325002945E2 /* warningFilled@1x.png */; };
+		FAB0D33722C8F325002945E2 /* warningFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30A22C8F325002945E2 /* warningFilled@1x.png */; };
+		FAB0D33822C8F325002945E2 /* warningOutline@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30B22C8F325002945E2 /* warningOutline@1x.png */; };
+		FAB0D33922C8F325002945E2 /* warningOutline@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30B22C8F325002945E2 /* warningOutline@1x.png */; };
+		FAB0D33A22C8F325002945E2 /* notificationFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30C22C8F325002945E2 /* notificationFilled@1x.png */; };
+		FAB0D33B22C8F325002945E2 /* notificationFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30C22C8F325002945E2 /* notificationFilled@1x.png */; };
+		FAB0D33C22C8F325002945E2 /* notificationOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */; };
+		FAB0D33D22C8F325002945E2 /* notificationOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */; };
+		FAC5392C22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */; };
+		FAC5392D22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */; };
+		FAC5393422C217070077E181 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5393322C217070077E181 /* Sugar.swift */; };
+		FAC5393522C217070077E181 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5393322C217070077E181 /* Sugar.swift */; };
+		FAF359E122BF73F40006A087 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E022BF73F40006A087 /* Account.swift */; };
+		FAF359E222BF73F40006A087 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E022BF73F40006A087 /* Account.swift */; };
+		FAF359E622BF84DA0006A087 /* TransactionConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */; };
+		FAF359E722BF84DA0006A087 /* TransactionConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */; };
+		FAF359E922BF85930006A087 /* GateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E822BF85930006A087 /* GateManager.swift */; };
+		FAF359EA22BF85930006A087 /* GateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E822BF85930006A087 /* GateManager.swift */; };
+		FAF359EC22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */; };
+		FAF359ED22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */; };
+		FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77AFE22BB832A005D771A /* UIFont+Default.swift */; };
+		FAF77B0022BB832D005D771A /* UIFont+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77AFE22BB832A005D771A /* UIFont+Default.swift */; };
+		FAF77B0222BB8853005D771A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77B0122BB8853005D771A /* UITextField+.swift */; };
+		FAF77B0422BB88A4005D771A /* KeyActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77B0322BB88A4005D771A /* KeyActionHandler.swift */; };
+		FAF77B0622BB8AB7005D771A /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77B0522BB8AB7005D771A /* NumericKeyboard.swift */; };
+		FAF89ACB22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89A9C22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf */; };
+		FAF89ACC22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89A9C22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf */; };
+		FAF89ACD22BA2B34003442CC /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89A9D22BA2B34003442CC /* SF-Pro-Text-Heavy.otf */; };
+		FAF89ACE22BA2B34003442CC /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89A9D22BA2B34003442CC /* SF-Pro-Text-Heavy.otf */; };
+		FAF89AD722BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA222BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf */; };
+		FAF89AD822BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA222BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf */; };
+		FAF89AE122BA2B34003442CC /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA722BA2B34003442CC /* SF-Pro-Text-Light.otf */; };
+		FAF89AE222BA2B34003442CC /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA722BA2B34003442CC /* SF-Pro-Text-Light.otf */; };
+		FAF89AE922BA2B34003442CC /* SF-Pro-Text-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAB22BA2B34003442CC /* SF-Pro-Text-Black.otf */; };
+		FAF89AEA22BA2B34003442CC /* SF-Pro-Text-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAB22BA2B34003442CC /* SF-Pro-Text-Black.otf */; };
+		FAF89AED22BA2B34003442CC /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAD22BA2B34003442CC /* SF-Pro-Text-Regular.otf */; };
+		FAF89AEE22BA2B34003442CC /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAD22BA2B34003442CC /* SF-Pro-Text-Regular.otf */; };
+		FAF89AEF22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAE22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf */; };
+		FAF89AF022BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAE22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf */; };
+		FAF89AF122BA2B34003442CC /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAF22BA2B34003442CC /* SF-Pro-Text-Bold.otf */; };
+		FAF89AF222BA2B34003442CC /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AAF22BA2B34003442CC /* SF-Pro-Text-Bold.otf */; };
+		FAF89AF322BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AB022BA2B34003442CC /* SF-Pro-Text-Thin.otf */; };
+		FAF89AF422BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AB022BA2B34003442CC /* SF-Pro-Text-Thin.otf */; };
+		FAF89B0922BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89ABB22BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf */; };
+		FAF89B0A22BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89ABB22BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf */; };
+		FAF89B0B22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89ABC22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf */; };
+		FAF89B0C22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89ABC22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf */; };
+		FAF89B0D22BA2B34003442CC /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89ABD22BA2B34003442CC /* SF-Pro-Text-Semibold.otf */; };
+		FAF89B0E22BA2B34003442CC /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89ABD22BA2B34003442CC /* SF-Pro-Text-Semibold.otf */; };
+		FAF89B1722BA2B34003442CC /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AC222BA2B34003442CC /* SF-Pro-Text-Medium.otf */; };
+		FAF89B1822BA2B34003442CC /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AC222BA2B34003442CC /* SF-Pro-Text-Medium.otf */; };
+		FAF89B2222BA41D2003442CC /* HexKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2122BA41D2003442CC /* HexKeyboard.swift */; };
+		FAF89B2422BA4762003442CC /* DemoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2322BA4762003442CC /* DemoButton.swift */; };
+		FAF89B2622BA4775003442CC /* DemoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF89B2522BA4775003442CC /* DemoButton.xib */; };
+		FAF89B2922BA47E0003442CC /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2822BA47E0003442CC /* Assets.swift */; };
+		FAF89B2B22BA89C6003442CC /* FakeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAE85522B81DC1001E7674 /* FakeTextField.swift */; };
+		FAFAE9F822B8284F001E7674 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C51E22B4E35C005D7275 /* KeyboardViewController.swift */; };
+		FAFAE9F922B82854001E7674 /* FakeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAE85522B81DC1001E7674 /* FakeTextField.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA07C50A22B4E25E005D7275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA07C4ED22B4E25C005D7275 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA07C4F422B4E25C005D7275;
+			remoteInfo = MinterKeyboard;
+		};
+		FA07C52122B4E35C005D7275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA07C4ED22B4E25C005D7275 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA07C51B22B4E35C005D7275;
+			remoteInfo = WalletKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA07C52722B4E35C005D7275 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FA07C52322B4E35C005D7275 /* WalletKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		707B5471115715700492F2F5 /* Pods-WalletKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-WalletKeyboard/Pods-WalletKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		8730DB8C197EB360B724497B /* Pods-MinterKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinterKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-MinterKeyboard/Pods-MinterKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		8D35E96BBB6157CA0F7E7129 /* Pods_WalletKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54DBABACF222D16CAF2BE13 /* Pods_MinterKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinterKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E02C176BEFC0CEADEF705345 /* Pods-MinterKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinterKeyboard.release.xcconfig"; path = "Target Support Files/Pods-MinterKeyboard/Pods-MinterKeyboard.release.xcconfig"; sourceTree = "<group>"; };
+		FA07C4F522B4E25C005D7275 /* MinterKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinterKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA07C4F822B4E25C005D7275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA07C4FA22B4E25C005D7275 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA07C4FD22B4E25C005D7275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA07C4FF22B4E25E005D7275 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA07C50222B4E25E005D7275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA07C50422B4E25E005D7275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA07C50922B4E25E005D7275 /* MinterKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinterKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA07C50D22B4E25E005D7275 /* MinterKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinterKeyboardTests.swift; sourceTree = "<group>"; };
+		FA07C50F22B4E25E005D7275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA07C51C22B4E35C005D7275 /* WalletKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WalletKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA07C51E22B4E35C005D7275 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		FA07C52022B4E35C005D7275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA07C52922B4FB89005D7275 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		FA07C52B22B4FBAF005D7275 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		FA57093422B57B2200F5D0DD /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		FA57093722B57B3500F5D0DD /* BalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceView.xib; sourceTree = "<group>"; };
+		FA57093A22B57B6200F5D0DD /* DelegateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateView.swift; sourceTree = "<group>"; };
+		FA57093D22B57B6F00F5D0DD /* DelegateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DelegateView.xib; sourceTree = "<group>"; };
+		FA57094022B57BC500F5D0DD /* SendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
+		FA57094322B57BD200F5D0DD /* SendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendView.xib; sourceTree = "<group>"; };
+		FA57094622B57BF600F5D0DD /* ConvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertView.swift; sourceTree = "<group>"; };
+		FA57094922B57C0000F5D0DD /* ConvertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertView.xib; sourceTree = "<group>"; };
+		FA57094C22B6260000F5D0DD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FA57095022B63A2500F5D0DD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		FA57095422B66A1300F5D0DD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		FA57095722B66A2100F5D0DD /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		FA57095D22B67D7C00F5D0DD /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		FA5A4E2A22BD749C002EAD92 /* CurrencyNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyNumberFormatter.swift; sourceTree = "<group>"; };
+		FA5A4E2B22BD749C002EAD92 /* TransactionDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDateFormatter.swift; sourceTree = "<group>"; };
+		FA5A4E2E22BD7500002EAD92 /* Decimal+Fractional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+Fractional.swift"; sourceTree = "<group>"; };
+		FA5A4E3222BD80D9002EAD92 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		FA5A4E3622BE1B62002EAD92 /* SentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentView.swift; sourceTree = "<group>"; };
+		FA5A4E3822BE1B7A002EAD92 /* SentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentView.xib; sourceTree = "<group>"; };
+		FA5A4E3A22BE231D002EAD92 /* ShareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareKeyboard.swift; sourceTree = "<group>"; };
+		FAB0D28922C7A009002945E2 /* UIColor+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Defaults.swift"; sourceTree = "<group>"; };
+		FAB0D28B22C7B897002945E2 /* PrivateKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivateKey+.swift"; sourceTree = "<group>"; };
+		FAB0D2E522C8F31E002945E2 /* CDAlertHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAlertHeaderView.swift; sourceTree = "<group>"; };
+		FAB0D2E722C8F31E002945E2 /* CDAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAlertView.swift; sourceTree = "<group>"; };
+		FAB0D2E822C8F31E002945E2 /* LayoutConstraintsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintsExtension.swift; sourceTree = "<group>"; };
+		FAB0D2E922C8F31E002945E2 /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		FAB0D2F622C8F325002945E2 /* warningFilled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warningFilled@3x.png"; sourceTree = "<group>"; };
+		FAB0D2F722C8F325002945E2 /* notificationFilled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationFilled@2x.png"; sourceTree = "<group>"; };
+		FAB0D2F822C8F325002945E2 /* error@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@3x.png"; sourceTree = "<group>"; };
+		FAB0D2F922C8F325002945E2 /* notificationOutline@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationOutline@1x.png"; sourceTree = "<group>"; };
+		FAB0D2FA22C8F325002945E2 /* warningOutline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warningOutline@2x.png"; sourceTree = "<group>"; };
+		FAB0D2FB22C8F325002945E2 /* warningOutline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warningOutline@3x.png"; sourceTree = "<group>"; };
+		FAB0D2FC22C8F325002945E2 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
+		FAB0D2FD22C8F325002945E2 /* notificationFilled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationFilled@3x.png"; sourceTree = "<group>"; };
+		FAB0D2FE22C8F325002945E2 /* warningFilled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warningFilled@2x.png"; sourceTree = "<group>"; };
+		FAB0D2FF22C8F325002945E2 /* alarmOutline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmOutline@2x.png"; sourceTree = "<group>"; };
+		FAB0D30022C8F325002945E2 /* alarmFilled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmFilled@2x.png"; sourceTree = "<group>"; };
+		FAB0D30122C8F325002945E2 /* alarmFilled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmFilled@3x.png"; sourceTree = "<group>"; };
+		FAB0D30222C8F325002945E2 /* check@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@1x.png"; sourceTree = "<group>"; };
+		FAB0D30322C8F325002945E2 /* alarmOutline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmOutline@3x.png"; sourceTree = "<group>"; };
+		FAB0D30422C8F325002945E2 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+		FAB0D30522C8F325002945E2 /* check@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@3x.png"; sourceTree = "<group>"; };
+		FAB0D30622C8F325002945E2 /* alarmFilled@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmFilled@1x.png"; sourceTree = "<group>"; };
+		FAB0D30722C8F325002945E2 /* alarmOutline@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmOutline@1x.png"; sourceTree = "<group>"; };
+		FAB0D30822C8F325002945E2 /* notificationOutline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationOutline@3x.png"; sourceTree = "<group>"; };
+		FAB0D30922C8F325002945E2 /* error@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@1x.png"; sourceTree = "<group>"; };
+		FAB0D30A22C8F325002945E2 /* warningFilled@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warningFilled@1x.png"; sourceTree = "<group>"; };
+		FAB0D30B22C8F325002945E2 /* warningOutline@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warningOutline@1x.png"; sourceTree = "<group>"; };
+		FAB0D30C22C8F325002945E2 /* notificationFilled@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationFilled@1x.png"; sourceTree = "<group>"; };
+		FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationOutline@2x.png"; sourceTree = "<group>"; };
+		FAC5392522BFEC550077E181 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		FAC5392622BFEC550077E181 /* ConfigurationTestnet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTestnet.swift; sourceTree = "<group>"; };
+		FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinterSDKConfigurator.swift; sourceTree = "<group>"; };
+		FAC5393322C217070077E181 /* Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
+		FAF359E022BF73F40006A087 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		FAF359E322BF81280006A087 /* MinterKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinterKeyboard.entitlements; sourceTree = "<group>"; };
+		FAF359E422BF81C70006A087 /* WalletKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WalletKeyboard.entitlements; sourceTree = "<group>"; };
+		FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionConstructor.swift; sourceTree = "<group>"; };
+		FAF359E822BF85930006A087 /* GateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateManager.swift; sourceTree = "<group>"; };
+		FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GateManager+Rx.swift"; sourceTree = "<group>"; };
+		FAF77AFE22BB832A005D771A /* UIFont+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Default.swift"; sourceTree = "<group>"; };
+		FAF77B0122BB8853005D771A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		FAF77B0322BB88A4005D771A /* KeyActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyActionHandler.swift; sourceTree = "<group>"; };
+		FAF77B0522BB8AB7005D771A /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
+		FAF89A9A22BA2B34003442CC /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		FAF89A9B22BA2B34003442CC /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		FAF89A9C22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-UltralightItalic.otf"; sourceTree = "<group>"; };
+		FAF89A9D22BA2B34003442CC /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
+		FAF89A9E22BA2B34003442CC /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
+		FAF89A9F22BA2B34003442CC /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		FAF89AA022BA2B34003442CC /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		FAF89AA122BA2B34003442CC /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		FAF89AA222BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
+		FAF89AA322BA2B34003442CC /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		FAF89AA422BA2B34003442CC /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		FAF89AA522BA2B34003442CC /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		FAF89AA622BA2B34003442CC /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		FAF89AA722BA2B34003442CC /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		FAF89AA822BA2B34003442CC /* SF-Pro-Rounded-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Black.otf"; sourceTree = "<group>"; };
+		FAF89AA922BA2B34003442CC /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		FAF89AAA22BA2B34003442CC /* SF-Pro-Text-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BlackItalic.otf"; sourceTree = "<group>"; };
+		FAF89AAB22BA2B34003442CC /* SF-Pro-Text-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Black.otf"; sourceTree = "<group>"; };
+		FAF89AAC22BA2B34003442CC /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
+		FAF89AAD22BA2B34003442CC /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		FAF89AAE22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Ultralight.otf"; sourceTree = "<group>"; };
+		FAF89AAF22BA2B34003442CC /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		FAF89AB022BA2B34003442CC /* SF-Pro-Text-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Thin.otf"; sourceTree = "<group>"; };
+		FAF89AB122BA2B34003442CC /* SF-Pro-Display-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-MediumItalic.otf"; sourceTree = "<group>"; };
+		FAF89AB222BA2B34003442CC /* SF-Pro-Display-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-HeavyItalic.otf"; sourceTree = "<group>"; };
+		FAF89AB322BA2B34003442CC /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		FAF89AB422BA2B34003442CC /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
+		FAF89AB522BA2B34003442CC /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
+		FAF89AB622BA2B34003442CC /* SF-Pro-Rounded-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Thin.otf"; sourceTree = "<group>"; };
+		FAF89AB722BA2B34003442CC /* SF-Pro-Text-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-ThinItalic.otf"; sourceTree = "<group>"; };
+		FAF89AB822BA2B34003442CC /* SF-Pro-Display-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BlackItalic.otf"; sourceTree = "<group>"; };
+		FAF89AB922BA2B34003442CC /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		FAF89ABA22BA2B34003442CC /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		FAF89ABB22BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		FAF89ABC22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		FAF89ABD22BA2B34003442CC /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		FAF89ABE22BA2B34003442CC /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		FAF89ABF22BA2B34003442CC /* SF-Pro-Display-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-ThinItalic.otf"; sourceTree = "<group>"; };
+		FAF89AC022BA2B34003442CC /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		FAF89AC122BA2B34003442CC /* SF-Pro-Rounded-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Ultralight.otf"; sourceTree = "<group>"; };
+		FAF89AC222BA2B34003442CC /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		FAF89AC322BA2B34003442CC /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
+		FAF89AC422BA2B34003442CC /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
+		FAF89AC522BA2B34003442CC /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
+		FAF89AC622BA2B34003442CC /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		FAF89B2122BA41D2003442CC /* HexKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexKeyboard.swift; sourceTree = "<group>"; };
+		FAF89B2322BA4762003442CC /* DemoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoButton.swift; sourceTree = "<group>"; };
+		FAF89B2522BA4775003442CC /* DemoButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoButton.xib; sourceTree = "<group>"; };
+		FAF89B2822BA47E0003442CC /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		FAFAE85522B81DC1001E7674 /* FakeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTextField.swift; sourceTree = "<group>"; };
+		FAFAE9F622B823FE001E7674 /* WeakSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakSet.swift; sourceTree = "<group>"; };
+		FE0961D903B65AA6467C72FC /* Pods-WalletKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletKeyboard.release.xcconfig"; path = "Target Support Files/Pods-WalletKeyboard/Pods-WalletKeyboard.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA07C4F222B4E25C005D7275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08840524AC39060D2F599A78 /* Pods_MinterKeyboard.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA07C50622B4E25E005D7275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA07C51922B4E35C005D7275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C79501A8F3FEFE7D90058EDB /* Pods_WalletKeyboard.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08616C5A258CBC41EA118D86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D54DBABACF222D16CAF2BE13 /* Pods_MinterKeyboard.framework */,
+				8D35E96BBB6157CA0F7E7129 /* Pods_WalletKeyboard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20D56859E19F6FC5DFED4D6B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8730DB8C197EB360B724497B /* Pods-MinterKeyboard.debug.xcconfig */,
+				E02C176BEFC0CEADEF705345 /* Pods-MinterKeyboard.release.xcconfig */,
+				707B5471115715700492F2F5 /* Pods-WalletKeyboard.debug.xcconfig */,
+				FE0961D903B65AA6467C72FC /* Pods-WalletKeyboard.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA07C4EC22B4E25C005D7275 = {
+			isa = PBXGroup;
+			children = (
+				FA07C4F722B4E25C005D7275 /* MinterKeyboard */,
+				FA07C50C22B4E25E005D7275 /* MinterKeyboardTests */,
+				FA07C51D22B4E35C005D7275 /* WalletKeyboard */,
+				FA07C4F622B4E25C005D7275 /* Products */,
+				20D56859E19F6FC5DFED4D6B /* Pods */,
+				08616C5A258CBC41EA118D86 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA07C4F622B4E25C005D7275 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA07C4F522B4E25C005D7275 /* MinterKeyboard.app */,
+				FA07C50922B4E25E005D7275 /* MinterKeyboardTests.xctest */,
+				FA07C51C22B4E35C005D7275 /* WalletKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA07C4F722B4E25C005D7275 /* MinterKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FAB0D2E322C8F311002945E2 /* AlertView */,
+				FAF359E322BF81280006A087 /* MinterKeyboard.entitlements */,
+				FA57095B22B67D5D00F5D0DD /* Common */,
+				FA07C52822B4E877005D7275 /* Cases */,
+				FA07C4F822B4E25C005D7275 /* AppDelegate.swift */,
+				FA07C4FA22B4E25C005D7275 /* ViewController.swift */,
+				FA57094C22B6260000F5D0DD /* ViewModel.swift */,
+				FA07C4FC22B4E25C005D7275 /* Main.storyboard */,
+				FA07C4FF22B4E25E005D7275 /* Assets.xcassets */,
+				FA07C50122B4E25E005D7275 /* LaunchScreen.storyboard */,
+				FA07C50422B4E25E005D7275 /* Info.plist */,
+			);
+			path = MinterKeyboard;
+			sourceTree = "<group>";
+		};
+		FA07C50C22B4E25E005D7275 /* MinterKeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA07C50D22B4E25E005D7275 /* MinterKeyboardTests.swift */,
+				FA07C50F22B4E25E005D7275 /* Info.plist */,
+			);
+			path = MinterKeyboardTests;
+			sourceTree = "<group>";
+		};
+		FA07C51D22B4E35C005D7275 /* WalletKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FAF359E422BF81C70006A087 /* WalletKeyboard.entitlements */,
+				FA5A4E3522BE1B43002EAD92 /* Sent */,
+				FA57095322B669FD00F5D0DD /* Header */,
+				FA07C52022B4E35C005D7275 /* Info.plist */,
+				FA57092F22B579D100F5D0DD /* Common */,
+				FA57093322B57A0900F5D0DD /* Balance */,
+				FA57092E22B579C900F5D0DD /* Delegate */,
+				FA57092D22B579C200F5D0DD /* Send */,
+				FA57092C22B579BA00F5D0DD /* Convert */,
+				FA57093222B579E200F5D0DD /* Support Files */,
+			);
+			path = WalletKeyboard;
+			sourceTree = "<group>";
+		};
+		FA07C52822B4E877005D7275 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		FA57092C22B579BA00F5D0DD /* Convert */ = {
+			isa = PBXGroup;
+			children = (
+				FA57094622B57BF600F5D0DD /* ConvertView.swift */,
+				FA57094922B57C0000F5D0DD /* ConvertView.xib */,
+			);
+			path = Convert;
+			sourceTree = "<group>";
+		};
+		FA57092D22B579C200F5D0DD /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				FA57094022B57BC500F5D0DD /* SendView.swift */,
+				FA57094322B57BD200F5D0DD /* SendView.xib */,
+			);
+			path = Send;
+			sourceTree = "<group>";
+		};
+		FA57092E22B579C900F5D0DD /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA57093A22B57B6200F5D0DD /* DelegateView.swift */,
+				FA57093D22B57B6F00F5D0DD /* DelegateView.xib */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		FA57092F22B579D100F5D0DD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FAF89B2722BA47D3003442CC /* Helper */,
+				FAFAE85422B81DAE001E7674 /* View */,
+				FA57094F22B639F300F5D0DD /* Manager */,
+				FA07C52922B4FB89005D7275 /* KeyboardViewModel.swift */,
+				FA07C51E22B4E35C005D7275 /* KeyboardViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FA57093222B579E200F5D0DD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAF89A9822BA2B29003442CC /* Fonts */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		FA57093322B57A0900F5D0DD /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				FA57093422B57B2200F5D0DD /* BalanceView.swift */,
+				FA57093722B57B3500F5D0DD /* BalanceView.xib */,
+			);
+			path = Balance;
+			sourceTree = "<group>";
+		};
+		FA57094F22B639F300F5D0DD /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FA57095322B669FD00F5D0DD /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				FA57095422B66A1300F5D0DD /* HeaderView.swift */,
+				FA57095722B66A2100F5D0DD /* HeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		FA57095B22B67D5D00F5D0DD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FAC5392522BFEC550077E181 /* Configuration.swift */,
+				FAC5392622BFEC550077E181 /* ConfigurationTestnet.swift */,
+				FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */,
+				FA07C52B22B4FBAF005D7275 /* Session.swift */,
+				FAF359E822BF85930006A087 /* GateManager.swift */,
+				FA57095022B63A2500F5D0DD /* AccountManager.swift */,
+				FAF77AFD22BB8319005D771A /* Helper */,
+				FA57095C22B67D6200F5D0DD /* View */,
+				FAF359E022BF73F40006A087 /* Account.swift */,
+				FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */,
+				FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */,
+				FAB0D28B22C7B897002945E2 /* PrivateKey+.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FA57095C22B67D6200F5D0DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA57095D22B67D7C00F5D0DD /* DefaultTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA5A4E3522BE1B43002EAD92 /* Sent */ = {
+			isa = PBXGroup;
+			children = (
+				FA5A4E3622BE1B62002EAD92 /* SentView.swift */,
+				FA5A4E3822BE1B7A002EAD92 /* SentView.xib */,
+			);
+			path = Sent;
+			sourceTree = "<group>";
+		};
+		FAB0D2E322C8F311002945E2 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				FAB0D2F422C8F325002945E2 /* Resources */,
+				FAB0D2E422C8F31E002945E2 /* Classes */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		FAB0D2E422C8F31E002945E2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FAB0D2E522C8F31E002945E2 /* CDAlertHeaderView.swift */,
+				FAB0D2E722C8F31E002945E2 /* CDAlertView.swift */,
+				FAB0D2E822C8F31E002945E2 /* LayoutConstraintsExtension.swift */,
+				FAB0D2E922C8F31E002945E2 /* ImageHelper.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FAB0D2F422C8F325002945E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAB0D2F522C8F325002945E2 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FAB0D2F522C8F325002945E2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FAB0D2F622C8F325002945E2 /* warningFilled@3x.png */,
+				FAB0D2F722C8F325002945E2 /* notificationFilled@2x.png */,
+				FAB0D2F822C8F325002945E2 /* error@3x.png */,
+				FAB0D2F922C8F325002945E2 /* notificationOutline@1x.png */,
+				FAB0D2FA22C8F325002945E2 /* warningOutline@2x.png */,
+				FAB0D2FB22C8F325002945E2 /* warningOutline@3x.png */,
+				FAB0D2FC22C8F325002945E2 /* error@2x.png */,
+				FAB0D2FD22C8F325002945E2 /* notificationFilled@3x.png */,
+				FAB0D2FE22C8F325002945E2 /* warningFilled@2x.png */,
+				FAB0D2FF22C8F325002945E2 /* alarmOutline@2x.png */,
+				FAB0D30022C8F325002945E2 /* alarmFilled@2x.png */,
+				FAB0D30122C8F325002945E2 /* alarmFilled@3x.png */,
+				FAB0D30222C8F325002945E2 /* check@1x.png */,
+				FAB0D30322C8F325002945E2 /* alarmOutline@3x.png */,
+				FAB0D30422C8F325002945E2 /* check@2x.png */,
+				FAB0D30522C8F325002945E2 /* check@3x.png */,
+				FAB0D30622C8F325002945E2 /* alarmFilled@1x.png */,
+				FAB0D30722C8F325002945E2 /* alarmOutline@1x.png */,
+				FAB0D30822C8F325002945E2 /* notificationOutline@3x.png */,
+				FAB0D30922C8F325002945E2 /* error@1x.png */,
+				FAB0D30A22C8F325002945E2 /* warningFilled@1x.png */,
+				FAB0D30B22C8F325002945E2 /* warningOutline@1x.png */,
+				FAB0D30C22C8F325002945E2 /* notificationFilled@1x.png */,
+				FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		FAF77AFD22BB8319005D771A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FAC5393322C217070077E181 /* Sugar.swift */,
+				FA5A4E2E22BD7500002EAD92 /* Decimal+Fractional.swift */,
+				FA5A4E2A22BD749C002EAD92 /* CurrencyNumberFormatter.swift */,
+				FA5A4E2B22BD749C002EAD92 /* TransactionDateFormatter.swift */,
+				FAFAE9F622B823FE001E7674 /* WeakSet.swift */,
+				FAF77AFE22BB832A005D771A /* UIFont+Default.swift */,
+				FA5A4E3222BD80D9002EAD92 /* String+.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		FAF89A9822BA2B29003442CC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FAF89A9922BA2B34003442CC /* San Francisco Pro */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FAF89A9922BA2B34003442CC /* San Francisco Pro */ = {
+			isa = PBXGroup;
+			children = (
+				FAF89A9A22BA2B34003442CC /* SF-Pro-Display-Thin.otf */,
+				FAF89A9B22BA2B34003442CC /* SF-Pro-Display-SemiboldItalic.otf */,
+				FAF89A9C22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf */,
+				FAF89A9D22BA2B34003442CC /* SF-Pro-Text-Heavy.otf */,
+				FAF89A9E22BA2B34003442CC /* SF-Pro-Display-RegularItalic.otf */,
+				FAF89A9F22BA2B34003442CC /* SF-Pro-Display-Light.otf */,
+				FAF89AA022BA2B34003442CC /* SF-Pro-Rounded-Semibold.otf */,
+				FAF89AA122BA2B34003442CC /* SF-Pro-Display-Regular.otf */,
+				FAF89AA222BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf */,
+				FAF89AA322BA2B34003442CC /* SF-Pro-Display-Bold.otf */,
+				FAF89AA422BA2B34003442CC /* SF-Pro-Rounded-Regular.otf */,
+				FAF89AA522BA2B34003442CC /* SF-Pro-Display-Medium.otf */,
+				FAF89AA622BA2B34003442CC /* SF-Pro-Display-Heavy.otf */,
+				FAF89AA722BA2B34003442CC /* SF-Pro-Text-Light.otf */,
+				FAF89AA822BA2B34003442CC /* SF-Pro-Rounded-Black.otf */,
+				FAF89AA922BA2B34003442CC /* SF-Pro-Display-Semibold.otf */,
+				FAF89AAA22BA2B34003442CC /* SF-Pro-Text-BlackItalic.otf */,
+				FAF89AAB22BA2B34003442CC /* SF-Pro-Text-Black.otf */,
+				FAF89AAC22BA2B34003442CC /* SF-Pro-Rounded-Light.otf */,
+				FAF89AAD22BA2B34003442CC /* SF-Pro-Text-Regular.otf */,
+				FAF89AAE22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf */,
+				FAF89AAF22BA2B34003442CC /* SF-Pro-Text-Bold.otf */,
+				FAF89AB022BA2B34003442CC /* SF-Pro-Text-Thin.otf */,
+				FAF89AB122BA2B34003442CC /* SF-Pro-Display-MediumItalic.otf */,
+				FAF89AB222BA2B34003442CC /* SF-Pro-Display-HeavyItalic.otf */,
+				FAF89AB322BA2B34003442CC /* SF-Pro-Display-Ultralight.otf */,
+				FAF89AB422BA2B34003442CC /* SF-Pro-Display-UltralightItalic.otf */,
+				FAF89AB522BA2B34003442CC /* SF-Pro-Display-LightItalic.otf */,
+				FAF89AB622BA2B34003442CC /* SF-Pro-Rounded-Thin.otf */,
+				FAF89AB722BA2B34003442CC /* SF-Pro-Text-ThinItalic.otf */,
+				FAF89AB822BA2B34003442CC /* SF-Pro-Display-BlackItalic.otf */,
+				FAF89AB922BA2B34003442CC /* SF-Pro-Display-Black.otf */,
+				FAF89ABA22BA2B34003442CC /* SF-Pro-Rounded-Medium.otf */,
+				FAF89ABB22BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf */,
+				FAF89ABC22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf */,
+				FAF89ABD22BA2B34003442CC /* SF-Pro-Text-Semibold.otf */,
+				FAF89ABE22BA2B34003442CC /* SF-Pro-Text-HeavyItalic.otf */,
+				FAF89ABF22BA2B34003442CC /* SF-Pro-Display-ThinItalic.otf */,
+				FAF89AC022BA2B34003442CC /* SF-Pro-Text-LightItalic.otf */,
+				FAF89AC122BA2B34003442CC /* SF-Pro-Rounded-Ultralight.otf */,
+				FAF89AC222BA2B34003442CC /* SF-Pro-Text-Medium.otf */,
+				FAF89AC322BA2B34003442CC /* SF-Pro-Rounded-Heavy.otf */,
+				FAF89AC422BA2B34003442CC /* SF-Pro-Display-BoldItalic.otf */,
+				FAF89AC522BA2B34003442CC /* SF-Pro-Rounded-Bold.otf */,
+				FAF89AC622BA2B34003442CC /* SF-Pro-Text-SemiboldItalic.otf */,
+			);
+			path = "San Francisco Pro";
+			sourceTree = "<group>";
+		};
+		FAF89B2722BA47D3003442CC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FAF89B2822BA47E0003442CC /* Assets.swift */,
+				FAF77B0122BB8853005D771A /* UITextField+.swift */,
+				FAF77B0322BB88A4005D771A /* KeyActionHandler.swift */,
+				FAB0D28922C7A009002945E2 /* UIColor+Defaults.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		FAFAE85422B81DAE001E7674 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAE85522B81DC1001E7674 /* FakeTextField.swift */,
+				FAF89B2122BA41D2003442CC /* HexKeyboard.swift */,
+				FAF89B2322BA4762003442CC /* DemoButton.swift */,
+				FAF89B2522BA4775003442CC /* DemoButton.xib */,
+				FAF77B0522BB8AB7005D771A /* NumericKeyboard.swift */,
+				FA5A4E3A22BE231D002EAD92 /* ShareKeyboard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA07C4F422B4E25C005D7275 /* MinterKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA07C51222B4E25E005D7275 /* Build configuration list for PBXNativeTarget "MinterKeyboard" */;
+			buildPhases = (
+				FAA4DE4CA94C9C6DD0C6ED37 /* [CP] Check Pods Manifest.lock */,
+				FA07C4F122B4E25C005D7275 /* Sources */,
+				FA07C4F222B4E25C005D7275 /* Frameworks */,
+				FA07C4F322B4E25C005D7275 /* Resources */,
+				FA07C52722B4E35C005D7275 /* Embed App Extensions */,
+				6ED8B7ABB1E718450FCC8E89 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA07C52222B4E35C005D7275 /* PBXTargetDependency */,
+			);
+			name = MinterKeyboard;
+			productName = MinterKeyboard;
+			productReference = FA07C4F522B4E25C005D7275 /* MinterKeyboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA07C50822B4E25E005D7275 /* MinterKeyboardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA07C51522B4E25E005D7275 /* Build configuration list for PBXNativeTarget "MinterKeyboardTests" */;
+			buildPhases = (
+				FA07C50522B4E25E005D7275 /* Sources */,
+				FA07C50622B4E25E005D7275 /* Frameworks */,
+				FA07C50722B4E25E005D7275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA07C50B22B4E25E005D7275 /* PBXTargetDependency */,
+			);
+			name = MinterKeyboardTests;
+			productName = MinterKeyboardTests;
+			productReference = FA07C50922B4E25E005D7275 /* MinterKeyboardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA07C51B22B4E35C005D7275 /* WalletKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA07C52422B4E35C005D7275 /* Build configuration list for PBXNativeTarget "WalletKeyboard" */;
+			buildPhases = (
+				7DEC6A2F3D08BB4A9D6FE032 /* [CP] Check Pods Manifest.lock */,
+				FA07C51822B4E35C005D7275 /* Sources */,
+				FA07C51922B4E35C005D7275 /* Frameworks */,
+				FA07C51A22B4E35C005D7275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WalletKeyboard;
+			productName = WalletKeyboard;
+			productReference = FA07C51C22B4E35C005D7275 /* WalletKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA07C4ED22B4E25C005D7275 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Sidorov;
+				TargetAttributes = {
+					FA07C4F422B4E25C005D7275 = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					FA07C50822B4E25E005D7275 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FA07C4F422B4E25C005D7275;
+					};
+					FA07C51B22B4E35C005D7275 = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = FA07C4F022B4E25C005D7275 /* Build configuration list for PBXProject "MinterKeyboard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA07C4EC22B4E25C005D7275;
+			productRefGroup = FA07C4F622B4E25C005D7275 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA07C4F422B4E25C005D7275 /* MinterKeyboard */,
+				FA07C50822B4E25E005D7275 /* MinterKeyboardTests */,
+				FA07C51B22B4E35C005D7275 /* WalletKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA07C4F322B4E25C005D7275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF89AE122BA2B34003442CC /* SF-Pro-Text-Light.otf in Resources */,
+				FAB0D32222C8F325002945E2 /* alarmFilled@2x.png in Resources */,
+				FA07C50322B4E25E005D7275 /* LaunchScreen.storyboard in Resources */,
+				FAF89AE922BA2B34003442CC /* SF-Pro-Text-Black.otf in Resources */,
+				FAF89B0D22BA2B34003442CC /* SF-Pro-Text-Semibold.otf in Resources */,
+				FAB0D32622C8F325002945E2 /* check@1x.png in Resources */,
+				FAF89AED22BA2B34003442CC /* SF-Pro-Text-Regular.otf in Resources */,
+				FAB0D31822C8F325002945E2 /* warningOutline@3x.png in Resources */,
+				FAB0D32A22C8F325002945E2 /* check@2x.png in Resources */,
+				FAB0D31022C8F325002945E2 /* notificationFilled@2x.png in Resources */,
+				FA57093822B57B3500F5D0DD /* BalanceView.xib in Resources */,
+				FAB0D32822C8F325002945E2 /* alarmOutline@3x.png in Resources */,
+				FAB0D33422C8F325002945E2 /* error@1x.png in Resources */,
+				FAB0D33022C8F325002945E2 /* alarmOutline@1x.png in Resources */,
+				FAB0D33A22C8F325002945E2 /* notificationFilled@1x.png in Resources */,
+				FAB0D31422C8F325002945E2 /* notificationOutline@1x.png in Resources */,
+				FAF89AF322BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */,
+				FA57093E22B57B6F00F5D0DD /* DelegateView.xib in Resources */,
+				FAF89B0922BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				FA57095822B66A2100F5D0DD /* HeaderView.xib in Resources */,
+				FAB0D33C22C8F325002945E2 /* notificationOutline@2x.png in Resources */,
+				FAB0D31222C8F325002945E2 /* error@3x.png in Resources */,
+				FAB0D31C22C8F325002945E2 /* notificationFilled@3x.png in Resources */,
+				FAB0D31A22C8F325002945E2 /* error@2x.png in Resources */,
+				FAB0D33622C8F325002945E2 /* warningFilled@1x.png in Resources */,
+				FA07C50022B4E25E005D7275 /* Assets.xcassets in Resources */,
+				FAB0D30E22C8F325002945E2 /* warningFilled@3x.png in Resources */,
+				FAF89AEF22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */,
+				FAF89B0B22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				FAF89ACD22BA2B34003442CC /* SF-Pro-Text-Heavy.otf in Resources */,
+				FAB0D31622C8F325002945E2 /* warningOutline@2x.png in Resources */,
+				FAF89ACB22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf in Resources */,
+				FAB0D32C22C8F325002945E2 /* check@3x.png in Resources */,
+				FAB0D33222C8F325002945E2 /* notificationOutline@3x.png in Resources */,
+				FAF89AD722BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				FAF89B1722BA2B34003442CC /* SF-Pro-Text-Medium.otf in Resources */,
+				FAB0D32422C8F325002945E2 /* alarmFilled@3x.png in Resources */,
+				FA57094422B57BD200F5D0DD /* SendView.xib in Resources */,
+				FAF89AF122BA2B34003442CC /* SF-Pro-Text-Bold.otf in Resources */,
+				FA07C4FE22B4E25C005D7275 /* Main.storyboard in Resources */,
+				FAB0D32022C8F325002945E2 /* alarmOutline@2x.png in Resources */,
+				FAB0D32E22C8F325002945E2 /* alarmFilled@1x.png in Resources */,
+				FA57094A22B57C0000F5D0DD /* ConvertView.xib in Resources */,
+				FAB0D31E22C8F325002945E2 /* warningFilled@2x.png in Resources */,
+				FAB0D33822C8F325002945E2 /* warningOutline@1x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA07C50722B4E25E005D7275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA07C51A22B4E35C005D7275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF89B2622BA4775003442CC /* DemoButton.xib in Resources */,
+				FAB0D32322C8F325002945E2 /* alarmFilled@2x.png in Resources */,
+				FAF89AD822BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				FAF89AF422BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */,
+				FA57094B22B57C0000F5D0DD /* ConvertView.xib in Resources */,
+				FAB0D32722C8F325002945E2 /* check@1x.png in Resources */,
+				FAF89B0E22BA2B34003442CC /* SF-Pro-Text-Semibold.otf in Resources */,
+				FAB0D31922C8F325002945E2 /* warningOutline@3x.png in Resources */,
+				FAB0D32B22C8F325002945E2 /* check@2x.png in Resources */,
+				FAB0D31122C8F325002945E2 /* notificationFilled@2x.png in Resources */,
+				FAF89AF022BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */,
+				FAB0D32922C8F325002945E2 /* alarmOutline@3x.png in Resources */,
+				FAB0D33522C8F325002945E2 /* error@1x.png in Resources */,
+				FAB0D33122C8F325002945E2 /* alarmOutline@1x.png in Resources */,
+				FAB0D33B22C8F325002945E2 /* notificationFilled@1x.png in Resources */,
+				FAB0D31522C8F325002945E2 /* notificationOutline@1x.png in Resources */,
+				FA57095922B66A2100F5D0DD /* HeaderView.xib in Resources */,
+				FAF89ACC22BA2B34003442CC /* SF-Pro-Text-UltralightItalic.otf in Resources */,
+				FA5A4E3922BE1B7A002EAD92 /* SentView.xib in Resources */,
+				FA57093922B57B3500F5D0DD /* BalanceView.xib in Resources */,
+				FAB0D33D22C8F325002945E2 /* notificationOutline@2x.png in Resources */,
+				FAB0D31322C8F325002945E2 /* error@3x.png in Resources */,
+				FAB0D31D22C8F325002945E2 /* notificationFilled@3x.png in Resources */,
+				FAB0D31B22C8F325002945E2 /* error@2x.png in Resources */,
+				FAB0D33722C8F325002945E2 /* warningFilled@1x.png in Resources */,
+				FAF89B1822BA2B34003442CC /* SF-Pro-Text-Medium.otf in Resources */,
+				FAB0D30F22C8F325002945E2 /* warningFilled@3x.png in Resources */,
+				FAF89B0C22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				FAF89AEA22BA2B34003442CC /* SF-Pro-Text-Black.otf in Resources */,
+				FA57094522B57BD200F5D0DD /* SendView.xib in Resources */,
+				FAB0D31722C8F325002945E2 /* warningOutline@2x.png in Resources */,
+				FAF89ACE22BA2B34003442CC /* SF-Pro-Text-Heavy.otf in Resources */,
+				FAB0D32D22C8F325002945E2 /* check@3x.png in Resources */,
+				FAB0D33322C8F325002945E2 /* notificationOutline@3x.png in Resources */,
+				FAF89AE222BA2B34003442CC /* SF-Pro-Text-Light.otf in Resources */,
+				FA57095A22B6725100F5D0DD /* Assets.xcassets in Resources */,
+				FAB0D32522C8F325002945E2 /* alarmFilled@3x.png in Resources */,
+				FAF89AF222BA2B34003442CC /* SF-Pro-Text-Bold.otf in Resources */,
+				FAF89AEE22BA2B34003442CC /* SF-Pro-Text-Regular.otf in Resources */,
+				FA57093F22B57B6F00F5D0DD /* DelegateView.xib in Resources */,
+				FAB0D32122C8F325002945E2 /* alarmOutline@2x.png in Resources */,
+				FAB0D32F22C8F325002945E2 /* alarmFilled@1x.png in Resources */,
+				FAF89B0A22BA2B34003442CC /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				FAB0D31F22C8F325002945E2 /* warningFilled@2x.png in Resources */,
+				FAB0D33922C8F325002945E2 /* warningOutline@1x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6ED8B7ABB1E718450FCC8E89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinterKeyboard/Pods-MinterKeyboard-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFDateHelper/AFDateHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/GoldenKeystore/GoldenKeystore.framework",
+				"${BUILT_PRODUCTS_DIR}/KeyboardKit/KeyboardKit.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MinterCore/MinterCore.framework",
+				"${BUILT_PRODUCTS_DIR}/MinterExplorer/MinterExplorer.framework",
+				"${BUILT_PRODUCTS_DIR}/MinterMy/MinterMy.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PickerView/PickerView.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAppState/RxAppState.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
+				"${BUILT_PRODUCTS_DIR}/secp256k1.swift/secp256k1.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFDateHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoldenKeystore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyboardKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MinterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MinterExplorer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MinterMy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PickerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAppState.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinterKeyboard/Pods-MinterKeyboard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DEC6A2F3D08BB4A9D6FE032 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WalletKeyboard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAA4DE4CA94C9C6DD0C6ED37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MinterKeyboard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA07C4F122B4E25C005D7275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA57095E22B67D7C00F5D0DD /* DefaultTextField.swift in Sources */,
+				FAB0D28622C769B8002945E2 /* UITextField+.swift in Sources */,
+				FA5A4E2D22BD749C002EAD92 /* TransactionDateFormatter.swift in Sources */,
+				FA57094D22B6260000F5D0DD /* ViewModel.swift in Sources */,
+				FA5A4E2F22BD7500002EAD92 /* Decimal+Fractional.swift in Sources */,
+				FAF359E922BF85930006A087 /* GateManager.swift in Sources */,
+				FA57095122B63A2500F5D0DD /* AccountManager.swift in Sources */,
+				FAB0D28C22C7B897002945E2 /* PrivateKey+.swift in Sources */,
+				FA07C4FB22B4E25C005D7275 /* ViewController.swift in Sources */,
+				FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */,
+				FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */,
+				FA57093522B57B2200F5D0DD /* BalanceView.swift in Sources */,
+				FA57093B22B57B6200F5D0DD /* DelegateView.swift in Sources */,
+				FA5A4E3322BD80D9002EAD92 /* String+.swift in Sources */,
+				FAF359E622BF84DA0006A087 /* TransactionConstructor.swift in Sources */,
+				FA57095522B66A1300F5D0DD /* HeaderView.swift in Sources */,
+				FAC5393422C217070077E181 /* Sugar.swift in Sources */,
+				FAF89B2B22BA89C6003442CC /* FakeTextField.swift in Sources */,
+				FA57094722B57BF600F5D0DD /* ConvertView.swift in Sources */,
+				FA5A4E2C22BD749C002EAD92 /* CurrencyNumberFormatter.swift in Sources */,
+				FA57092B22B5780B00F5D0DD /* Session.swift in Sources */,
+				FAB0D28822C76D4E002945E2 /* Configuration.swift in Sources */,
+				FA57094122B57BC500F5D0DD /* SendView.swift in Sources */,
+				FAF359E122BF73F40006A087 /* Account.swift in Sources */,
+				FAC5392C22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */,
+				FAF359EC22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */,
+				FA57093022B579DE00F5D0DD /* KeyboardViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA07C50522B4E25E005D7275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA07C50E22B4E25E005D7275 /* MinterKeyboardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA07C51822B4E35C005D7275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF359ED22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */,
+				FA57093622B57B2200F5D0DD /* BalanceView.swift in Sources */,
+				FA5A4E3122BD7572002EAD92 /* Decimal+Fractional.swift in Sources */,
+				FA5A4E3B22BE231D002EAD92 /* ShareKeyboard.swift in Sources */,
+				FA57094222B57BC500F5D0DD /* SendView.swift in Sources */,
+				FAFAE9F922B82854001E7674 /* FakeTextField.swift in Sources */,
+				FAB0D28722C76D4E002945E2 /* Configuration.swift in Sources */,
+				FAFAE9F822B8284F001E7674 /* KeyboardViewController.swift in Sources */,
+				FAF77B0022BB832D005D771A /* UIFont+Default.swift in Sources */,
+				FA5A4E3722BE1B62002EAD92 /* SentView.swift in Sources */,
+				FA57094822B57BF600F5D0DD /* ConvertView.swift in Sources */,
+				FAF77B0222BB8853005D771A /* UITextField+.swift in Sources */,
+				FAF89B2222BA41D2003442CC /* HexKeyboard.swift in Sources */,
+				FAB0D28D22C7B897002945E2 /* PrivateKey+.swift in Sources */,
+				FAF77B0422BB88A4005D771A /* KeyActionHandler.swift in Sources */,
+				FAF89B2422BA4762003442CC /* DemoButton.swift in Sources */,
+				FA57095F22B67D7C00F5D0DD /* DefaultTextField.swift in Sources */,
+				FAF89B2922BA47E0003442CC /* Assets.swift in Sources */,
+				FAB0D28A22C7A009002945E2 /* UIColor+Defaults.swift in Sources */,
+				FAB0D2EB22C8F31E002945E2 /* CDAlertHeaderView.swift in Sources */,
+				FAC5392D22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */,
+				FAF77B0622BB8AB7005D771A /* NumericKeyboard.swift in Sources */,
+				FA57093C22B57B6200F5D0DD /* DelegateView.swift in Sources */,
+				FA57095622B66A1300F5D0DD /* HeaderView.swift in Sources */,
+				FA57095222B63A2500F5D0DD /* AccountManager.swift in Sources */,
+				FAF359EA22BF85930006A087 /* GateManager.swift in Sources */,
+				FA5A4E3022BD7570002EAD92 /* CurrencyNumberFormatter.swift in Sources */,
+				FAF359E222BF73F40006A087 /* Account.swift in Sources */,
+				FAB0D2F122C8F31F002945E2 /* LayoutConstraintsExtension.swift in Sources */,
+				FA5A4E3422BD80D9002EAD92 /* String+.swift in Sources */,
+				FA07C52A22B4FB89005D7275 /* KeyboardViewModel.swift in Sources */,
+				FAB0D2F322C8F31F002945E2 /* ImageHelper.swift in Sources */,
+				FAF359E722BF84DA0006A087 /* TransactionConstructor.swift in Sources */,
+				FAC5393522C217070077E181 /* Sugar.swift in Sources */,
+				FAB0D2EF22C8F31F002945E2 /* CDAlertView.swift in Sources */,
+				FA57094E22B6260000F5D0DD /* ViewModel.swift in Sources */,
+				FA07C52C22B4FBAF005D7275 /* Session.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA07C50B22B4E25E005D7275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA07C4F422B4E25C005D7275 /* MinterKeyboard */;
+			targetProxy = FA07C50A22B4E25E005D7275 /* PBXContainerItemProxy */;
+		};
+		FA07C52222B4E35C005D7275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA07C51B22B4E35C005D7275 /* WalletKeyboard */;
+			targetProxy = FA07C52122B4E35C005D7275 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA07C4FC22B4E25C005D7275 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA07C4FD22B4E25C005D7275 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA07C50122B4E25E005D7275 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA07C50222B4E25E005D7275 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA07C51022B4E25E005D7275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA07C51122B4E25E005D7275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA07C51322B4E25E005D7275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8730DB8C197EB360B724497B /* Pods-MinterKeyboard.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				INFOPLIST_FILE = MinterKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SID.monke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FA07C51422B4E25E005D7275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E02C176BEFC0CEADEF705345 /* Pods-MinterKeyboard.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				INFOPLIST_FILE = MinterKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SID.monke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		FA07C51622B4E25E005D7275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				INFOPLIST_FILE = MinterKeyboardTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SID.MinterKeyboardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinterKeyboard.app/MinterKeyboard";
+			};
+			name = Debug;
+		};
+		FA07C51722B4E25E005D7275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				INFOPLIST_FILE = MinterKeyboardTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SID.MinterKeyboardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinterKeyboard.app/MinterKeyboard";
+			};
+			name = Release;
+		};
+		FA07C52522B4E35C005D7275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 707B5471115715700492F2F5 /* Pods-WalletKeyboard.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WalletKeyboard/WalletKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				INFOPLIST_FILE = WalletKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SID.monke.mobilekeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FA07C52622B4E35C005D7275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE0961D903B65AA6467C72FC /* Pods-WalletKeyboard.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WalletKeyboard/WalletKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				INFOPLIST_FILE = WalletKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SID.monke.mobilekeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA07C4F022B4E25C005D7275 /* Build configuration list for PBXProject "MinterKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA07C51022B4E25E005D7275 /* Debug */,
+				FA07C51122B4E25E005D7275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA07C51222B4E25E005D7275 /* Build configuration list for PBXNativeTarget "MinterKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA07C51322B4E25E005D7275 /* Debug */,
+				FA07C51422B4E25E005D7275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA07C51522B4E25E005D7275 /* Build configuration list for PBXNativeTarget "MinterKeyboardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA07C51622B4E25E005D7275 /* Debug */,
+				FA07C51722B4E25E005D7275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA07C52422B4E35C005D7275 /* Build configuration list for PBXNativeTarget "WalletKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA07C52522B4E35C005D7275 /* Debug */,
+				FA07C52622B4E35C005D7275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA07C4ED22B4E25C005D7275 /* Project object */;
+}

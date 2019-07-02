@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderView" customModule="MinterKeyboard" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3f-sv-O4X">
+                    <rect key="frame" x="0.0" y="0.0" width="405" height="58"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onR-Pm-piU">
+                            <rect key="frame" x="48" y="10" width="57" height="19.5"/>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bip-logo" translatesAutoresizingMaskIntoConstraints="NO" id="itS-bx-4aG">
+                            <rect key="frame" x="10" y="10" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="rUH-Hr-Qku"/>
+                                <constraint firstAttribute="width" constant="28" id="x5g-fb-CrO"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgk-Qg-P8U">
+                            <rect key="frame" x="264" y="10" width="131" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="131" id="s05-dH-7uN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                            <state key="normal" title="Mx" backgroundImage="address-button">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAU-a7-pYk">
+                            <rect key="frame" x="48" y="29" width="32.5" height="11"/>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="9"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="vAU-a7-pYk" firstAttribute="leading" secondItem="onR-Pm-piU" secondAttribute="leading" id="SFD-h0-ISW"/>
+                        <constraint firstAttribute="trailing" secondItem="kgk-Qg-P8U" secondAttribute="trailing" constant="10" id="UTP-0y-Y4r"/>
+                        <constraint firstItem="itS-bx-4aG" firstAttribute="top" secondItem="y3f-sv-O4X" secondAttribute="top" constant="10" id="csd-T1-UcN"/>
+                        <constraint firstItem="onR-Pm-piU" firstAttribute="top" secondItem="itS-bx-4aG" secondAttribute="top" id="fIW-jZ-Gou"/>
+                        <constraint firstItem="itS-bx-4aG" firstAttribute="leading" secondItem="y3f-sv-O4X" secondAttribute="leading" constant="10" id="fhO-oI-Pcb"/>
+                        <constraint firstItem="onR-Pm-piU" firstAttribute="leading" secondItem="itS-bx-4aG" secondAttribute="trailing" constant="10" id="gXO-yu-CX3"/>
+                        <constraint firstItem="kgk-Qg-P8U" firstAttribute="top" secondItem="y3f-sv-O4X" secondAttribute="top" constant="10" id="iFB-OO-4Z0"/>
+                        <constraint firstItem="vAU-a7-pYk" firstAttribute="top" secondItem="onR-Pm-piU" secondAttribute="bottom" constant="-0.5" id="s0n-3Q-b62"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="y3f-sv-O4X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1x7-kW-VCs"/>
+                <constraint firstItem="y3f-sv-O4X" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="C7Z-kZ-3rP"/>
+                <constraint firstAttribute="bottom" secondItem="y3f-sv-O4X" secondAttribute="bottom" id="Epr-yl-cSM"/>
+                <constraint firstAttribute="bottom" secondItem="y3f-sv-O4X" secondAttribute="bottom" id="NYK-eJ-0Q8"/>
+                <constraint firstItem="y3f-sv-O4X" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="er0-og-WBX"/>
+                <constraint firstItem="y3f-sv-O4X" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="jtQ-yy-cCa"/>
+                <constraint firstItem="y3f-sv-O4X" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qJ7-OU-lQf"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addressButton" destination="kgk-Qg-P8U" id="JpB-v0-GiH"/>
+                <outlet property="balanceLabel" destination="onR-Pm-piU" id="tpY-yG-XXq"/>
+                <outlet property="delegateLabel" destination="vAU-a7-pYk" id="KFe-8c-0QU"/>
+            </connections>
+            <point key="canvasLocation" x="41.304347826086961" y="289.28571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="address-button" width="131" height="29"/>
+        <image name="bip-logo" width="68" height="68"/>
+    </resources>
+</document>
