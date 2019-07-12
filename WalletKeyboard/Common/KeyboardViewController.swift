@@ -98,7 +98,7 @@ class KeyboardViewController: KeyboardInputViewController {
 
 		viewModel.output.selectedCoinBalance.asDriver(onErrorJustReturn: "")
 			.drive(sendView.coinAvailableLabel.rx.text).disposed(by: disposeBag)
-		
+
 		viewModel.output.addressFieldHasError.distinctUntilChanged().asDriver(onErrorJustReturn: false)
 			.drive(onNext: { [weak self] (hasError) in
 				if hasError {
@@ -125,7 +125,7 @@ class KeyboardViewController: KeyboardInputViewController {
 	}
 
 	// MARK: -
-	
+
 	var balances: [String] = []
 
 	var backgroundColor: UIColor {
@@ -135,16 +135,47 @@ class KeyboardViewController: KeyboardInputViewController {
 		return UIColor(red: 0.82, green: 0.84, blue: 0.86, alpha: 1.0)
 	}
 
+	lazy var pasteBtn = pasteButton()
 	var additionalKeyboardView: UIView?
 	var selectedTextField: FakeTextFieldView? {
 		didSet {
 			self.setKeyboardActionHandler()
+			pasteBtn.removeFromSuperview()
 
 			guard oldValue != selectedTextField else {
-				if nil != selectedTextField as? AddressTextField && nil != UIPasteboard.general.string {
-					self.sendView.sendAddressPasteButton.alpha = 1.0
-					self.sendView.bringSubviewToFront(self.sendView.sendAddressPasteButton)
-//					view.sendSubviewToBack(additionalKeyboardView)
+
+				if (nil != selectedTextField &&
+					nil != UIPasteboard.general.string &&
+					"" != UIPasteboard.general.string) {
+
+					if pasteBtn.superview == nil {
+						pasteBtn = pasteButton()
+						self.view.addSubview(pasteBtn)
+					} else {
+						pasteBtn.removeFromSuperview()
+						return
+					}
+
+					guard let selectedTF = self.selectedTextField else {
+						return
+					}
+
+					let convertedFrame = self.view.convert(selectedTF.frame, from: selectedTF.superview!)
+
+					pasteBtn.frame = CGRect(x: width/2, y: convertedFrame.maxY, width: 69, height: 45)
+					pasteBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 9, right: 0)
+					pasteBtn.titleLabel?.font = UIFont.defaultFont(of: 14.0)
+					self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(top)-[paste]",
+																																	options: [],
+																																	metrics: ["top": (convertedFrame.minY - 45.0)],
+																																	views: ["paste": pasteBtn]))
+					self.view.addConstraint(NSLayoutConstraint(item: pasteBtn,
+																										 attribute: .centerX,
+																										 relatedBy: .equal,
+																										 toItem: selectedTF,
+																										 attribute: .centerX,
+																										 multiplier: 1.0,
+																										 constant: 0.0))
 				}
 				return
 			}
@@ -208,9 +239,19 @@ class KeyboardViewController: KeyboardInputViewController {
 		tapGestureReconizer.cancelsTouchesInView = false
 		view.addGestureRecognizer(tapGestureReconizer)
 
-		initializeScrollView()
-
-		customize(viewModel: viewModel)
+		if !self.hasFullAccess || !viewModel.output.isTurnedOn {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+				self.showKeyboard(type: .hex, forSelectedTextField: false)
+				self.heightConstraint?.constant = 60.0
+//				let alert = CDAlertView(title: "Full Access 🙊",
+//																message: "You need to allow full access in able to use Monke. Please follow to Settings > General > Keyboards > Monke and turn on Full Access",
+//																type: .noImage)
+//				alert.show(in: self.view)
+			}
+		} else {
+			initializeScrollView()
+			customize(viewModel: viewModel)
+		}
 	}
 
 	func hideForm() {
@@ -236,16 +277,17 @@ class KeyboardViewController: KeyboardInputViewController {
 																						toItem: nil,
 																						attribute: .notAnAttribute,
 																						multiplier: 1,
-																						constant: 200)
+																						constant: 316.0)
 			heightConstraint.priority = UILayoutPriority.defaultLow
-			
+
 			keyboardStackView.addConstraint(heightConstraint)
-		} else {
-//			heightConstraint.constant = customHeight
 		}
+		setNeedsChangeHeight(forKeyboard: .none)
 	}
 
 	// MARK: -
+	
+	var bottomConstraint: NSLayoutConstraint?
 
 	func initializeScrollView() {
 
@@ -274,15 +316,27 @@ class KeyboardViewController: KeyboardInputViewController {
 																																	options: [],
 																																	metrics: nil,
 																																	views: ["view": scrollView]))
-		self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[headerView(48)]-0-[view(250)]-0@750-|",
-																																	options: [],
-																																	metrics: nil,
-																																	views: ["view": scrollView,
-																																					"headerView": headerView]))
+		self.view?.addConstraints(NSLayoutConstraint
+			.constraints(withVisualFormat: "V:|-0-[headerView(48)]-0-[view(190)]",
+									 options: [],
+									 metrics: [:],
+									 views: ["view": scrollView,
+													 "headerView": headerView]))
+		
+		bottomConstraint = NSLayoutConstraint(item: scrollView,
+																					attribute: .bottom,
+																					relatedBy: .equal,
+																					toItem: view,
+																					attribute: .bottom,
+																					multiplier: 1.0,
+																					constant: 0.0)
+		bottomConstraint?.priority = .defaultLow
+		self.view?.addConstraint(bottomConstraint!)
 
 		let sendViewNib = UINib(nibName: "SendView", bundle: nil)
 		let sendViewObjects = sendViewNib.instantiate(withOwner: nil, options: nil)
 		sendView = sendViewObjects.first as? SendView
+
 		guard let sendView = sendView else { return }
 		sendView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -291,10 +345,10 @@ class KeyboardViewController: KeyboardInputViewController {
 				self?.pasteAddress()
 		}).disposed(by: disposeBag)
 
-		sendView.sendAddressPasteButton.rx.tap
-			.subscribe(onNext: { [weak self] (_) in
-				self?.pasteAddress()
-		}).disposed(by: disposeBag)
+//		sendView.sendAddressPasteButton.rx.tap
+//			.subscribe(onNext: { [weak self] (_) in
+//				self?.pasteAddress()
+//		}).disposed(by: disposeBag)
 
 		sendView.coinButton.rx.tap.subscribe(onNext: { [weak self] (_) in
 			self?.showPicker()
@@ -325,15 +379,15 @@ class KeyboardViewController: KeyboardInputViewController {
 																																		 "sendView": sendView,
 																																		 "delegateView": delegateView,
 																																		 "convertView": convertView]))
-		scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[sendView(150)]-0-|",
+		scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[sendView(179)]-0-|",
 																														 options: [],
 																														 metrics: nil,
 																														 views: ["sendView": sendView]))
-		scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[delegateView(150)]-0-|",
+		scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[delegateView(179)]-0-|",
 																														 options: [],
 																														 metrics: nil,
 																														 views: ["delegateView": delegateView]))
-		scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[convertView(150)]-0-|",
+		scrollView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[convertView(179)]-0-|",
 																														 options: [],
 																														 metrics: nil,
 																														 views: ["convertView": convertView]))
@@ -359,8 +413,10 @@ class KeyboardViewController: KeyboardInputViewController {
 			}
 			self.nextKeyboardButton.sizeToFit()
 			self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-			
-			self.nextKeyboardButton.addTarget(self, action: #selector(UIInputViewController.advanceToNextInputMode), for: .touchUpInside)
+
+			self.nextKeyboardButton.addTarget(self,
+																				action: #selector(UIInputViewController.advanceToNextInputMode),
+																				for: .touchUpInside)
 
 			self.view.addSubview(self.nextKeyboardButton)
 
@@ -377,12 +433,21 @@ class KeyboardViewController: KeyboardInputViewController {
 																																	toItem: self.view,
 																																	attribute: .bottom,
 																																	multiplier: 1.0,
-																																	constant: -16.0)
-			self.view.addConstraints([nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint])
+																																	constant: -46.0)
+
+			if (bottomConstraint?.constant ?? 0.0) != -40.0 {
+				bottomConstraint?.constant = -40.0
+			}
+
+			self.view.addConstraints([nextKeyboardButtonLeftSideConstraint,
+																nextKeyboardButtonBottomConstraint])
 		} else {
 			nextKeyboardButton.removeFromSuperview()
+			if (bottomConstraint?.constant ?? 0.0) != 0.0 {
+				bottomConstraint?.constant = 0.0
+			}
 		}
-		
+
 	}
 
 	override func textWillChange(_ textInput: UITextInput?) {
@@ -412,7 +477,8 @@ class KeyboardViewController: KeyboardInputViewController {
 
 	@objc func tap(sender: UITapGestureRecognizer) {
 //		print(sender.location(in: self.view))
-		sendView.sendAddressPasteButton.alpha = 0.0
+		pasteBtn.alpha = 0.0
+		pasteBtn.removeFromSuperview()
 	}
 
 	@objc func pasteSendAddress() {
@@ -452,35 +518,67 @@ extension KeyboardViewController: UITextFieldDelegate {
 		sendView.addressTextField.selectedTextRange = sendView.addressTextField.textRange(from: endPosition,
 																																											to: endPosition)
 		sendView.addressTextField.sendActions(for: [.editingChanged])
-		sendView.sendAddressPasteButton.alpha = 0.0
+		self.pasteBtn.alpha = 0.0
+		pasteBtn.removeFromSuperview()
+	}
+	
+	func pasteAmount() {
+		let pasteString = (UIPasteboard.general.string ?? "").regex(pattern: String.decimalRegexp).first
+
+		sendView.amountTextField.text = pasteString
+		let endPosition = sendView.amountTextField.endOfDocument
+		sendView.amountTextField.selectedTextRange = sendView.amountTextField.textRange(from: endPosition,
+																																										to: endPosition)
+		sendView.amountTextField.sendActions(for: [.editingChanged])
+		self.pasteBtn.alpha = 0.0
+		pasteBtn.removeFromSuperview()
 	}
 
 }
 
 extension KeyboardViewController {
 
-	func setNeedsChangeHeight(expand: Bool = true) {
-		self.heightConstraint?.constant = expand ? 470.0 : 316.0
+	func setNeedsChangeHeight(forKeyboard ofType: KeyboardType) {
+		if ofType == .none {
+			self.heightConstraint?.constant = 316.0
+		}
+		self.heightConstraint?.constant = (ofType == .numeric ? 470.0 : 316.0)
 	}
 
 	enum KeyboardType {
+		case none
 		case numeric
 		case hex
+		case letters
 	}
 
-	func showKeyboard(type: KeyboardType) {
+	func showKeyboard(type: KeyboardType, forSelectedTextField: Bool = true) {
 
-		guard selectedTextField != nil else { return }
+		if forSelectedTextField {
+			guard selectedTextField != nil else { return }
+		}
 
 		var topPadding = CGFloat(5)
 		var keyboard: UIView!
 		switch type {
-		case .hex:
-			setNeedsChangeHeight(expand: false)
-			keyboard = hexKeyboardView()
+		case .none:
+			setNeedsChangeHeight(forKeyboard: .none)
+			keyboard = nil
 			break
+
+		case .hex:
+			setNeedsChangeHeight(forKeyboard: .hex)
+			keyboard = hexKeyboardView(hideOkButton: !forSelectedTextField)
+			break
+
 		case .numeric:
-			setNeedsChangeHeight(expand: true)
+			setNeedsChangeHeight(forKeyboard: .numeric)
+			keyboard = numericKeyboardView()
+			topPadding = 20
+			break
+
+		case .letters:
+			setNeedsChangeHeight(forKeyboard: .letters)
 			keyboard = numericKeyboardView()
 			topPadding = 20
 			break
@@ -488,33 +586,48 @@ extension KeyboardViewController {
 		additionalKeyboardView = keyboard
 
 		keyboard.translatesAutoresizingMaskIntoConstraints = false
-		self.view.addSubview(keyboard)
+		if forSelectedTextField {
+			self.view.addSubview(keyboard)
+		} else {
+			self.keyboardStackView.addSubview(keyboard)
+		}
 		keyboard.frame = CGRect(x: 0,
-															 y: self.view.bounds.height,
-															 width: keyboard.bounds.width,
-															 height: keyboard.bounds.height)
+														y: self.view.bounds.height,
+														width: keyboard.bounds.width,
+														height: keyboard.bounds.height)
 
-		self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
-																														options: [],
-																														metrics: nil,
-																														views: ["keyboard": keyboard]))
-		self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[selectedTextField]-(topPadding)-[keyboard(>=keyboardHeight)]-(0@750)-|",
-																														options: [],
-																														metrics: ["keyboardHeight": keyboard.bounds.height, 			"topPadding": topPadding],
-																														views: ["keyboard": keyboard,
-																																		"selectedTextField": selectedTextField]))
+		if forSelectedTextField {
+			self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
+																															 options: [],
+																															 metrics: nil,
+																															 views: ["keyboard": keyboard]))
+			self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[selectedTextField]-(topPadding)-[keyboard(>=keyboardHeight)]-(0@750)-|",
+																															options: [],
+																															metrics: ["keyboardHeight": keyboard.bounds.height, 			"topPadding": topPadding],
+																															views: ["keyboard": keyboard,
+																																			"selectedTextField": selectedTextField]))
+		} else {
+			self.keyboardStackView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard(width)]-0-|",
+																															 options: [],
+																															 metrics: ["width": width],
+																															 views: ["keyboard": keyboard]))
+			self.keyboardStackView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(topPadding)-[keyboard(>=keyboardHeight)]-(0)-|",
+																															 options: [],
+																															 metrics: ["keyboardHeight": keyboard.bounds.height, 			"topPadding": topPadding],
+																															 views: ["keyboard": keyboard]))
+		}
 
 		self.view.layoutIfNeeded()
 	}
 
 	func hideKeyboard() {
-		setNeedsChangeHeight(expand: false)
+		setNeedsChangeHeight(forKeyboard: .none)
 		self.additionalKeyboardView?.removeFromSuperview()
 		self.additionalKeyboardView = nil
 		self.view.layoutIfNeeded()
 	}
 
-	func hexKeyboardView() -> UIView {
+	func hexKeyboardView(hideOkButton: Bool = false) -> UIView {
 		let height = Double(90.0)
 
 		let keyboard = HexKeyboard(in: self)
@@ -536,6 +649,9 @@ extension KeyboardViewController {
 			self.hideKeyboard()
 			self.selectedTextField = nil
 		}).disposed(by: disposeBag)
+		if hideOkButton {
+			okButton.isHidden = true
+		}
 
 		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
 		keyboardViewWrapper.translatesAutoresizingMaskIntoConstraints = false
@@ -548,9 +664,9 @@ extension KeyboardViewController {
 																																			metrics: nil,
 																																			views: ["okButton": okButton]))
 
-		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(90)]-7-[okButton(46)]",
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(height)]-7-[okButton(46)]-(>=0)-|",
 																																			 options: [],
-																																			 metrics: nil,
+																																			 metrics: ["height": height],
 																																			 views: ["keyboard": keyboardView,
 																																							 "okButton": okButton]))
 			keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
@@ -595,6 +711,52 @@ extension KeyboardViewController {
 																																			metrics: nil,
 																																			views: ["okButton": okButton]))
 
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(168)]-6-[okButton(46)]",
+																																			options: [],
+																																			metrics: nil,
+																																			views: ["keyboard": keyboardView,
+																																							"okButton": okButton]))
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
+																																			options: [],
+																																			metrics: nil,
+																																			views: ["keyboard": keyboardView]))
+		return keyboardViewWrapper
+	}
+
+	func lettersKeyboardView() -> UIView {
+		let height = Double(230.0)
+
+		let keyboard = AlphabeticKeyboard(uppercased: false, in: self)
+		let rows = buttonRows(for: keyboard.actions, distribution: .fillEqually)
+		let keyboardView = UIStackView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
+		keyboardView.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.93, alpha: 1.0)
+		keyboardView.axis = .vertical
+		keyboardView.alignment = .fill
+		keyboardView.distribution = .equalSpacing
+		keyboardView.translatesAutoresizingMaskIntoConstraints = false
+		keyboardView.addArrangedSubviews(rows)
+
+		let okButton = UIButton(frame: CGRect(x: 10, y: 0, width: (UIScreen.main.bounds.width - 10 - 10), height: 46))
+		okButton.translatesAutoresizingMaskIntoConstraints = false
+		okButton.setBackgroundImage(UIImage(named: "action-button"), for: .normal)
+		okButton.setTitle("OK", for: .normal)
+		okButton.setTitleColor(UIColor.white, for: .normal)
+		okButton.rx.tap.subscribe(onNext: { (_) in
+			self.hideKeyboard()
+			self.selectedTextField = nil
+		}).disposed(by: disposeBag)
+		
+		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
+		keyboardViewWrapper.translatesAutoresizingMaskIntoConstraints = false
+		keyboardViewWrapper.addSubview(keyboardView)
+		keyboardViewWrapper.backgroundColor = self.backgroundColor
+		
+		keyboardViewWrapper.addSubview(okButton)
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[okButton]-10-|",
+																																			options: [],
+																																			metrics: nil,
+																																			views: ["okButton": okButton]))
+		
 		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(168)]-6-[okButton(46)]",
 																																			options: [],
 																																			metrics: nil,
@@ -699,7 +861,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["picker": pickerView]))
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[picker]-0-|",
+		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[picker(220)]",
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["picker": pickerView]))
@@ -729,7 +891,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 																											 options: [],
 																											 metrics: nil,
 																											 views: ["picker": examplePicker]))
-		
+
 		let okButton = UIButton(frame: CGRect(x: 10, y: 0, width: (width - 10 - 10), height: 46))
 		okButton.translatesAutoresizingMaskIntoConstraints = false
 		okButton.setBackgroundImage(UIImage(named: "action-button"), for: .normal)
@@ -750,6 +912,28 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 																																		views: ["okButton": okButton]))
 
 		return pickerViewWrapper
+	}
+
+	func pasteButton() -> UIButton {
+		let button = UIButton(frame: CGRect(x: 0, y: 0, width: 69, height: 45))
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.setBackgroundImage(UIImage(named: "paste-icon"), for: .normal)
+		button.setTitle("Paste", for: .normal)
+		button.setTitleColor(.white, for: .normal)
+		button.addTapAction {
+			if nil != self.selectedTextField as? AddressTextField {
+				self.pasteAddress()
+			} else {
+				self.pasteAmount()
+			}
+		}
+		return button
+	}
+
+	func allowFullAccessView() -> UIView {
+		let allowFullAccessView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 250))
+		allowFullAccessView.backgroundColor = self.backgroundColor
+		return allowFullAccessView
 	}
 
 	func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
@@ -791,7 +975,7 @@ extension KeyboardViewController {
 
 	func setAppearance() {
 		view?.backgroundColor = .clear
-		headerView.setAppearance(isDark: isDarkAppearance())
+		headerView?.setAppearance(isDark: isDarkAppearance())
 		sendView?.setAppearance(isDark: isDarkAppearance())
 		sentView?.setAppearance(isDark: isDarkAppearance())
 	}

@@ -127,6 +127,14 @@
 		FAF359EA22BF85930006A087 /* GateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E822BF85930006A087 /* GateManager.swift */; };
 		FAF359EC22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */; };
 		FAF359ED22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */; };
+		FAF4B60822D0B3B4009061B7 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60722D0B3B4009061B7 /* SetupViewController.swift */; };
+		FAF4B60A22D0B3D6009061B7 /* SetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60922D0B3D6009061B7 /* SetupViewModel.swift */; };
+		FAF4B60D22D2578D009061B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60C22D2578D009061B7 /* HomeViewController.swift */; };
+		FAF4B60F22D2579B009061B7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60E22D2579B009061B7 /* HomeViewModel.swift */; };
+		FAF4B61222D257D0009061B7 /* BackupPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B61122D257D0009061B7 /* BackupPhraseViewController.swift */; };
+		FAF4B61422D257EC009061B7 /* BackupPhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B61322D257EC009061B7 /* BackupPhraseViewModel.swift */; };
+		FAF4B61622D25A5D009061B7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B61522D25A5D009061B7 /* RootViewController.swift */; };
+		FAF7046622D74F1E00709DB6 /* LettersKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7046522D74F1E00709DB6 /* LettersKeyboard.swift */; };
 		FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77AFE22BB832A005D771A /* UIFont+Default.swift */; };
 		FAF77B0022BB832D005D771A /* UIFont+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77AFE22BB832A005D771A /* UIFont+Default.swift */; };
 		FAF77B0222BB8853005D771A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77B0122BB8853005D771A /* UITextField+.swift */; };
@@ -163,6 +171,11 @@
 		FAF89B2622BA4775003442CC /* DemoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF89B2522BA4775003442CC /* DemoButton.xib */; };
 		FAF89B2922BA47E0003442CC /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2822BA47E0003442CC /* Assets.swift */; };
 		FAF89B2B22BA89C6003442CC /* FakeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAE85522B81DC1001E7674 /* FakeTextField.swift */; };
+		FAF915C722D2725D00C2117C /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF915C622D2725D00C2117C /* BalanceTableViewCell.swift */; };
+		FAF915C922D2739A00C2117C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF915C822D2739A00C2117C /* BaseViewController.swift */; };
+		FAF915CB22D273A100C2117C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF915CA22D273A100C2117C /* BaseViewModel.swift */; };
+		FAF915CD22D28C6100C2117C /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF915CC22D28C6100C2117C /* BaseCell.swift */; };
+		FAF915CF22D28CAC00C2117C /* BaseCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF915CE22D28CAC00C2117C /* BaseCellItem.swift */; };
 		FAFAE9F822B8284F001E7674 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C51E22B4E35C005D7275 /* KeyboardViewController.swift */; };
 		FAFAE9F922B82854001E7674 /* FakeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAE85522B81DC1001E7674 /* FakeTextField.swift */; };
 /* End PBXBuildFile section */
@@ -279,6 +292,14 @@
 		FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionConstructor.swift; sourceTree = "<group>"; };
 		FAF359E822BF85930006A087 /* GateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateManager.swift; sourceTree = "<group>"; };
 		FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GateManager+Rx.swift"; sourceTree = "<group>"; };
+		FAF4B60722D0B3B4009061B7 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		FAF4B60922D0B3D6009061B7 /* SetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewModel.swift; sourceTree = "<group>"; };
+		FAF4B60C22D2578D009061B7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FAF4B60E22D2579B009061B7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FAF4B61122D257D0009061B7 /* BackupPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupPhraseViewController.swift; sourceTree = "<group>"; };
+		FAF4B61322D257EC009061B7 /* BackupPhraseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupPhraseViewModel.swift; sourceTree = "<group>"; };
+		FAF4B61522D25A5D009061B7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		FAF7046522D74F1E00709DB6 /* LettersKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersKeyboard.swift; sourceTree = "<group>"; };
 		FAF77AFE22BB832A005D771A /* UIFont+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Default.swift"; sourceTree = "<group>"; };
 		FAF77B0122BB8853005D771A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		FAF77B0322BB88A4005D771A /* KeyActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyActionHandler.swift; sourceTree = "<group>"; };
@@ -332,6 +353,11 @@
 		FAF89B2322BA4762003442CC /* DemoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoButton.swift; sourceTree = "<group>"; };
 		FAF89B2522BA4775003442CC /* DemoButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoButton.xib; sourceTree = "<group>"; };
 		FAF89B2822BA47E0003442CC /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		FAF915C622D2725D00C2117C /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
+		FAF915C822D2739A00C2117C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FAF915CA22D273A100C2117C /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		FAF915CC22D28C6100C2117C /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		FAF915CE22D28CAC00C2117C /* BaseCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCellItem.swift; sourceTree = "<group>"; };
 		FAFAE85522B81DC1001E7674 /* FakeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTextField.swift; sourceTree = "<group>"; };
 		FAFAE9F622B823FE001E7674 /* WeakSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakSet.swift; sourceTree = "<group>"; };
 		FE0961D903B65AA6467C72FC /* Pods-WalletKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletKeyboard.release.xcconfig"; path = "Target Support Files/Pods-WalletKeyboard/Pods-WalletKeyboard.release.xcconfig"; sourceTree = "<group>"; };
@@ -453,6 +479,9 @@
 		FA07C52822B4E877005D7275 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
+				FAF4B61022D257B8009061B7 /* BackupPhrase */,
+				FAF4B60B22D25772009061B7 /* Home */,
+				FAF4B60622D0B23D009061B7 /* Setup */,
 			);
 			path = Cases;
 			sourceTree = "<group>";
@@ -532,6 +561,8 @@
 		FA57095B22B67D5D00F5D0DD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FAF915CA22D273A100C2117C /* BaseViewModel.swift */,
+				FAF915C822D2739A00C2117C /* BaseViewController.swift */,
 				FAC5392522BFEC550077E181 /* Configuration.swift */,
 				FAC5392622BFEC550077E181 /* ConfigurationTestnet.swift */,
 				FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */,
@@ -544,6 +575,7 @@
 				FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */,
 				FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */,
 				FAB0D28B22C7B897002945E2 /* PrivateKey+.swift */,
+				FAF4B61522D25A5D009061B7 /* RootViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -551,7 +583,10 @@
 		FA57095C22B67D6200F5D0DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAF915CE22D28CAC00C2117C /* BaseCellItem.swift */,
+				FAF915CC22D28C6100C2117C /* BaseCell.swift */,
 				FA57095D22B67D7C00F5D0DD /* DefaultTextField.swift */,
+				FAF915C622D2725D00C2117C /* BalanceTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -622,6 +657,33 @@
 				FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		FAF4B60622D0B23D009061B7 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				FAF4B60722D0B3B4009061B7 /* SetupViewController.swift */,
+				FAF4B60922D0B3D6009061B7 /* SetupViewModel.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		FAF4B60B22D25772009061B7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FAF4B60C22D2578D009061B7 /* HomeViewController.swift */,
+				FAF4B60E22D2579B009061B7 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FAF4B61022D257B8009061B7 /* BackupPhrase */ = {
+			isa = PBXGroup;
+			children = (
+				FAF4B61122D257D0009061B7 /* BackupPhraseViewController.swift */,
+				FAF4B61322D257EC009061B7 /* BackupPhraseViewModel.swift */,
+			);
+			path = BackupPhrase;
 			sourceTree = "<group>";
 		};
 		FAF77AFD22BB8319005D771A /* Helper */ = {
@@ -718,6 +780,7 @@
 				FAF89B2522BA4775003442CC /* DemoButton.xib */,
 				FAF77B0522BB8AB7005D771A /* NumericKeyboard.swift */,
 				FA5A4E3A22BE231D002EAD92 /* ShareKeyboard.swift */,
+				FAF7046522D74F1E00709DB6 /* LettersKeyboard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -970,6 +1033,7 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/EFQRCode/EFQRCode.framework",
 				"${BUILT_PRODUCTS_DIR}/GoldenKeystore/GoldenKeystore.framework",
 				"${BUILT_PRODUCTS_DIR}/KeyboardKit/KeyboardKit.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
@@ -977,17 +1041,20 @@
 				"${BUILT_PRODUCTS_DIR}/MinterExplorer/MinterExplorer.framework",
 				"${BUILT_PRODUCTS_DIR}/MinterMy/MinterMy.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PMAlertController/PMAlertController.framework",
 				"${BUILT_PRODUCTS_DIR}/PickerView/PickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAppState/RxAppState.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1.swift/secp256k1.framework",
+				"${BUILT_PRODUCTS_DIR}/swift_qrcodejs/swift_qrcodejs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -999,6 +1066,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFQRCode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoldenKeystore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyboardKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
@@ -1006,17 +1074,20 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MinterExplorer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MinterMy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMAlertController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAppState.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/swift_qrcodejs.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1074,32 +1145,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF915CD22D28C6100C2117C /* BaseCell.swift in Sources */,
 				FA57095E22B67D7C00F5D0DD /* DefaultTextField.swift in Sources */,
 				FAB0D28622C769B8002945E2 /* UITextField+.swift in Sources */,
 				FA5A4E2D22BD749C002EAD92 /* TransactionDateFormatter.swift in Sources */,
 				FA57094D22B6260000F5D0DD /* ViewModel.swift in Sources */,
 				FA5A4E2F22BD7500002EAD92 /* Decimal+Fractional.swift in Sources */,
+				FAF915C922D2739A00C2117C /* BaseViewController.swift in Sources */,
+				FAF4B60D22D2578D009061B7 /* HomeViewController.swift in Sources */,
+				FAF4B61222D257D0009061B7 /* BackupPhraseViewController.swift in Sources */,
 				FAF359E922BF85930006A087 /* GateManager.swift in Sources */,
 				FA57095122B63A2500F5D0DD /* AccountManager.swift in Sources */,
+				FAF4B60A22D0B3D6009061B7 /* SetupViewModel.swift in Sources */,
 				FAB0D28C22C7B897002945E2 /* PrivateKey+.swift in Sources */,
 				FA07C4FB22B4E25C005D7275 /* ViewController.swift in Sources */,
+				FAF915C722D2725D00C2117C /* BalanceTableViewCell.swift in Sources */,
 				FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */,
 				FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */,
 				FA57093522B57B2200F5D0DD /* BalanceView.swift in Sources */,
+				FAF915CF22D28CAC00C2117C /* BaseCellItem.swift in Sources */,
 				FA57093B22B57B6200F5D0DD /* DelegateView.swift in Sources */,
 				FA5A4E3322BD80D9002EAD92 /* String+.swift in Sources */,
 				FAF359E622BF84DA0006A087 /* TransactionConstructor.swift in Sources */,
+				FAF4B61622D25A5D009061B7 /* RootViewController.swift in Sources */,
 				FA57095522B66A1300F5D0DD /* HeaderView.swift in Sources */,
 				FAC5393422C217070077E181 /* Sugar.swift in Sources */,
 				FAF89B2B22BA89C6003442CC /* FakeTextField.swift in Sources */,
 				FA57094722B57BF600F5D0DD /* ConvertView.swift in Sources */,
+				FAF4B60822D0B3B4009061B7 /* SetupViewController.swift in Sources */,
 				FA5A4E2C22BD749C002EAD92 /* CurrencyNumberFormatter.swift in Sources */,
+				FAF915CB22D273A100C2117C /* BaseViewModel.swift in Sources */,
 				FA57092B22B5780B00F5D0DD /* Session.swift in Sources */,
 				FAB0D28822C76D4E002945E2 /* Configuration.swift in Sources */,
+				FAF4B61422D257EC009061B7 /* BackupPhraseViewModel.swift in Sources */,
 				FA57094122B57BC500F5D0DD /* SendView.swift in Sources */,
 				FAF359E122BF73F40006A087 /* Account.swift in Sources */,
 				FAC5392C22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */,
 				FAF359EC22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */,
+				FAF4B60F22D2579B009061B7 /* HomeViewModel.swift in Sources */,
 				FA57093022B579DE00F5D0DD /* KeyboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1140,6 +1223,7 @@
 				FAF77B0622BB8AB7005D771A /* NumericKeyboard.swift in Sources */,
 				FA57093C22B57B6200F5D0DD /* DelegateView.swift in Sources */,
 				FA57095622B66A1300F5D0DD /* HeaderView.swift in Sources */,
+				FAF7046622D74F1E00709DB6 /* LettersKeyboard.swift in Sources */,
 				FA57095222B63A2500F5D0DD /* AccountManager.swift in Sources */,
 				FAF359EA22BF85930006A087 /* GateManager.swift in Sources */,
 				FA5A4E3022BD7570002EAD92 /* CurrencyNumberFormatter.swift in Sources */,

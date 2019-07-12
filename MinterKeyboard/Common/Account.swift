@@ -14,12 +14,15 @@ class Account {
 	enum type {
 		case minter
 	}
+
 	var type: type = .minter
 
 	//TODO: change to addresses: [Address]
 	var address: String
 
 	var mnemonics: String
+
+	var isTurnedOn: Bool = false
 
 	func privateKey(at: UInt32) -> PrivateKey {
 		let seed = RawTransactionSigner.seed(from: self.mnemonics) ?? ""
@@ -33,8 +36,9 @@ class Account {
 		return newPk
 	}
 
-	init(address: String, mnemonics: String) {
+	init(address: String, mnemonics: String, isTurnedOn: Bool) {
 		self.address = address
 		self.mnemonics = mnemonics
+		self.isTurnedOn = isTurnedOn
 	}
 }

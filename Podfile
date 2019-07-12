@@ -29,6 +29,9 @@ end
 
 target 'MinterKeyboard' do
 	pod 'RxAppState', '1.2.0'
+	pod 'SVProgressHUD'
+	pod 'PMAlertController'
+	pod 'EFQRCode', '~> 5.0.0'
 	shared_pods
 end
 

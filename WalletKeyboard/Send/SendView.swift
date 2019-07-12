@@ -19,7 +19,7 @@ class SendView: UIView {
 	weak var delegate: SendViewDelegate?
 
 	@IBOutlet weak var feeLabel: UILabel!
-	@IBOutlet weak var sendAddressPasteButton: UIButton!
+//	@IBOutlet weak var sendAddressPasteButton: UIButton!
 	@IBOutlet weak var sendButton: UIButton!
 	@IBOutlet weak var coinAvailableLabel: UILabel!
 	@IBOutlet weak var addressTextField: FakeTextFieldView! {

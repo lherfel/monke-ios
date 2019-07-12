@@ -34,6 +34,8 @@ class AccountManager {
 
 	enum StorageKeys: String {
 		case mnemonics
+		case address
+		case turnedOn
 	}
 
 	// MARK: -
@@ -66,7 +68,7 @@ class AccountManager {
 			throw AccountManagerError.cantCalculateAddress
 		}
 
-		return Account(address: address, mnemonics: mnemonics)
+		return Account(address: address, mnemonics: mnemonics, isTurnedOn: restoreTurnedOn())
 	}
 
 	private func restoreMnemonics() -> String? {
@@ -74,8 +76,21 @@ class AccountManager {
 		return accountStorage.get(key: StorageKeys.mnemonics.rawValue)
 	}
 
+	func restoreTurnedOn() -> Bool {
+		return "true" == accountStorage.get(key: StorageKeys.turnedOn.rawValue) ? true : false
+	}
+
+	func setTurnedOn(isTurnedOn: Bool) {
+		accountStorage.set(key: StorageKeys.turnedOn.rawValue,
+											 value: isTurnedOn ? "true" : "false")
+	}
+
 	private func saveMnemonics(_ mnemonics: String) {
 		accountStorage.set(key: StorageKeys.mnemonics.rawValue, value: mnemonics)
+	}
+
+	private func saveAddress(_ address: String) {
+		accountStorage.set(key: StorageKeys.address.rawValue, value: address)
 	}
 
 	private func generateMnemonics() -> String? {

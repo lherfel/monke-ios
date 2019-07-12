@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import MinterCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		
+		
+
+		MinterSDKConfigurator.configure(isTestnet: false)
+
+		UINavigationBar.appearance().backgroundColor = .clear
+		UINavigationBar.appearance().shadowImage = UIImage()
+		UINavigationBar.appearance().isTranslucent = true
+		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+
 		return true
 	}
 

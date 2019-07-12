@@ -208,8 +208,8 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available 100 000.0000 BIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTC-Tj-xLg">
-                    <rect key="frame" x="10" y="107" width="167.5" height="14"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available 0.0000 BIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTC-Tj-xLg">
+                    <rect key="frame" x="10" y="107" width="125" height="14"/>
                     <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -263,7 +263,6 @@
                 <outlet property="feeLabel" destination="bkK-wo-VRp" id="QzR-Ne-VvM"/>
                 <outlet property="maxButton" destination="jUR-jG-MRT" id="bFs-oV-3E3"/>
                 <outlet property="pasteButton" destination="07O-2e-KwU" id="gXk-Qy-EgK"/>
-                <outlet property="sendAddressPasteButton" destination="gpq-dU-Onf" id="mPD-4z-KCK"/>
                 <outlet property="sendButton" destination="GWC-vc-fek" id="U8W-h9-BB6"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="379.35267857142856"/>

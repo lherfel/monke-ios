@@ -7,6 +7,8 @@ PODS:
     - SipHash (~> 1.2)
   - CryptoSwift (0.15.0)
   - Differentiator (3.1.0)
+  - EFQRCode (5.0.0):
+    - swift_qrcodejs (~> 1.1.1)
   - GoldenKeystore (1.0.3):
     - TrezorCrypto (= 0.0.9)
   - KeyboardKit (2.2.0)
@@ -23,6 +25,7 @@ PODS:
     - MinterCore
   - ObjectMapper (3.5.0)
   - PickerView (0.4.0)
+  - PMAlertController (4.0.0)
   - ReachabilitySwift (4.3.1)
   - RxAppState (1.2.0):
     - RxCocoa (~> 4.3)
@@ -36,6 +39,8 @@ PODS:
   - RxSwift (4.3.1)
   - secp256k1.swift (0.1.4)
   - SipHash (1.2.2)
+  - SVProgressHUD (2.2.5)
+  - swift_qrcodejs (1.1.1)
   - SwiftValidator (4.0.0)
   - TPKeyboardAvoiding (1.3.2)
   - TrezorCrypto (0.0.9)
@@ -44,6 +49,7 @@ DEPENDENCIES:
   - AFDateHelper (~> 4.2.2)
   - Alamofire (= 4.7.3)
   - AlamofireImage (= 3.4.1)
+  - EFQRCode (~> 5.0.0)
   - GoldenKeystore (from `https://github.com/sidorov-panda/GoldenKeystore`)
   - KeyboardKit (= 2.2.0)
   - KeychainSwift (= 12.0.0)
@@ -52,10 +58,12 @@ DEPENDENCIES:
   - MinterMy (from `../MinterMy`)
   - ObjectMapper (~> 3.3)
   - PickerView
+  - PMAlertController
   - ReachabilitySwift (~> 4.3)
   - RxAppState (= 1.2.0)
   - RxDataSources (~> 3.0)
   - RxSwift (= 4.3.1)
+  - SVProgressHUD
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - TPKeyboardAvoiding (~> 1.3)
 
@@ -67,10 +75,12 @@ SPEC REPOS:
     - BigInt
     - CryptoSwift
     - Differentiator
+    - EFQRCode
     - KeyboardKit
     - KeychainSwift
     - ObjectMapper
     - PickerView
+    - PMAlertController
     - ReachabilitySwift
     - RxAppState
     - RxCocoa
@@ -78,6 +88,8 @@ SPEC REPOS:
     - RxSwift
     - secp256k1.swift
     - SipHash
+    - SVProgressHUD
+    - swift_qrcodejs
     - TPKeyboardAvoiding
     - TrezorCrypto
 
@@ -109,6 +121,7 @@ SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  EFQRCode: 07437cfbce3a1e497397a4f3d766c980d8972608
   GoldenKeystore: 75140cafd42e881fafe7bf0d7b8bc17ef5c1a0d0
   KeyboardKit: 84143499e58eac2ab31baaf4c9118a4be048df09
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
@@ -117,6 +130,7 @@ SPEC CHECKSUMS:
   MinterMy: 9a3ae2ae14fe7a834b4f714c5fc1ac2e4cd750dd
   ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
   PickerView: a736ea986d992aa3ef32423f475fdf3f3a0cf7d4
+  PMAlertController: 5fad2da8b9eb687134ed50c3462fed12c3afe976
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   RxAppState: abff6ddb6cf6e0d7c3d7fec65e5892d5e856ba9b
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
@@ -124,10 +138,12 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  swift_qrcodejs: 0bacbfe321a99954c7b8e04c75562007ea4e4f7c
   SwiftValidator: 58c155c8ae8421ef716a96e52a49984dd54c700c
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
 
-PODFILE CHECKSUM: ecd7a4f10dbe8802f01d6f9e75519c6311d2d235
+PODFILE CHECKSUM: ee17c43dbefb1e608a579a42ca344890b1ac1dce
 
 COCOAPODS: 1.6.2

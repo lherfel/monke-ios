@@ -9,8 +9,9 @@
 import Foundation
 
 extension String {
-	
+
 	static let addressRegexp = "Mx[a-zA-Z0-9]{40}"
+	static let decimalRegexp = "([0-9]*)(\\.([0-9]+)?)?"
 
 	func isValidAddress() -> Bool {
 		let addressTest = NSPredicate(format:"SELF MATCHES %@", "^Mx[a-zA-Z0-9]{40}$")
@@ -25,7 +26,7 @@ extension String {
 }
 
 extension String {
-	func regex (pattern: String) -> [String] {
+	func regex(pattern: String) -> [String] {
 		do {
 			let regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options(rawValue: 0))
 			let nsstr = self as NSString

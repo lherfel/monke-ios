@@ -54,6 +54,7 @@ class KeyboardViewModel {
 		var selectedCoinBalance: Observable<String>
 		var isLoading: Observable<Bool>
 		var addressFieldHasError: Observable<Bool>
+		var isTurnedOn: Bool
 	}
 	var input: Input!
 	var output: Output!
@@ -99,7 +100,7 @@ class KeyboardViewModel {
 	}
 	private var addressFieldHasErrorSubject = PublishSubject<Bool>()
 
-	private let privateKey = Session.shared.account.privateKey(at: 0).raw.toHexString()
+	private lazy var privateKey = Session.shared.account.privateKey(at: 0).raw.toHexString()
 
 	// MARK: -
 
@@ -127,7 +128,8 @@ class KeyboardViewModel {
 												 selectedCoin: selectedCoinSubject.asObservable(),
 												 selectedCoinBalance: selectedCoinBalanceSubject.asObservable(),
 												 isLoading: isLoadingSubject.asObservable(),
-												 addressFieldHasError: addressFieldHasErrorSubject.asObservable()
+												 addressFieldHasError: addressFieldHasErrorSubject.asObservable(),
+												 isTurnedOn: Session.shared.account.isTurnedOn
 		)
 
 		didTapMaxButtonSubject.withLatestFrom(selectedCoinSubject.asObservable())

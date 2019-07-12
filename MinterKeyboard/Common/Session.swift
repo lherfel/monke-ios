@@ -32,7 +32,7 @@ class Session {
 
 	private init() {
 		self.account = try! AccountManager.shared.restoreAccount()
-		
+
 		accountSubject.subscribe(onNext: { (account) in
 			
 		}).disposed(by: disposeBag)
