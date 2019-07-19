@@ -30,8 +30,8 @@ struct ShareKeyboard {
 private extension ShareKeyboard {
 	
 	static var characters: [[String]] = [
-		["💸Sent", "Shut up and take my money!"],
-		["👍Thnx", "No money, no honey🍯"],
+		["💸Sent ", "Shut up and take my money! "],
+		["👍Thnx ", "No money, no honey🍯 "],
 		["🔗Mt982da7320501…ad6d620110c55"]
 	]
 	

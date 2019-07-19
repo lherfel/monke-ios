@@ -28,6 +28,8 @@ def shared_pods
 end
 
 target 'MinterKeyboard' do
+	pod 'Fabric'
+	pod 'Crashlytics'
 	pod 'RxAppState', '1.2.0'
 	pod 'SVProgressHUD'
 	pod 'PMAlertController'

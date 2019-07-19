@@ -32,6 +32,8 @@ class SendView: UIView {
 		didSet {
 			self.amountTextField?.placeholder = "Amount"
 			self.amountTextField?.font = UIFont.defaultFont(of: 16.0)
+			self.amountTextField.adjustsFontSizeToFitWidth = true
+			self.amountTextField.minimumFontSize = 1.0
 		}
 	}
 	@IBOutlet weak var addressImageView: UIImageView!

@@ -112,6 +112,9 @@ class KeyboardViewController: KeyboardInputViewController {
 				}
 		}).disposed(by: disposeBag)
 
+		viewModel.output.fee.asDriver(onErrorJustReturn: "")
+			.drive(sendView.feeLabel.rx.text).disposed(by: disposeBag)
+
 		//Input
 		self.sendView.maxButton.rx.tap.asDriver()
 			.drive(viewModel.input.didTapMaxButton).disposed(by: disposeBag)
@@ -243,10 +246,6 @@ class KeyboardViewController: KeyboardInputViewController {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				self.showKeyboard(type: .hex, forSelectedTextField: false)
 				self.heightConstraint?.constant = 60.0
-//				let alert = CDAlertView(title: "Full Access 🙊",
-//																message: "You need to allow full access in able to use Monke. Please follow to Settings > General > Keyboards > Monke and turn on Full Access",
-//																type: .noImage)
-//				alert.show(in: self.view)
 			}
 		} else {
 			initializeScrollView()
@@ -345,11 +344,6 @@ class KeyboardViewController: KeyboardInputViewController {
 				self?.pasteAddress()
 		}).disposed(by: disposeBag)
 
-//		sendView.sendAddressPasteButton.rx.tap
-//			.subscribe(onNext: { [weak self] (_) in
-//				self?.pasteAddress()
-//		}).disposed(by: disposeBag)
-
 		sendView.coinButton.rx.tap.subscribe(onNext: { [weak self] (_) in
 			self?.showPicker()
 		}).disposed(by: disposeBag)
@@ -394,43 +388,45 @@ class KeyboardViewController: KeyboardInputViewController {
 	}
 
 	override func viewWillLayoutSubviews() {
-		self.setAppearance()
-
-		setGlobeButton()
-
 		super.viewWillLayoutSubviews()
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		setGlobeButton()
+		setAppearance()
 	}
 
 	var nextKeyboardButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
 
 	func setGlobeButton() {
-		if self.needsInputModeSwitchKey && nextKeyboardButton.superview == nil {
+		if needsInputModeSwitchKey && nextKeyboardButton.superview == nil {
 			nextKeyboardButton.setImage(UIImage(named: "globe-icon"), for: .normal)
 			if isDarkAppearance() {
 				nextKeyboardButton.tintColor = .white
 			} else {
 				nextKeyboardButton.tintColor = UIColor(red: 0.31, green: 0.33, blue: 0.36, alpha: 1)
 			}
-			self.nextKeyboardButton.sizeToFit()
-			self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
+			nextKeyboardButton.sizeToFit()
+			nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
 
-			self.nextKeyboardButton.addTarget(self,
+			nextKeyboardButton.addTarget(self,
 																				action: #selector(UIInputViewController.advanceToNextInputMode),
 																				for: .touchUpInside)
 
-			self.view.addSubview(self.nextKeyboardButton)
+			view.addSubview(self.nextKeyboardButton)
 
-			let nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: self.nextKeyboardButton,
+			let nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: nextKeyboardButton,
 																																		attribute: .left,
 																																		relatedBy: .equal,
-																																		toItem: self.view,
+																																		toItem: view,
 																																		attribute: .left,
 																																		multiplier: 1.0,
 																																		constant: 16.0)
-			let nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.nextKeyboardButton,
+			let nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: nextKeyboardButton,
 																																	attribute: .bottom,
 																																	relatedBy: .equal,
-																																	toItem: self.view,
+																																	toItem: view,
 																																	attribute: .bottom,
 																																	multiplier: 1.0,
 																																	constant: -46.0)
@@ -439,8 +435,8 @@ class KeyboardViewController: KeyboardInputViewController {
 				bottomConstraint?.constant = -40.0
 			}
 
-			self.view.addConstraints([nextKeyboardButtonLeftSideConstraint,
-																nextKeyboardButtonBottomConstraint])
+			view.addConstraints([nextKeyboardButtonLeftSideConstraint,
+													 nextKeyboardButtonBottomConstraint])
 		} else {
 			nextKeyboardButton.removeFromSuperview()
 			if (bottomConstraint?.constant ?? 0.0) != 0.0 {
@@ -476,7 +472,6 @@ class KeyboardViewController: KeyboardInputViewController {
 	}
 
 	@objc func tap(sender: UITapGestureRecognizer) {
-//		print(sender.location(in: self.view))
 		pasteBtn.alpha = 0.0
 		pasteBtn.removeFromSuperview()
 	}
@@ -507,7 +502,7 @@ extension KeyboardViewController: UITextFieldDelegate {
 	}
 
 	func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		self.view.endEditing(true)
+		view.endEditing(true)
 	}
 
 	func pasteAddress() {
@@ -518,7 +513,7 @@ extension KeyboardViewController: UITextFieldDelegate {
 		sendView.addressTextField.selectedTextRange = sendView.addressTextField.textRange(from: endPosition,
 																																											to: endPosition)
 		sendView.addressTextField.sendActions(for: [.editingChanged])
-		self.pasteBtn.alpha = 0.0
+		pasteBtn.alpha = 0.0
 		pasteBtn.removeFromSuperview()
 	}
 	
@@ -530,7 +525,7 @@ extension KeyboardViewController: UITextFieldDelegate {
 		sendView.amountTextField.selectedTextRange = sendView.amountTextField.textRange(from: endPosition,
 																																										to: endPosition)
 		sendView.amountTextField.sendActions(for: [.editingChanged])
-		self.pasteBtn.alpha = 0.0
+		pasteBtn.alpha = 0.0
 		pasteBtn.removeFromSuperview()
 	}
 
@@ -540,9 +535,9 @@ extension KeyboardViewController {
 
 	func setNeedsChangeHeight(forKeyboard ofType: KeyboardType) {
 		if ofType == .none {
-			self.heightConstraint?.constant = 316.0
+			heightConstraint?.constant = 316.0
 		}
-		self.heightConstraint?.constant = (ofType == .numeric ? 470.0 : 316.0)
+		heightConstraint?.constant = (ofType == .numeric ? 470.0 : 316.0)
 	}
 
 	enum KeyboardType {
@@ -587,9 +582,9 @@ extension KeyboardViewController {
 
 		keyboard.translatesAutoresizingMaskIntoConstraints = false
 		if forSelectedTextField {
-			self.view.addSubview(keyboard)
+			view.addSubview(keyboard)
 		} else {
-			self.keyboardStackView.addSubview(keyboard)
+			keyboardStackView.addSubview(keyboard)
 		}
 		keyboard.frame = CGRect(x: 0,
 														y: self.view.bounds.height,
@@ -597,34 +592,37 @@ extension KeyboardViewController {
 														height: keyboard.bounds.height)
 
 		if forSelectedTextField {
-			self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
+			view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
 																															 options: [],
 																															 metrics: nil,
 																															 views: ["keyboard": keyboard]))
-			self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[selectedTextField]-(topPadding)-[keyboard(>=keyboardHeight)]-(0@750)-|",
+			view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[selectedTextField]-(topPadding)-[keyboard(>=keyboardHeight)]-(0@750)-|",
 																															options: [],
 																															metrics: ["keyboardHeight": keyboard.bounds.height, 			"topPadding": topPadding],
 																															views: ["keyboard": keyboard,
 																																			"selectedTextField": selectedTextField]))
 		} else {
-			self.keyboardStackView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard(width)]-0-|",
-																															 options: [],
-																															 metrics: ["width": width],
-																															 views: ["keyboard": keyboard]))
-			self.keyboardStackView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(topPadding)-[keyboard(>=keyboardHeight)]-(0)-|",
-																															 options: [],
-																															 metrics: ["keyboardHeight": keyboard.bounds.height, 			"topPadding": topPadding],
-																															 views: ["keyboard": keyboard]))
+			keyboardStackView.addConstraints(NSLayoutConstraint
+				.constraints(withVisualFormat: "H:|-0-[keyboard(width)]-0-|",
+										 options: [],
+										 metrics: ["width": width],
+										 views: ["keyboard": keyboard]))
+			keyboardStackView.addConstraints(NSLayoutConstraint
+				.constraints(withVisualFormat: "V:|-(topPadding)-[keyboard(>=keyboardHeight)]-(0)-|",
+										 options: [],
+										 metrics: ["keyboardHeight": keyboard.bounds.height,
+															 "topPadding": topPadding],
+										 views: ["keyboard": keyboard]))
 		}
 
-		self.view.layoutIfNeeded()
+		view.layoutIfNeeded()
 	}
 
 	func hideKeyboard() {
 		setNeedsChangeHeight(forKeyboard: .none)
-		self.additionalKeyboardView?.removeFromSuperview()
-		self.additionalKeyboardView = nil
-		self.view.layoutIfNeeded()
+		additionalKeyboardView?.removeFromSuperview()
+		additionalKeyboardView = nil
+		view.layoutIfNeeded()
 	}
 
 	func hexKeyboardView(hideOkButton: Bool = false) -> UIView {
@@ -645,9 +643,9 @@ extension KeyboardViewController {
 		okButton.setBackgroundImage(UIImage(named: "action-button"), for: .normal)
 		okButton.setTitle("OK", for: .normal)
 		okButton.setTitleColor(UIColor.white, for: .normal)
-		okButton.rx.tap.subscribe(onNext: { (_) in
-			self.hideKeyboard()
-			self.selectedTextField = nil
+		okButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+			self?.hideKeyboard()
+			self?.selectedTextField = nil
 		}).disposed(by: disposeBag)
 		if hideOkButton {
 			okButton.isHidden = true
@@ -695,9 +693,9 @@ extension KeyboardViewController {
 		okButton.setBackgroundImage(UIImage(named: "action-button"), for: .normal)
 		okButton.setTitle("OK", for: .normal)
 		okButton.setTitleColor(UIColor.white, for: .normal)
-		okButton.rx.tap.subscribe(onNext: { (_) in
-			self.hideKeyboard()
-			self.selectedTextField = nil
+		okButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+			self?.hideKeyboard()
+			self?.selectedTextField = nil
 		}).disposed(by: disposeBag)
 
 		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
@@ -741,9 +739,9 @@ extension KeyboardViewController {
 		okButton.setBackgroundImage(UIImage(named: "action-button"), for: .normal)
 		okButton.setTitle("OK", for: .normal)
 		okButton.setTitleColor(UIColor.white, for: .normal)
-		okButton.rx.tap.subscribe(onNext: { (_) in
-			self.hideKeyboard()
-			self.selectedTextField = nil
+		okButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+			self?.hideKeyboard()
+			self?.selectedTextField = nil
 		}).disposed(by: disposeBag)
 		
 		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
@@ -840,7 +838,7 @@ extension KeyboardViewController {
 																														metrics: nil,
 																														views: ["view": sentView]))
 
-		self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[header]-0-[view]-0-|",
+		self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[header]-0-[view(250)]-0-|",
 																														options: [],
 																														metrics: nil,
 																														views: ["view": sentView,
@@ -849,11 +847,12 @@ extension KeyboardViewController {
 
 	func hideSentView() {
 		self.sentView.removeFromSuperview()
+		self.view.layoutIfNeeded()
 	}
 
 }
 
-extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegate, PickerViewDataSource {
+extension KeyboardViewController: UIGestureRecognizerDelegate,PickerViewDelegate, PickerViewDataSource {
 
 	func showPicker() {
 		view.addSubview(pickerView)

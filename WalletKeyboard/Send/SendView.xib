@@ -16,9 +16,6 @@
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
-        <array key="SF-Pro-Text-Regular.otf">
-            <string>SFProText-Regular</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -44,7 +41,7 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWC-vc-fek">
                     <rect key="frame" x="10" y="133" width="398" height="46"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="3Jp-zK-W6l"/>
                     </constraints>
@@ -118,7 +115,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXY-IJ-D8W">
                     <rect key="frame" x="151" y="56" width="257" height="46"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-6w-UNS" customClass="FakeTextFieldView" customModule="WalletKeyboard">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-6w-UNS" customClass="FakeTextFieldView" customModule="MinterKeyboard" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="182" height="46"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -195,19 +192,6 @@
                 <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Dic-ji-kjs">
                     <rect key="frame" x="190.5" y="137.5" width="37" height="37"/>
                 </activityIndicatorView>
-                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpq-dU-Onf">
-                    <rect key="frame" x="174.5" y="46" width="69" height="45"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="2ZP-sV-g7d"/>
-                        <constraint firstAttribute="width" constant="69" id="89R-qf-c3H"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="0.0" minY="9" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Paste" backgroundImage="paste-icon">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available 0.0000 BIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTC-Tj-xLg">
                     <rect key="frame" x="10" y="107" width="125" height="14"/>
                     <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
@@ -230,7 +214,6 @@
                 <constraint firstItem="kTC-Tj-xLg" firstAttribute="leading" secondItem="QL7-iR-92U" secondAttribute="leading" id="As6-rV-eiR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GWC-vc-fek" secondAttribute="trailing" constant="10" id="Eq1-gE-hLW"/>
                 <constraint firstItem="WIl-4A-HiN" firstAttribute="leading" secondItem="QL7-iR-92U" secondAttribute="leading" constant="10" id="J9x-tH-daI"/>
-                <constraint firstItem="gpq-dU-Onf" firstAttribute="top" secondItem="Z5b-WM-Ohg" secondAttribute="bottom" id="NIi-IF-eXG"/>
                 <constraint firstItem="Dic-ji-kjs" firstAttribute="centerY" secondItem="GWC-vc-fek" secondAttribute="centerY" id="UG9-zp-dnv"/>
                 <constraint firstItem="Z5b-WM-Ohg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="WWR-C5-ImU"/>
                 <constraint firstItem="mXY-IJ-D8W" firstAttribute="top" secondItem="QL7-iR-92U" secondAttribute="top" id="YwV-ND-uv1"/>
@@ -243,7 +226,6 @@
                 <constraint firstItem="QL7-iR-92U" firstAttribute="top" secondItem="Z5b-WM-Ohg" secondAttribute="bottom" constant="10" id="gO5-nR-emn"/>
                 <constraint firstItem="mXY-IJ-D8W" firstAttribute="leading" secondItem="QL7-iR-92U" secondAttribute="trailing" constant="10" id="msN-Fk-eYb"/>
                 <constraint firstItem="bkK-wo-VRp" firstAttribute="centerY" secondItem="kTC-Tj-xLg" secondAttribute="centerY" id="orN-kw-rY6"/>
-                <constraint firstItem="gpq-dU-Onf" firstAttribute="centerX" secondItem="Z5b-WM-Ohg" secondAttribute="centerX" id="s4z-ym-ZIu"/>
                 <constraint firstItem="QQH-IG-ItJ" firstAttribute="trailing" secondItem="Z5b-WM-Ohg" secondAttribute="trailing" id="tL6-9N-jV9"/>
                 <constraint firstItem="QQH-IG-ItJ" firstAttribute="top" secondItem="QL7-iR-92U" secondAttribute="top" id="wiK-Jb-TcH"/>
                 <constraint firstItem="WIl-4A-HiN" firstAttribute="centerY" secondItem="QL7-iR-92U" secondAttribute="centerY" id="z0P-d4-VI4"/>
@@ -269,9 +251,8 @@
         </view>
     </objects>
     <resources>
-        <image name="action-button" width="355" height="48"/>
+        <image name="action-button" width="23.5" height="29.5"/>
         <image name="bip-logo" width="68" height="68"/>
         <image name="icon-copy" width="20" height="20"/>
-        <image name="paste-icon" width="69" height="45"/>
     </resources>
 </document>

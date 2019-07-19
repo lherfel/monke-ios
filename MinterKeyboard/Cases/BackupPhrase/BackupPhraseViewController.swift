@@ -26,7 +26,7 @@ class BackupPhraseViewController: BaseViewController {
 		mnemonicsLabel.text = Session.shared.account.mnemonics
 
 		clipboardButton.rx.tap.subscribe(onNext: { (_) in
-			UIPasteboard.general.string = "Mx" + Session.shared.account.mnemonics
+			UIPasteboard.general.string = Session.shared.account.mnemonics
 			SVProgressHUD.showSuccess(withStatus: "COPIED")
 		}).disposed(by: disposeBag)
 	}

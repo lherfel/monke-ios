@@ -23,7 +23,8 @@ class KeyboardViewModel {
 			context.touchIDAuthenticationAllowableReuseDuration = 1
 		}
 	}
-	let gateManager = GateManager.shared
+
+	private let gateManager = GateManager.shared
 
 	// MARK: -
 
@@ -55,7 +56,9 @@ class KeyboardViewModel {
 		var isLoading: Observable<Bool>
 		var addressFieldHasError: Observable<Bool>
 		var isTurnedOn: Bool
+		var fee: Observable<String>
 	}
+
 	var input: Input!
 	var output: Output!
 
@@ -67,11 +70,14 @@ class KeyboardViewModel {
 			balances.keys.forEach({ (key) in
 				let bal = CurrencyNumberFormatter.formattedDecimal(with: (balances[key] ?? 0.0),
 																													 formatter: self.currencyFormatter)
-//				let bal = self.currencyFormatter.string(from: (balances[key] ?? 0.0) as NSNumber) ?? ""
 				ret.append(key + " " + bal)
 			})
 			self.balancesSubject.onNext(ret)
 		}
+	}
+
+	var shouldConvert: Bool {
+		return (balances["BANANA"] ?? 0.0) < Session.minimumBananasNumber
 	}
 
 	private var coinAvatarURLSubject = PublishSubject<URL?>()
@@ -99,8 +105,9 @@ class KeyboardViewModel {
 																		gateManager.nonce(address: Session.shared.account.address))
 	}
 	private var addressFieldHasErrorSubject = PublishSubject<Bool>()
+	private var feeSubject = PublishSubject<String>()
 
-	private lazy var privateKey = Session.shared.account.privateKey(at: 0).raw.toHexString()
+	private lazy var privateKey = Session.shared.account.privateKey
 
 	// MARK: -
 
@@ -129,7 +136,8 @@ class KeyboardViewModel {
 												 selectedCoinBalance: selectedCoinBalanceSubject.asObservable(),
 												 isLoading: isLoadingSubject.asObservable(),
 												 addressFieldHasError: addressFieldHasErrorSubject.asObservable(),
-												 isTurnedOn: Session.shared.account.isTurnedOn
+												 isTurnedOn: { return AccountManager.shared.restoreTurnedOn() }(),
+												 fee: feeSubject.asObservable()
 		)
 
 		didTapMaxButtonSubject.withLatestFrom(selectedCoinSubject.asObservable())
@@ -138,8 +146,9 @@ class KeyboardViewModel {
 					return
 				}
 				guard let formatter = self?.currencyFormatter else { return }
-				self?.amountSubject.onNext(CurrencyNumberFormatter.formattedDecimal(with: selectedBalance,
-																																						formatter: formatter))
+				let amount = CurrencyNumberFormatter.formattedDecimal(with: selectedBalance,
+																															formatter: formatter)
+				self?.amountSubject.onNext(amount.replacingOccurrences(of: " ", with: ""))
 		}).disposed(by: disposeBag)
 
 		selectedCoinSubject.subscribe(onNext: { [weak self] (coin) in
@@ -164,6 +173,7 @@ class KeyboardViewModel {
 			} catch {
 
 			}
+			self?.feeSubject.onNext((self?.shouldConvert ?? false) ? "Fee 1% + 0.1100 BIP" : "Fee 0.0100 BIP")
 		}).disposed(by: disposeBag)
 
 		sendAddressSubject.asObservable().subscribe(onNext: { [weak self] (address) in
@@ -185,9 +195,7 @@ class KeyboardViewModel {
 			return address?.isValidAddress() ?? false
 		}).subscribe(onNext: { [weak self] (_) in
 			self?.didCompleteAuthenticationSubject.onNext(false)
-			self?.authenticateUser(completion: {
-
-			})
+			self?.authenticateUser(completion: {})
 		}).disposed(by: disposeBag)
 
 		didCompleteAuthenticationSubject.filter({ (val) -> Bool in
@@ -222,7 +230,6 @@ class KeyboardViewModel {
 			if let balance = res[Coin.baseCoin().symbol ?? ""] {
 				return CurrencyNumberFormatter.formattedDecimal(with: balance,
 																												formatter: self!.currencyFormatter)
-//				return self?.currencyFormatter.string(from: balance as NSNumber) ?? ""
 			}
 			return ""
 		}).subscribe(balanceSubject.asObserver()).disposed(by: disposeBag)
@@ -230,18 +237,16 @@ class KeyboardViewModel {
 		Session.shared.delegationsSubject.map { [weak self] (total) -> String in
 			return CurrencyNumberFormatter.formattedDecimal(with: total,
 																											formatter: self!.currencyFormatter)
-//			return self?.currencyFormatter.string(from: total as NSNumber) ?? ""
 		}.subscribe(delegatedSubject.asObserver()).disposed(by: disposeBag)
 
 		Observable.combineLatest(self.selectedCoinSubject, self.balancesSubject)
 			.subscribe(onNext: { [weak self] (coin, balances) in
 			self?.coinAvatarURLSubject.onNext(MinterMyAPIURL.avatarByCoin(coin: coin).url())
-//			self?.selectedCoinSubject.onNext(coin)
 		}).disposed(by: disposeBag)
+
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 			Session.shared.updateBalance()
 		}
-
 	}
 
 	func handleHash(hash: String?) {
@@ -263,20 +268,25 @@ class KeyboardViewModel {
 																 amount: Decimal,
 																 coin: String) -> Observable<String?> {
 
-		return try! TransactionConstructor.sendTransaction(nonce: nonce,
-																														address: address,
-																														amount: amount,
-																														coin: coin,
-																														coinBalance: self.balances[coin] ?? 0.0,
-																														baseCoinBalance: self.balances[Coin.baseCoin().symbol ?? ""] ?? 0.0).filter({ (raw) -> Bool in
-																															return raw != nil
-																														}).flatMap({ (transaction) -> Observable<String?> in
-																															let signedTx = RawTransactionSigner.sign(rawTx: transaction!, privateKey: self.privateKey)
-																															return self.gateManager.send(rawTx: signedTx)
-																														})
+		return TransactionConstructor.sendTransaction(nonce: nonce,
+																									address: address,
+																									amount: amount,
+																									coin: coin,
+																									coinBalance: self.balances[coin] ?? 0.0,
+																									baseCoinBalance: self.balances[Coin.baseCoin().symbol ?? ""] ?? 0.0).filter({ (raw) -> Bool in
+																												return raw != nil
+
+																									}).flatMap({ (transaction) -> Observable<String?> in
+																										let signedTx = RawTransactionSigner.sign(rawTx: transaction!,
+																																														 privateKey: self.privateKey)
+																										return self.gateManager.send(rawTx: signedTx)
+																									})
 		.do(onNext: { [weak self] (hash) in
 			self?.isLoadingSubject.onNext(false)
-//			self?.handleHash(hash: hash ?? "")
+
+			if self?.shouldConvert ?? false {
+				self?.convertToBananas(coinFrom: coin, amount: amount)
+			}
 		}, onError: { [weak self] (error) in
 			self?.isLoadingSubject.onNext(false)
 
@@ -285,7 +295,6 @@ class KeyboardViewModel {
 			} else {
 				self?.errorSubject.onNext(error.localizedDescription)
 			}
-
 		}, onCompleted: {
 			
 		}, onSubscribe: { [weak self] in
@@ -324,8 +333,6 @@ class KeyboardViewModel {
 															self?.context.invalidate()
 															self?.context = LAContext()
 			}
-		} else {
-			//You can't work with us, sorry
 		}
 	}
 
@@ -343,5 +350,32 @@ class KeyboardViewModel {
 
 	private func sendTx() {
 		errorSubject.onNext("SendTX started")
+	}
+
+	private func convertToBananas(coinFrom: String, amount: Decimal) {
+		self.gateObservable().flatMap { (val) -> Observable<RawTransaction?> in
+
+			let bananaBalance = self.balances["BANANA"] ?? Decimal(0.0)
+			let baseCoinBalance = self.balances[Coin.baseCoin().symbol!] ?? Decimal(0.0)
+			let convertAmount = min(max(0, 1.0 - bananaBalance), amount * 0.01)
+
+			guard convertAmount > 0 && coinFrom != "BANANA"  else {
+				return Observable.empty()
+			}
+
+			return TransactionConstructor.convertTransaction(nonce: Decimal(val.1),
+																											 coinFrom: coinFrom,
+																											 coinTo: "BANANA",
+																											 amount: convertAmount,
+																											 coinBalance: bananaBalance,
+																											 baseCoinBalance: baseCoinBalance)
+			}.flatMap({ (transaction) -> Observable<String?> in
+				let signedTx = RawTransactionSigner.sign(rawTx: transaction!, privateKey: self.privateKey)
+				return self.gateManager.send(rawTx: signedTx)
+			}).do(onNext: { (tx) in
+				
+			}, onError: { error in
+				
+			}).subscribe().disposed(by: disposeBag)
 	}
 }

@@ -12,7 +12,7 @@ import BigInt
 import RxSwift
 
 class TransactionConstructor {
-	
+
 	static let formater = CurrencyNumberFormatter()
 
 	enum TransactionConstructorError: Error {
@@ -31,8 +31,6 @@ class TransactionConstructor {
 			let value = BigUInt(decimal: amount * TransactionCoinFactorDecimal)
 			if nonce == BigUInt(0) || value == BigUInt(0) {
 				observer.onNext(nil)
-//					observer.onError(TransactionConstructorError.invalidInputParam)
-//					throw TransactionConstructorError.invalidInputParam
 			}
 
 			let chainId = MinterCoreSDK.shared.network.rawValue
@@ -40,21 +38,23 @@ class TransactionConstructor {
 			var gasCoin = Coin.baseCoin().symbol ?? ""
 			let to = address
 			var newValue = value
-			let payload = Data()//"Sent with Monke".data(using: .utf8) ?? Data()
-			
+			let payload = Data()
+
 			let isBaseCoin = (coin == (Coin.baseCoin().symbol ?? ""))
 			let baseCoinCommission = RawTransactionType.sendCoin.commission() +
 				(Decimal(payload.count) * RawTransaction.payloadByteComissionPrice * TransactionCoinFactorDecimal)
-			
-			let coinBalanceComparable = CurrencyNumberFormatter.formattedDecimal(with: coinBalance,
-																																					 formatter: CurrencyNumberFormatter.coinFormatter)
 
-			let baseCoinBalanceComparable = TransactionConstructor.formater.string(from: baseCoinBalance as NSNumber)?
+			let coinBalanceComparable = CurrencyNumberFormatter
+				.formattedDecimal(with: coinBalance,
+													formatter: CurrencyNumberFormatter.coinFormatter)
+
+			let baseCoinBalanceComparable = TransactionConstructor
+				.formater.string(from: baseCoinBalance as NSNumber)?
 				.replacingOccurrences(of: " ", with: "")
 				.replacingOccurrences(of: ",", with: ".") ?? ""
-			
+
 			let isMax = CurrencyNumberFormatter.decimal(from: coinBalanceComparable) == amount
-			
+
 			if isBaseCoin {
 				if isMax {
 					newValue = value! - (BigUInt(decimal: baseCoinCommission) ?? BigUInt(0))
@@ -78,7 +78,7 @@ class TransactionConstructor {
 								observer.onNext(nil)
 								return
 							}
-							
+
 							let sendTransaction = SendCoinRawTransaction(nonce: nonce!,
 																													 chainId: chainId,
 																													 gasPrice: gasPrice,
@@ -86,7 +86,7 @@ class TransactionConstructor {
 																													 to: to,
 																													 value: newValue!,
 																													 coin: coin)
-							
+
 							observer.onNext(sendTransaction)
 						})
 						return Disposables.create()
@@ -103,7 +103,39 @@ class TransactionConstructor {
 																									 value: newValue!,
 																									 coin: coin)
 			observer.onNext(sendTransaction)
-			
+
+			return Disposables.create()
+		}
+	}
+
+	static func convertTransaction(nonce: Decimal,
+																 coinFrom: String,
+																 coinTo: String,
+																 amount: Decimal,
+																 coinBalance: Decimal,
+																 baseCoinBalance: Decimal) -> Observable<RawTransaction?> {
+
+		return Observable.create { (observer) -> Disposable in
+			let nonce = BigUInt(decimal: nonce + 1)
+			let value = BigUInt(decimal: amount * TransactionCoinFactorDecimal)
+			if nonce == BigUInt(0) || value == BigUInt(0) {
+				observer.onNext(nil)
+			}
+
+			let chainId = MinterCoreSDK.shared.network.rawValue
+			let gasPrice = 1
+			let gasCoin = Coin.baseCoin().symbol ?? ""
+			let minimumValueToBuy = BigUInt(decimal: 0.9 * amount * TransactionCoinFactorDecimal)
+
+			let tx = SellCoinRawTransaction(nonce: nonce!,
+																		 chainId: chainId,
+																		 gasPrice: gasPrice,
+																		 gasCoin: gasCoin,
+																		 coinFrom: coinFrom,
+																		 coinTo: coinTo,
+																		 value: value ?? BigUInt(0),
+																		 minimumValueToBuy: BigUInt(0))
+			observer.onNext(tx)
 			return Disposables.create()
 		}
 	}

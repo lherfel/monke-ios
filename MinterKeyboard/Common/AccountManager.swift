@@ -33,9 +33,17 @@ enum AccountManagerError: Error {
 class AccountManager {
 
 	enum StorageKeys: String {
+		case account
 		case mnemonics
+		case privateKey
 		case address
 		case turnedOn
+	}
+
+	enum AccountManagerError: Error {
+		case incorrectMnemonics
+		case incorretPrivateKey
+		case canNotEncodeAccount
 	}
 
 	// MARK: -
@@ -54,7 +62,7 @@ class AccountManager {
 
 	var hasMnemonics = false
 
-	func restoreAccount() throws -> Account {
+	func restore() throws -> Account {
 
 		var mnemonics: String!
 		let mnem = restoreMnemonics()
@@ -64,16 +72,60 @@ class AccountManager {
 			saveMnemonics(mnemonics)
 		}
 
-		guard let address = self.address(from: mnemonics, at: 0) else {
-			throw AccountManagerError.cantCalculateAddress
+		var account: Account!
+
+		do {
+			account = restoreAccount()
+			if account == nil {
+				let acc = try AccountManager.shared.account(from: mnemonics, at: 0)
+				
+				if nil == acc {
+					fatalError("Can't get Private key or address")
+				}
+
+				try saveAccount(acc!)
+				account = acc
+			}
+		} catch {
+			fatalError("Can't get Account")
 		}
 
-		return Account(address: address, mnemonics: mnemonics, isTurnedOn: restoreTurnedOn())
+		return Account(address: account.address,
+									 mnemonics: account.mnemonics,
+									 privateKey: account.privateKey,
+									 isTurnedOn: restoreTurnedOn())
 	}
+
+	// MARK: -
+
+	private func restoreAccount() -> Account? {
+		let restored = accountStorage.get(key: StorageKeys.account.rawValue)?
+			.data(using: .utf8) ?? Data()
+
+		return try? JSONDecoder().decode(Account.self, from: restored)
+	}
+
+	private func saveAccount(_ account: Account) throws {
+		let stored = try JSONEncoder().encode(account)
+		guard let encoded = String(data: stored, encoding: .utf8) else {
+			throw AccountManagerError.canNotEncodeAccount
+		}
+		accountStorage.set(key: StorageKeys.account.rawValue, value: encoded)
+	}
+
+	// MARK: -
 
 	private func restoreMnemonics() -> String? {
 		//checking if mnemonics exists
 		return accountStorage.get(key: StorageKeys.mnemonics.rawValue)
+	}
+
+	private func restorePrivateKey() -> String? {
+		return accountStorage.get(key: StorageKeys.privateKey.rawValue)
+	}
+
+	private func restoreAddress() -> String? {
+		return accountStorage.get(key: StorageKeys.address.rawValue)
 	}
 
 	func restoreTurnedOn() -> Bool {
@@ -88,6 +140,10 @@ class AccountManager {
 	private func saveMnemonics(_ mnemonics: String) {
 		accountStorage.set(key: StorageKeys.mnemonics.rawValue, value: mnemonics)
 	}
+	
+	private func savePrivateKey(_ key: String) {
+		accountStorage.set(key: StorageKeys.privateKey.rawValue, value: key)
+	}
 
 	private func saveAddress(_ address: String) {
 		accountStorage.set(key: StorageKeys.address.rawValue, value: address)
@@ -97,10 +153,10 @@ class AccountManager {
 		return String.generateMnemonicString()
 	}
 
-	func address(from mnemonic: String, at index: UInt32) -> String? {
+	func account(from mnemonic: String, at index: UInt32) throws -> Account? {
 
 		guard let seed = self.seed(mnemonic: mnemonic) else {
-			return nil
+			throw AccountManagerError.incorrectMnemonics
 		}
 
 		let pk = PrivateKey(seed: seed)
@@ -115,12 +171,13 @@ class AccountManager {
 			let publicKey = RawTransactionSigner.publicKey(privateKey: newPk.raw,
 																										 compressed: false)?.dropFirst(),
 			let address = RawTransactionSigner.address(publicKey: publicKey) else {
-				return nil
+				throw AccountManagerError.incorretPrivateKey
 		}
-		print(newPk.publicKey.toHexString())
-		print(publicKey.toHexString())
 
-		return address
+		return Account(address: address,
+									 mnemonics: mnemonic,
+									 privateKey: newPk.raw.toHexString(),
+									 isTurnedOn: false)
 	}
 
 	//Generate Seed from mnemonic

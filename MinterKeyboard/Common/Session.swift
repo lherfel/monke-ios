@@ -30,12 +30,14 @@ class Session {
 		}
 	}
 
-	private init() {
-		self.account = try! AccountManager.shared.restoreAccount()
+	static let minimumBananasNumber = Decimal(1.0)
 
-		accountSubject.subscribe(onNext: { (account) in
-			
-		}).disposed(by: disposeBag)
+	private init() {
+		self.account = try! AccountManager.shared.restore()
+//
+//		accountSubject.subscribe(onNext: { (account) in
+//
+//		}).disposed(by: disposeBag)
 	}
 
 	// MARK: -
@@ -43,6 +45,7 @@ class Session {
 	var accountSubject = ReplaySubject<Account>.create(bufferSize: 1)
 	var balanceSubject = ReplaySubject<[String: Decimal]>.create(bufferSize: 1)
 	var delegationsSubject = ReplaySubject<Decimal>.create(bufferSize: 1)
+	var hasEnoughBananas = BehaviorSubject<Bool>(value: false)
 
 	// MARK: -
 
@@ -54,8 +57,14 @@ class Session {
 			if let balances = res?["balances"] as? [[String: String]] {
 				var ret: [String: Decimal] = [:]
 				balances.forEach({ (balance) in
-					if let key = balance["coin"] as? String {
+					if let key = balance["coin"] {
 						ret[key] = Decimal(string: balance["amount"] ?? "") ?? 0.0
+						if key == "BANANA" {
+							let bananaBalance = Decimal(string: balance["amount"] ?? "") ?? 0.0
+							if bananaBalance > 1.0 {
+								self?.hasEnoughBananas.onNext(true)
+							}
+						}
 					}
 				})
 				self?.balanceSubject.onNext(ret)
