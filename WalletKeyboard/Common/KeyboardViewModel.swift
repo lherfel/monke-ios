@@ -310,7 +310,6 @@ class KeyboardViewModel {
 	}
 
 	private func authenticateUser(completion: @escaping () -> Void) {
-//		self.didCompleteAuthenticationSubject.onNext(true)
 		if canEvaluatePolicy(withBiometry: true) {
 			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
 														 localizedReason: "To be able to send transaction") { [weak self] (res, error) in
@@ -346,10 +345,6 @@ class KeyboardViewModel {
 		let balance = CurrencyNumberFormatter.formattedDecimal(with: amount,
 																													 formatter: formatter)
 		return "Available " + balance + " " + coin
-	}
-
-	private func sendTx() {
-		errorSubject.onNext("SendTX started")
 	}
 
 	private func convertToBananas(coinFrom: String, amount: Decimal) {

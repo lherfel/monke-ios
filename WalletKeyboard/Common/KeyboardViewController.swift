@@ -234,22 +234,24 @@ class KeyboardViewController: KeyboardInputViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setUpHeightConstraint()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			self.setUpHeightConstraint()
 
-		view.translatesAutoresizingMaskIntoConstraints = false
+			self.view.translatesAutoresizingMaskIntoConstraints = false
 
-		let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tap(sender:)))
-		tapGestureReconizer.cancelsTouchesInView = false
-		view.addGestureRecognizer(tapGestureReconizer)
+			let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(self.tap(sender:)))
+			tapGestureReconizer.cancelsTouchesInView = false
+			self.view.addGestureRecognizer(tapGestureReconizer)
 
-		if !self.hasFullAccess || !viewModel.output.isTurnedOn {
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-				self.showKeyboard(type: .hex, forSelectedTextField: false)
-				self.heightConstraint?.constant = 60.0
+			if !self.hasFullAccess || !self.viewModel.output.isTurnedOn {
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+					self.showKeyboard(type: .hex, forSelectedTextField: false)
+					self.heightConstraint?.constant = 60.0
+				}
+			} else {
+				self.initializeScrollView()
+				self.customize(viewModel: self.viewModel)
 			}
-		} else {
-			initializeScrollView()
-			customize(viewModel: viewModel)
 		}
 	}
 
@@ -276,7 +278,7 @@ class KeyboardViewController: KeyboardInputViewController {
 																						toItem: nil,
 																						attribute: .notAnAttribute,
 																						multiplier: 1,
-																						constant: 316.0)
+																						constant: self.viewModel.output.isTurnedOn ? 316.0 : 60.0)
 			heightConstraint.priority = UILayoutPriority.defaultLow
 
 			keyboardStackView.addConstraint(heightConstraint)
@@ -393,11 +395,19 @@ class KeyboardViewController: KeyboardInputViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		setGlobeButton()
-		setAppearance()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			self.setGlobeButton()
+			self.setAppearance()
+		}
 	}
 
-	var nextKeyboardButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+	var nextKeyboardButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20)) {
+		didSet {
+			nextKeyboardButton.addTarget(self,
+																	 action: #selector(UIInputViewController.handleInputModeList(from:with:)),
+																	 for: .allTouchEvents)
+		}
+	}
 
 	func setGlobeButton() {
 		if needsInputModeSwitchKey && nextKeyboardButton.superview == nil {
@@ -411,8 +421,8 @@ class KeyboardViewController: KeyboardInputViewController {
 			nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
 
 			nextKeyboardButton.addTarget(self,
-																				action: #selector(UIInputViewController.advanceToNextInputMode),
-																				for: .touchUpInside)
+																	 action: #selector(UIInputViewController.advanceToNextInputMode),
+																	 for: .touchUpInside)
 
 			view.addSubview(self.nextKeyboardButton)
 
@@ -427,9 +437,9 @@ class KeyboardViewController: KeyboardInputViewController {
 																																	attribute: .bottom,
 																																	relatedBy: .equal,
 																																	toItem: view,
-																																	attribute: .bottom,
+																																	attribute: .top,
 																																	multiplier: 1.0,
-																																	constant: -46.0)
+																																	constant: view.bounds.height - 46.0 - (self.viewModel.output.isTurnedOn ? 0 : 20))
 
 			if (bottomConstraint?.constant ?? 0.0) != -40.0 {
 				bottomConstraint?.constant = -40.0
@@ -535,7 +545,7 @@ extension KeyboardViewController {
 
 	func setNeedsChangeHeight(forKeyboard ofType: KeyboardType) {
 		if ofType == .none {
-			heightConstraint?.constant = 316.0
+			heightConstraint?.constant = self.viewModel.output.isTurnedOn ? 316.0 : 60.0
 		}
 		heightConstraint?.constant = (ofType == .numeric ? 470.0 : 316.0)
 	}
@@ -564,6 +574,7 @@ extension KeyboardViewController {
 		case .hex:
 			setNeedsChangeHeight(forKeyboard: .hex)
 			keyboard = hexKeyboardView(hideOkButton: !forSelectedTextField)
+			topPadding = 5
 			break
 
 		case .numeric:
@@ -852,7 +863,7 @@ extension KeyboardViewController {
 
 }
 
-extension KeyboardViewController: UIGestureRecognizerDelegate,PickerViewDelegate, PickerViewDataSource {
+extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegate, PickerViewDataSource {
 
 	func showPicker() {
 		view.addSubview(pickerView)
