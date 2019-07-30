@@ -13,9 +13,6 @@
         <array key="SF-Pro-Text-Bold.otf">
             <string>SFProText-Bold</string>
         </array>
-        <array key="SF-Pro-Text-Regular.otf">
-            <string>SFProText-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -83,13 +80,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setup-instruction" translatesAutoresizingMaskIntoConstraints="NO" id="lmO-Lb-8Vs">
-                                <rect key="frame" x="15" y="224.5" width="350" height="252"/>
+                                <rect key="frame" x="15" y="141" width="350" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="999" constant="350" id="PzR-JW-Tbl"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setup-title" translatesAutoresizingMaskIntoConstraints="NO" id="jEf-r8-y8s">
-                                <rect key="frame" x="34.5" y="101" width="345" height="99.5"/>
+                                <rect key="frame" x="34.5" y="101" width="345" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="deviceRGB"/>
@@ -126,80 +123,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-5y-4P6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BalanceTableViewCell" rowHeight="61" id="82c-0E-DEO" customClass="BalanceTableViewCell" customModule="MinterKeyboard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="61"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="82c-0E-DEO" id="Ogq-XK-Z8L">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bip-logo" translatesAutoresizingMaskIntoConstraints="NO" id="AsE-Bh-sVA">
-                                                    <rect key="frame" x="12" y="18" width="24" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="5Vy-u4-b4n"/>
-                                                        <constraint firstAttribute="height" constant="24" id="BCW-gk-SXB"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000 BIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeV-M4-9Lh">
-                                                    <rect key="frame" x="44" y="19.5" width="94" height="21"/>
-                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1z-dY-2ae">
-                                                    <rect key="frame" x="345" y="15" width="53" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="gr9-Hk-egr"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Deposit">
-                                                        <color key="titleColor" red="0.31764705882352939" green="0.14117647058823529" blue="0.77254901960784317" alpha="1" colorSpace="deviceRGB"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="AsE-Bh-sVA" firstAttribute="top" secondItem="Ogq-XK-Z8L" secondAttribute="top" constant="18" id="4Wc-V2-RdC"/>
-                                                <constraint firstItem="VeV-M4-9Lh" firstAttribute="leading" secondItem="AsE-Bh-sVA" secondAttribute="trailing" constant="8" id="E0B-rp-8eq"/>
-                                                <constraint firstItem="S1z-dY-2ae" firstAttribute="centerY" secondItem="VeV-M4-9Lh" secondAttribute="centerY" id="Jaw-aP-Opl"/>
-                                                <constraint firstItem="VeV-M4-9Lh" firstAttribute="centerY" secondItem="AsE-Bh-sVA" secondAttribute="centerY" id="Meh-y4-YBp"/>
-                                                <constraint firstAttribute="trailing" secondItem="S1z-dY-2ae" secondAttribute="trailing" constant="16" id="Z2u-4l-f5B"/>
-                                                <constraint firstAttribute="bottom" secondItem="AsE-Bh-sVA" secondAttribute="bottom" constant="18" id="bvC-Bj-NyY"/>
-                                                <constraint firstItem="AsE-Bh-sVA" firstAttribute="leading" secondItem="Ogq-XK-Z8L" secondAttribute="leading" constant="12" id="mca-1T-kpa"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="coinImage" destination="AsE-Bh-sVA" id="2pX-t4-6uM"/>
-                                            <outlet property="depositButton" destination="S1z-dY-2ae" id="jFY-0p-uwl"/>
-                                            <outlet property="title" destination="VeV-M4-9Lh" id="mXx-la-7Fy"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="backupCell" rowHeight="61" id="yc6-Rq-zYl">
-                                        <rect key="frame" x="0.0" y="116.5" width="414" height="61"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yc6-Rq-zYl" id="1km-9U-g8D">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="60.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔑 Backup Phrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G70-6W-UQF">
-                                                    <rect key="frame" x="12" y="20" width="154" height="21"/>
-                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="G70-6W-UQF" firstAttribute="centerY" secondItem="1km-9U-g8D" secondAttribute="centerY" id="F8I-xL-a1d"/>
-                                                <constraint firstItem="G70-6W-UQF" firstAttribute="leading" secondItem="1km-9U-g8D" secondAttribute="leading" constant="12" id="czq-kz-bRG"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="G70-6W-UQF" secondAttribute="trailing" constant="20" symbolic="YES" id="wJc-bw-uQn"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="NIi-eP-m4k" kind="show" id="mT2-MO-Nic"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="yuL-yQ-Iwi" id="cyB-wq-r1z"/>
                                     <outlet property="delegate" destination="yuL-yQ-Iwi" id="mz1-NO-NS4"/>
@@ -224,7 +149,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="z1q-5y-4P6" secondAttribute="bottom" id="CRe-ZR-dP8"/>
+                            <constraint firstAttribute="bottom" secondItem="z1q-5y-4P6" secondAttribute="bottom" constant="100" id="CRe-ZR-dP8"/>
                             <constraint firstItem="LGv-Rp-9hq" firstAttribute="leading" secondItem="TXc-83-mEu" secondAttribute="leading" constant="10" id="MIH-JR-n0w"/>
                             <constraint firstAttribute="bottom" secondItem="LGv-Rp-9hq" secondAttribute="bottom" constant="47" id="VXC-Pg-lcv"/>
                             <constraint firstItem="z1q-5y-4P6" firstAttribute="top" secondItem="Vzb-jp-8W7" secondAttribute="top" id="fsl-hf-Qbs"/>
@@ -246,7 +171,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="monke-logo-gray" translatesAutoresizingMaskIntoConstraints="NO" id="wnj-wZ-9gn">
-                            <rect key="frame" x="29.5" y="51" width="191" height="36"/>
+                            <rect key="frame" x="29.5" y="51" width="191.00000000000003" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="VWa-5s-mqv"/>
                                 <constraint firstAttribute="width" constant="191" id="ntF-S4-r8R"/>
@@ -290,24 +215,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5G-7o-G2M">
                                 <rect key="frame" x="45" y="74" width="354" height="76.5"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Please ">
+                                    <fragment>
+                                        <string key="content">Please write these 12 words down in order, and keep them somewhere safe offline. Backup Phrase allows you get access to funds of your Monke.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="16" name="SFProText-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="write these 12 words down in order">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="16" name="SFProText-Semibold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=", and keep them somewhere safe offline. Backup Phrase allows you get access to funds of your Monke.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="16" name="SFProText-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="16"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -380,8 +292,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="action-button" width="355" height="48"/>
-        <image name="bip-logo" width="68" height="68"/>
+        <image name="action-button" width="23.5" height="29.5"/>
         <image name="monke-logo-gray" width="187" height="37"/>
         <image name="setup-instruction" width="350" height="252.5"/>
         <image name="setup-title" width="338" height="99.5"/>

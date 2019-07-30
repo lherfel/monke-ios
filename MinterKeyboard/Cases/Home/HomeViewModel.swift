@@ -68,11 +68,9 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	}
 
 	var balanceCellItem: BaseCellItem {
-		let item = BalanceTableViewCellItem(reuseIdentifier: "BalanceTableViewCell",
-																				identifier: "BalanceTableViewCell")
+		let item = BalanceTVCellItem(reuseIdentifier: "BalanceTVCell", identifier: "BalanceTVCell")
 		item.image = UIImage(named: "bip-logo")
 		item.titleObservable = balanceSubject.asObservable()
 		return item
 	}
-
 }
