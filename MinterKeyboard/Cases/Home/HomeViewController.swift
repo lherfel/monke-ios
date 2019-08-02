@@ -14,27 +14,6 @@ import PMAlertController
 import EFQRCode
 import SVProgressHUD
 
-enum HomeTableObjectTypes {
-    case balance
-    case menuItem
-    case menuItemWithImage
-    case spacer
-}
-
-class HomeTableObject {
-    var title: String
-    var type: HomeTableObjectTypes
-    var desc: String?
-    var image: String?
-
-    init(title: String = "", type: HomeTableObjectTypes = .spacer, desc: String? = nil, image: String? = nil) {
-        self.title = title
-        self.type = type
-        self.desc = desc
-        self.image = image
-    }
-}
-
 class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDelegate, UITableViewDataSource {
 
 	@IBOutlet weak var turnOnButton: UIButton!
@@ -71,27 +50,10 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 		tableView.tableFooterView = UIView()
 	}
     
-    // MARK: - DataSource
-    
-    private var dataSource: [HomeTableObject] {
-        return [
-            HomeTableObject(title: "deposit", type: .balance),
-            HomeTableObject(title: "", type: .spacer),
-            HomeTableObject(title: "🔑 Backup Phrase", type: .menuItem),
-            HomeTableObject(title: "Report 🙈 problem", type: .menuItem),
-            HomeTableObject(title: "Rate Monke 💜 in Appstore", type: .menuItem),
-            HomeTableObject(title: "Make a 🍩 donation", type: .menuItemWithImage, desc: "We spend  everything on development", image: "monke-icon"),
-            HomeTableObject(title: "Buy 🍌 Banana", type: .menuItemWithImage, desc: "Use coins to reduce transaction fees", image: "bip-uppercase"),
-            HomeTableObject(title: "", type: .spacer),
-            HomeTableObject(title: "Telegram channel", type: .menuItemWithImage, desc: "Updates and announcements from Monke team", image: "telegram-icon"),
-            HomeTableObject(title: "About", type: .menuItemWithImage, desc: "Monke.io", image: "banana-icon"),
-        ]
-    }
-    
 	// MARK: - TableView
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let object = dataSource[indexPath.item]
+        let object = viewModel.dataSource[indexPath.item]
         
         switch object.type {
         case .balance:
@@ -116,7 +78,7 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 	}
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let object = dataSource[indexPath.item]
+        let object = viewModel.dataSource[indexPath.item]
         
         switch object.type {
         case .spacer:
@@ -134,7 +96,7 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
     }
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return dataSource.count
+		return viewModel.dataSource.count
 	}
 
 	func showDeposit() {
@@ -162,7 +124,9 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 extension HomeViewController: BalanceTVCellDelegate {
 	
 	func didTapDeposit() {
-		self.showDeposit()
+		//self.showDeposit()
+        let card = CardViewController.init()
+        card.configure(parent: self)
 	}
 	
 }

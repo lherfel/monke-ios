@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		08840524AC39060D2F599A78 /* Pods_MinterKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54DBABACF222D16CAF2BE13 /* Pods_MinterKeyboard.framework */; };
 		2A01EA3C22E7011F0098A88B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A01EA3B22E7011F0098A88B /* HomeViewController.swift */; };
+		2A1C3ADA22F45CE900EC01E8 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1C3AD922F45CE900EC01E8 /* DepositViewController.swift */; };
+		2A33AFD022F08162003ECE9F /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A33AFCF22F08162003ECE9F /* DepositViewController.xib */; };
 		2A5750F622EF4FA7006BFB75 /* MenuItemWithImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */; };
 		2A5750F722EF4FAB006BFB75 /* MenuItemWithImageTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */; };
 		2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */; };
 		2A83BE2E22EED5DD007C7930 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2D22EED5DD007C7930 /* UITableViewCell+Extensions.swift */; };
 		2A83BE2F22EED91B007C7930 /* BalanceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A175822E754D000E7503F /* BalanceTVCell.xib */; };
 		2A83BE3022EED91F007C7930 /* BalanceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A175722E754C800E7503F /* BalanceTVCell.swift */; };
+		2A8566F422F1EEDF001AEB58 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8566F222F1EEDE001AEB58 /* CardViewController.swift */; };
+		2A8566F522F1EEDF001AEB58 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A8566F322F1EEDE001AEB58 /* CardViewController.xib */; };
 		2ABF5A2F22E8CCE3001CC6AE /* MenuItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */; };
 		2ABF5A3022E8CCE3001CC6AE /* MenuItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */; };
 		2AD781D222E9B10200CE5533 /* SpacerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */; };
@@ -223,10 +227,14 @@
 
 /* Begin PBXFileReference section */
 		2A01EA3B22E7011F0098A88B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2A1C3AD922F45CE900EC01E8 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
+		2A33AFCF22F08162003ECE9F /* DepositViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
 		2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemWithImageTVCell.swift; sourceTree = "<group>"; };
 		2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemWithImageTVCell.xib; sourceTree = "<group>"; };
 		2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		2A83BE2D22EED5DD007C7930 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		2A8566F222F1EEDE001AEB58 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		2A8566F322F1EEDE001AEB58 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		2A9A175722E754C800E7503F /* BalanceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTVCell.swift; sourceTree = "<group>"; };
 		2A9A175822E754D000E7503F /* BalanceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTVCell.xib; sourceTree = "<group>"; };
 		2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTVCell.swift; sourceTree = "<group>"; };
@@ -441,6 +449,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		2A1C3ADB22F4634000EC01E8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		2A5750F322EF4F5C006BFB75 /* MenuItemWithImageTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +463,24 @@
 				2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */,
 			);
 			path = MenuItemWithImageTVCell;
+			sourceTree = "<group>";
+		};
+		2A8566F122F1EEDE001AEB58 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				2A8566F322F1EEDE001AEB58 /* CardViewController.xib */,
+				2A8566F222F1EEDE001AEB58 /* CardViewController.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		2A9BBA9E22F07AD000ECD683 /* Deposit */ = {
+			isa = PBXGroup;
+			children = (
+				2A33AFCF22F08162003ECE9F /* DepositViewController.xib */,
+				2A1C3AD922F45CE900EC01E8 /* DepositViewController.swift */,
+			);
+			path = Deposit;
 			sourceTree = "<group>";
 		};
 		2ABE7F0622E7545C0057F994 /* BalanceTVCell */ = {
@@ -546,6 +579,8 @@
 		FA07C52822B4E877005D7275 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
+				2A8566F122F1EEDE001AEB58 /* Card */,
+				2A9BBA9E22F07AD000ECD683 /* Deposit */,
 				FAF4B61022D257B8009061B7 /* BackupPhrase */,
 				FAF4B60B22D25772009061B7 /* Home */,
 				FAF4B60622D0B23D009061B7 /* Setup */,
@@ -651,6 +686,7 @@
 		FA57095C22B67D6200F5D0DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2A1C3ADB22F4634000EC01E8 /* New Group */,
 				FAF915CE22D28CAC00C2117C /* BaseCellItem.swift */,
 				FAF915CC22D28C6100C2117C /* BaseCell.swift */,
 				FA57095D22B67D7C00F5D0DD /* DefaultTextField.swift */,
@@ -993,6 +1029,7 @@
 				FA57093822B57B3500F5D0DD /* BalanceView.xib in Resources */,
 				FAB0D32822C8F325002945E2 /* alarmOutline@3x.png in Resources */,
 				FAB0D33422C8F325002945E2 /* error@1x.png in Resources */,
+				2A8566F522F1EEDF001AEB58 /* CardViewController.xib in Resources */,
 				FAB0D33022C8F325002945E2 /* alarmOutline@1x.png in Resources */,
 				FAB0D33A22C8F325002945E2 /* notificationFilled@1x.png in Resources */,
 				FAB0D31422C8F325002945E2 /* notificationOutline@1x.png in Resources */,
@@ -1008,6 +1045,7 @@
 				FAB0D33622C8F325002945E2 /* warningFilled@1x.png in Resources */,
 				FA07C50022B4E25E005D7275 /* Assets.xcassets in Resources */,
 				FAB0D30E22C8F325002945E2 /* warningFilled@3x.png in Resources */,
+				2A33AFD022F08162003ECE9F /* DepositViewController.xib in Resources */,
 				FAF89AEF22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */,
 				FAF89B0B22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				FAF89ACD22BA2B34003442CC /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -1196,6 +1234,7 @@
 				FAF915C722D2725D00C2117C /* BalanceTableViewCell.swift in Sources */,
 				FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */,
 				FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */,
+				2A1C3ADA22F45CE900EC01E8 /* DepositViewController.swift in Sources */,
 				FA57093522B57B2200F5D0DD /* BalanceView.swift in Sources */,
 				FAF915CF22D28CAC00C2117C /* BaseCellItem.swift in Sources */,
 				2A83BE2E22EED5DD007C7930 /* UITableViewCell+Extensions.swift in Sources */,
@@ -1218,6 +1257,7 @@
 				2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */,
 				FAF359E122BF73F40006A087 /* Account.swift in Sources */,
 				2A01EA3C22E7011F0098A88B /* HomeViewController.swift in Sources */,
+				2A8566F422F1EEDF001AEB58 /* CardViewController.swift in Sources */,
 				FAC5392C22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */,
 				FAF359EC22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */,
 				2AD781D222E9B10200CE5533 /* SpacerTVCell.swift in Sources */,
@@ -1437,8 +1477,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				DEVELOPMENT_TEAM = MRXF64768V;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1447,6 +1488,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = SID.monke;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1459,8 +1501,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J2C5SYC7R8;
+				DEVELOPMENT_TEAM = MRXF64768V;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1469,6 +1512,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = SID.monke;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
