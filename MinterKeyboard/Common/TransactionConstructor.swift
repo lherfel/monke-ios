@@ -60,6 +60,9 @@ class TransactionConstructor {
 					newValue = value! - (BigUInt(decimal: baseCoinCommission) ?? BigUInt(0))
 				}
 			} else {
+				if isMax {
+					newValue = BigUInt(decimal: coinBalance * TransactionCoinFactorDecimal) ?? BigUInt(0)
+				}
 				if baseCoinBalance * TransactionCoinFactorDecimal >= baseCoinCommission {
 					gasCoin = Coin.baseCoin().symbol ?? ""
 				} else {

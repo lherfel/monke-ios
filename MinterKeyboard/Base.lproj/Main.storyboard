@@ -205,7 +205,7 @@
                                     <outlet property="delegate" destination="yuL-yQ-Iwi" id="mz1-NO-NS4"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGv-Rp-9hq">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGv-Rp-9hq">
                                 <rect key="frame" x="10" y="803" width="394" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -380,7 +380,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="action-button" width="355" height="48"/>
+        <image name="action-button" width="23.5" height="29.5"/>
         <image name="bip-logo" width="68" height="68"/>
         <image name="monke-logo-gray" width="187" height="37"/>
         <image name="setup-instruction" width="350" height="252.5"/>

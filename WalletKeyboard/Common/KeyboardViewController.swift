@@ -24,9 +24,14 @@ class KeyboardViewController: KeyboardInputViewController {
 
 	// MARK: - ViewModel
 
-	var viewModel = KeyboardViewModel()
+	var viewModel: KeyboardViewModel!
+
+	var isTurnedOn: Bool {
+		return (self.viewModel?.output.isTurnedOn ?? false) && self.hasFullAccess
+	}
 
 	func customize(viewModel: KeyboardViewModel) {
+		self.viewModel = viewModel
 
 		//Output
 		viewModel.output.address.asDriver(onErrorJustReturn: "")
@@ -34,29 +39,35 @@ class KeyboardViewController: KeyboardInputViewController {
 			self?.headerView?.addressButton.setTitle(ttl, for: .normal)
 		}).disposed(by: disposeBag)
 
-		viewModel.output.amount.asDriver(onErrorJustReturn: "")
-			.drive(self.sendView.amountTextField.rx.text).disposed(by: disposeBag)
+		if nil != self.sendView?.amountTextField {
+			viewModel.output.amount.asDriver(onErrorJustReturn: "")
+				.drive(self.sendView.amountTextField.rx.text).disposed(by: disposeBag)
+		}
 
 		viewModel.output.sendAddressImageURL
 			.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] (url) in
 				if let url = url {
-					self?.sendView.addressImageView.af_setImage(withURL: url)
+					self?.sendView?.addressImageView?.af_setImage(withURL: url)
 				} else {
-					self?.sendView.addressImageView.image = nil
+					self?.sendView?.addressImageView?.image = nil
 				}
 		}).disposed(by: disposeBag)
 
-		viewModel.output.sendAddress.asDriver(onErrorJustReturn: nil)
-			.drive(self.sendView.addressTextField.rx.text).disposed(by: disposeBag)
+		if nil != self.sendView?.addressTextField {
+			viewModel.output.sendAddress.asDriver(onErrorJustReturn: nil)
+				.drive(self.sendView.addressTextField.rx.text).disposed(by: disposeBag)
+		}
 
 		viewModel.output.showSentView.asDriver(onErrorJustReturn: "").drive(onNext: { [weak self] (val) in
-			self?.sentView.transactionLinkButton.setTitle(val, for: .normal)
-			self?.sentView.transactionLinkButton.setTitle("🔗" + val, for: .normal)
+			self?.sentView.transactionLinkButton?.setTitle(val, for: .normal)
+			self?.sentView.transactionLinkButton?.setTitle("🔗" + val, for: .normal)
 			self?.showSentView()
 		}).disposed(by: disposeBag)
 
-		viewModel.output.balance.asDriver(onErrorJustReturn: "0.0000")
-			.drive(self.headerView.balanceLabel.rx.text).disposed(by: disposeBag)
+		if nil != self.headerView.balanceLabel {
+			viewModel.output.balance.asDriver(onErrorJustReturn: "0.0000")
+				.drive(self.headerView.balanceLabel.rx.text).disposed(by: disposeBag)
+		}
 
 		viewModel.output.error.asDriver(onErrorJustReturn: "")
 			.drive(onNext: { (val) in
@@ -69,60 +80,65 @@ class KeyboardViewController: KeyboardInputViewController {
 
 		viewModel.output.delegated.asDriver(onErrorJustReturn: "")
 			.drive(self.headerView.delegateLabel.rx.text).disposed(by: disposeBag)
+
 		viewModel.output.balances.subscribe(onNext: { [weak self] (balances) in
 			self?.balances = balances
 		}).disposed(by: disposeBag)
 
 		viewModel.output.selectedCoin.asDriver(onErrorJustReturn: "").drive(onNext: { [weak self] (coin) in
-			self?.sendView.coinButton.setTitle(coin, for: .normal)
+			self?.sendView?.coinButton?.setTitle(coin, for: .normal)
 		}).disposed(by: disposeBag)
 
 		viewModel.output.coinImageURL.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] (url) in
 			if let url = url {
-				self?.sendView.coinLogo.af_setImage(withURL: url)
+				self?.sendView?.coinLogo?.af_setImage(withURL: url)
 			}
 		}).disposed(by: disposeBag)
 
 		viewModel.output.isLoading.distinctUntilChanged().asDriver(onErrorJustReturn: false)
 			.drive(onNext: { [weak self] (val) in
-			self?.sendView.activityIndicator.alpha = val ? 1.0 : 0.0
-			self?.sendView.sendButton.isEnabled = !val
+			self?.sendView?.activityIndicator.alpha = val ? 1.0 : 0.0
+			self?.sendView?.sendButton.isEnabled = !val
 			if val {
-				self?.sendView.activityIndicator.startAnimating()
-				self?.sendView.sendButton.setTitle("", for: .normal)
+				self?.sendView?.activityIndicator.startAnimating()
+				self?.sendView?.sendButton.setTitle("", for: .normal)
 			} else {
-				self?.sendView.activityIndicator.stopAnimating()
-				self?.sendView.sendButton.setTitle("SEND", for: .normal)
+				self?.sendView?.activityIndicator.stopAnimating()
+				self?.sendView?.sendButton.setTitle("SEND", for: .normal)
 			}
 		}).disposed(by: disposeBag)
 
-		viewModel.output.selectedCoinBalance.asDriver(onErrorJustReturn: "")
-			.drive(sendView.coinAvailableLabel.rx.text).disposed(by: disposeBag)
+		if nil != sendView?.coinAvailableLabel {
+			viewModel.output.selectedCoinBalance.asDriver(onErrorJustReturn: "")
+				.drive(sendView.coinAvailableLabel.rx.text).disposed(by: disposeBag)
+		}
 
 		viewModel.output.addressFieldHasError.distinctUntilChanged().asDriver(onErrorJustReturn: false)
 			.drive(onNext: { [weak self] (hasError) in
 				if hasError {
-					self?.sendView?.addressTextField.superview?.layer.borderWidth = 1.0
-					self?.sendView?.addressTextField.superview?.layer.borderColor = UIColor(red: 0.77,
-																																			 green: 0.14,
-																																			 blue: 0.63,
-																																			 alpha: 1).cgColor
+					self?.sendView?.addressTextField?.superview?.layer.borderWidth = 1.0
+					self?.sendView?.addressTextField?.superview?.layer.borderColor = UIColor(red: 0.77,
+																																									 green: 0.14,
+																																									 blue: 0.63,
+																																									 alpha: 1).cgColor
 				} else {
-					self?.sendView?.addressTextField.superview?.layer.borderWidth = 0.0
+					self?.sendView?.addressTextField?.superview?.layer.borderWidth = 0.0
 				}
 		}).disposed(by: disposeBag)
 
-		viewModel.output.fee.asDriver(onErrorJustReturn: "")
-			.drive(sendView.feeLabel.rx.text).disposed(by: disposeBag)
+		if nil != sendView?.feeLabel {
+			viewModel.output.fee.asDriver(onErrorJustReturn: "")
+				.drive(sendView.feeLabel.rx.text).disposed(by: disposeBag)
+		}
 
 		//Input
-		self.sendView.maxButton.rx.tap.asDriver()
+		self.sendView?.maxButton?.rx.tap.asDriver()
 			.drive(viewModel.input.didTapMaxButton).disposed(by: disposeBag)
-		self.sendView.sendButton.rx.tap.asObservable()
+		self.sendView?.sendButton?.rx.tap.asObservable()
 			.subscribe(viewModel.input.didTapSendButton).disposed(by: disposeBag)
-		self.sendView.addressTextField.rx.text.asDriver()
+		self.sendView?.addressTextField?.rx.text.asDriver()
 			.drive(viewModel.input.address).disposed(by: disposeBag)
-		self.sendView.amountTextField.rx.text.asDriver().map({ (str) -> String in
+		self.sendView?.amountTextField?.rx.text.asDriver().map({ (str) -> String in
 			return str ?? ""
 		}).drive(viewModel.input.amount).disposed(by: disposeBag)
 	}
@@ -243,20 +259,41 @@ class KeyboardViewController: KeyboardInputViewController {
 			tapGestureReconizer.cancelsTouchesInView = false
 			self.view.addGestureRecognizer(tapGestureReconizer)
 
-			if !self.hasFullAccess || !self.viewModel.output.isTurnedOn {
+			let viewModel = KeyboardViewModel()
+			if !self.hasFullAccess || !viewModel.output.isTurnedOn {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-					self.showKeyboard(type: .hex, forSelectedTextField: false)
+					self.showKeyboard(type: .hex, forSelectedTextField: false, topPadding: 40)
 					self.heightConstraint?.constant = 60.0
+
+					if self.hasFullAccess {
+						let headerViewNib = UINib(nibName: "HeaderView", bundle: nil)
+						let headerViewObjects = headerViewNib.instantiate(withOwner: nil, options: nil)
+						self.headerView = headerViewObjects.first as? HeaderView
+						guard let headerView = self.headerView else { return }
+						headerView.addressButton.rx.tap.subscribe(onNext: { (_) in
+							self.keyPressed(self.headerView.addressButton)
+						}).disposed(by: self.disposeBag)
+						headerView.translatesAutoresizingMaskIntoConstraints = false
+						self.view.addSubview(headerView)
+
+						self.view?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[headerView(width)]-0-|",
+																																		 options: [],
+																																		 metrics: ["width": self.width],
+																																		 views: ["headerView": headerView]))
+						self.view?.addConstraints(NSLayoutConstraint
+							.constraints(withVisualFormat: "V:|-0-[headerView(48)]",
+													 options: [],
+													 metrics: [:],
+													 views: ["headerView": headerView]))
+						self.customize(viewModel: viewModel)
+						self.setAppearance()
+					}
 				}
 			} else {
 				self.initializeScrollView()
-				self.customize(viewModel: self.viewModel)
+				self.customize(viewModel: viewModel)
 			}
 		}
-	}
-
-	func hideForm() {
-//		self.sendView?.add
 	}
 
 	func setKeyboardActionHandler() {
@@ -278,7 +315,7 @@ class KeyboardViewController: KeyboardInputViewController {
 																						toItem: nil,
 																						attribute: .notAnAttribute,
 																						multiplier: 1,
-																						constant: self.viewModel.output.isTurnedOn ? 316.0 : 60.0)
+																						constant: self.isTurnedOn ? 316.0 : 60.0)
 			heightConstraint.priority = UILayoutPriority.defaultLow
 
 			keyboardStackView.addConstraint(heightConstraint)
@@ -439,7 +476,7 @@ class KeyboardViewController: KeyboardInputViewController {
 																																	toItem: view,
 																																	attribute: .top,
 																																	multiplier: 1.0,
-																																	constant: view.bounds.height - 46.0 - (self.viewModel.output.isTurnedOn ? 0 : 20))
+																																	constant: view.bounds.height - 46.0 - (self.isTurnedOn ? 0 : 20))
 
 			if (bottomConstraint?.constant ?? 0.0) != -40.0 {
 				bottomConstraint?.constant = -40.0
@@ -545,7 +582,7 @@ extension KeyboardViewController {
 
 	func setNeedsChangeHeight(forKeyboard ofType: KeyboardType) {
 		if ofType == .none {
-			heightConstraint?.constant = self.viewModel.output.isTurnedOn ? 316.0 : 60.0
+			heightConstraint?.constant = self.isTurnedOn ? 316.0 : 60.0
 		}
 		heightConstraint?.constant = (ofType == .numeric ? 470.0 : 316.0)
 	}
@@ -557,13 +594,13 @@ extension KeyboardViewController {
 		case letters
 	}
 
-	func showKeyboard(type: KeyboardType, forSelectedTextField: Bool = true) {
+	func showKeyboard(type: KeyboardType, forSelectedTextField: Bool = true, topPadding: CGFloat = 5.0) {
 
 		if forSelectedTextField {
 			guard selectedTextField != nil else { return }
 		}
 
-		var topPadding = CGFloat(5)
+		var topPadding = topPadding
 		var keyboard: UIView!
 		switch type {
 		case .none:
@@ -574,19 +611,19 @@ extension KeyboardViewController {
 		case .hex:
 			setNeedsChangeHeight(forKeyboard: .hex)
 			keyboard = hexKeyboardView(hideOkButton: !forSelectedTextField)
-			topPadding = 5
+			topPadding = max(5.0, topPadding)
 			break
 
 		case .numeric:
 			setNeedsChangeHeight(forKeyboard: .numeric)
 			keyboard = numericKeyboardView()
-			topPadding = 20
+			topPadding = max(20.0, topPadding)
 			break
 
 		case .letters:
 			setNeedsChangeHeight(forKeyboard: .letters)
-			keyboard = numericKeyboardView()
-			topPadding = 20
+			keyboard = lettersKeyboardView()
+			topPadding = max(20.0, topPadding)
 			break
 		}
 		additionalKeyboardView = keyboard
@@ -733,7 +770,7 @@ extension KeyboardViewController {
 	}
 
 	func lettersKeyboardView() -> UIView {
-		let height = Double(230.0)
+		let height = Double(178.0)
 
 		let keyboard = AlphabeticKeyboard(uppercased: false, in: self)
 		let rows = buttonRows(for: keyboard.actions, distribution: .fillEqually)
@@ -741,36 +778,19 @@ extension KeyboardViewController {
 		keyboardView.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.93, alpha: 1.0)
 		keyboardView.axis = .vertical
 		keyboardView.alignment = .fill
-		keyboardView.distribution = .equalSpacing
+		keyboardView.distribution = .equalCentering
 		keyboardView.translatesAutoresizingMaskIntoConstraints = false
 		keyboardView.addArrangedSubviews(rows)
 
-		let okButton = UIButton(frame: CGRect(x: 10, y: 0, width: (UIScreen.main.bounds.width - 10 - 10), height: 46))
-		okButton.translatesAutoresizingMaskIntoConstraints = false
-		okButton.setBackgroundImage(UIImage(named: "action-button"), for: .normal)
-		okButton.setTitle("OK", for: .normal)
-		okButton.setTitleColor(UIColor.white, for: .normal)
-		okButton.rx.tap.subscribe(onNext: { [weak self] (_) in
-			self?.hideKeyboard()
-			self?.selectedTextField = nil
-		}).disposed(by: disposeBag)
-		
 		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
 		keyboardViewWrapper.translatesAutoresizingMaskIntoConstraints = false
 		keyboardViewWrapper.addSubview(keyboardView)
 		keyboardViewWrapper.backgroundColor = self.backgroundColor
-		
-		keyboardViewWrapper.addSubview(okButton)
-		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[okButton]-10-|",
+
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(168)]",
 																																			options: [],
 																																			metrics: nil,
-																																			views: ["okButton": okButton]))
-		
-		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(168)]-6-[okButton(46)]",
-																																			options: [],
-																																			metrics: nil,
-																																			views: ["keyboard": keyboardView,
-																																							"okButton": okButton]))
+																																			views: ["keyboard": keyboardView]))
 		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
 																																			options: [],
 																																			metrics: nil,
@@ -812,7 +832,7 @@ extension KeyboardViewController {
 
 	func button(for action: KeyboardAction, distribution: UIStackView.Distribution = .equalSpacing) -> UIView {
 		if action == .none { return KeyboardSpacerView(width: 10) }
-		let view = DemoButton.fromNib(owner: self)
+		let view = CharacterButton.fromNib(owner: self)
 		view.setup(with: action, in: self, distribution: distribution)
 		return view
 	}
@@ -871,7 +891,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["picker": pickerView]))
-		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[picker(220)]",
+		view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[picker(250)]",
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["picker": pickerView]))
@@ -883,6 +903,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 
 	func coinPickerView() -> UIView {
 		let pickerViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 250))
+		
 		pickerViewWrapper.backgroundColor = self.backgroundColor
 		pickerViewWrapper.translatesAutoresizingMaskIntoConstraints = false
 
@@ -916,7 +937,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["okButton": okButton]))
-		pickerViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[okButton(46)]-0-|",
+		pickerViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[okButton(46)]-(0)-|",
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["okButton": okButton]))
