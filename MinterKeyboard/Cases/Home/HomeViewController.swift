@@ -10,9 +10,6 @@ import UIKit
 import MinterCore
 import MinterExplorer
 import RxSwift
-import PMAlertController
-import EFQRCode
-import SVProgressHUD
 
 class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDelegate, UITableViewDataSource {
 
@@ -98,33 +95,11 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return viewModel.dataSource.count
 	}
-
-	func showDeposit() {
-
-		let qr = EFQRCode.generate(content: "Mx" + Session.shared.account.address)
-
-		var image = (qr != nil) ? UIImage(cgImage: qr!) : UIImage()
-		let alertVC = PMAlertController(title: "Deposit",
-																		description: "Mx" + Session.shared.account.address,
-																		image: image,
-																		style: .alert)
-		
-		alertVC.addAction(PMAlertAction(title: "Close", style: .cancel, action: { () -> Void in
-//			print("Capture action Cancel")
-		}))
-		alertVC.addAction(PMAlertAction(title: "Copy", style: .`default`, action: { () -> Void in
-			UIPasteboard.general.string = "Mx" + Session.shared.account.address
-			SVProgressHUD.showSuccess(withStatus: "COPIED")
-		}))
-		self.present(alertVC, animated: true, completion: nil)
-	}
-
 }
 
 extension HomeViewController: BalanceTVCellDelegate {
 	
 	func didTapDeposit() {
-		//self.showDeposit()
         let card = CardViewController.init()
         card.configure(parent: self)
 	}

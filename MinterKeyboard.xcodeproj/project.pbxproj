@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		08840524AC39060D2F599A78 /* Pods_MinterKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54DBABACF222D16CAF2BE13 /* Pods_MinterKeyboard.framework */; };
 		2A01EA3C22E7011F0098A88B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A01EA3B22E7011F0098A88B /* HomeViewController.swift */; };
-		2A1C3ADA22F45CE900EC01E8 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1C3AD922F45CE900EC01E8 /* DepositViewController.swift */; };
-		2A33AFD022F08162003ECE9F /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A33AFCF22F08162003ECE9F /* DepositViewController.xib */; };
 		2A5750F622EF4FA7006BFB75 /* MenuItemWithImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */; };
 		2A5750F722EF4FAB006BFB75 /* MenuItemWithImageTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */; };
 		2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */; };
@@ -19,6 +17,9 @@
 		2A83BE3022EED91F007C7930 /* BalanceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A175722E754C800E7503F /* BalanceTVCell.swift */; };
 		2A8566F422F1EEDF001AEB58 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8566F222F1EEDE001AEB58 /* CardViewController.swift */; };
 		2A8566F522F1EEDF001AEB58 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A8566F322F1EEDE001AEB58 /* CardViewController.xib */; };
+		2A9BB64F230086DF00230173 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9BB64C230086DF00230173 /* SF-Pro-Display-Regular.otf */; };
+		2A9BB650230086DF00230173 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9BB64D230086DF00230173 /* SF-Pro-Text-Bold.otf */; };
+		2A9BB651230086DF00230173 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9BB64E230086DF00230173 /* SF-Pro-Text-Heavy.otf */; };
 		2ABF5A2F22E8CCE3001CC6AE /* MenuItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */; };
 		2ABF5A3022E8CCE3001CC6AE /* MenuItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */; };
 		2AD781D222E9B10200CE5533 /* SpacerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */; };
@@ -227,8 +228,6 @@
 
 /* Begin PBXFileReference section */
 		2A01EA3B22E7011F0098A88B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		2A1C3AD922F45CE900EC01E8 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
-		2A33AFCF22F08162003ECE9F /* DepositViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
 		2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemWithImageTVCell.swift; sourceTree = "<group>"; };
 		2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemWithImageTVCell.xib; sourceTree = "<group>"; };
 		2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -237,6 +236,9 @@
 		2A8566F322F1EEDE001AEB58 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		2A9A175722E754C800E7503F /* BalanceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTVCell.swift; sourceTree = "<group>"; };
 		2A9A175822E754D000E7503F /* BalanceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTVCell.xib; sourceTree = "<group>"; };
+		2A9BB64C230086DF00230173 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		2A9BB64D230086DF00230173 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		2A9BB64E230086DF00230173 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTVCell.swift; sourceTree = "<group>"; };
 		2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTVCell.xib; sourceTree = "<group>"; };
 		2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTVCell.swift; sourceTree = "<group>"; };
@@ -474,13 +476,14 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
-		2A9BBA9E22F07AD000ECD683 /* Deposit */ = {
+		2A9BB64B230086C800230173 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				2A33AFCF22F08162003ECE9F /* DepositViewController.xib */,
-				2A1C3AD922F45CE900EC01E8 /* DepositViewController.swift */,
+				2A9BB64C230086DF00230173 /* SF-Pro-Display-Regular.otf */,
+				2A9BB64D230086DF00230173 /* SF-Pro-Text-Bold.otf */,
+				2A9BB64E230086DF00230173 /* SF-Pro-Text-Heavy.otf */,
 			);
-			path = Deposit;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		2ABE7F0622E7545C0057F994 /* BalanceTVCell */ = {
@@ -580,7 +583,6 @@
 			isa = PBXGroup;
 			children = (
 				2A8566F122F1EEDE001AEB58 /* Card */,
-				2A9BBA9E22F07AD000ECD683 /* Deposit */,
 				FAF4B61022D257B8009061B7 /* BackupPhrase */,
 				FAF4B60B22D25772009061B7 /* Home */,
 				FAF4B60622D0B23D009061B7 /* Setup */,
@@ -663,6 +665,7 @@
 		FA57095B22B67D5D00F5D0DD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A9BB64B230086C800230173 /* Fonts */,
 				2A01EA3E22E708D50098A88B /* Cells */,
 				FAF77AFD22BB8319005D771A /* Helper */,
 				FA57095C22B67D6200F5D0DD /* View */,
@@ -1044,8 +1047,8 @@
 				FAB0D31A22C8F325002945E2 /* error@2x.png in Resources */,
 				FAB0D33622C8F325002945E2 /* warningFilled@1x.png in Resources */,
 				FA07C50022B4E25E005D7275 /* Assets.xcassets in Resources */,
+				2A9BB651230086DF00230173 /* SF-Pro-Text-Heavy.otf in Resources */,
 				FAB0D30E22C8F325002945E2 /* warningFilled@3x.png in Resources */,
-				2A33AFD022F08162003ECE9F /* DepositViewController.xib in Resources */,
 				FAF89AEF22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */,
 				FAF89B0B22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				FAF89ACD22BA2B34003442CC /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -1062,9 +1065,11 @@
 				2AD781D322E9B10200CE5533 /* SpacerTVCell.xib in Resources */,
 				FA07C4FE22B4E25C005D7275 /* Main.storyboard in Resources */,
 				FAB0D32022C8F325002945E2 /* alarmOutline@2x.png in Resources */,
+				2A9BB650230086DF00230173 /* SF-Pro-Text-Bold.otf in Resources */,
 				FAB0D32E22C8F325002945E2 /* alarmFilled@1x.png in Resources */,
 				FA57094A22B57C0000F5D0DD /* ConvertView.xib in Resources */,
 				FAB0D31E22C8F325002945E2 /* warningFilled@2x.png in Resources */,
+				2A9BB64F230086DF00230173 /* SF-Pro-Display-Regular.otf in Resources */,
 				FAB0D33822C8F325002945E2 /* warningOutline@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1234,7 +1239,6 @@
 				FAF915C722D2725D00C2117C /* BalanceTableViewCell.swift in Sources */,
 				FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */,
 				FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */,
-				2A1C3ADA22F45CE900EC01E8 /* DepositViewController.swift in Sources */,
 				FA57093522B57B2200F5D0DD /* BalanceView.swift in Sources */,
 				FAF915CF22D28CAC00C2117C /* BaseCellItem.swift in Sources */,
 				2A83BE2E22EED5DD007C7930 /* UITableViewCell+Extensions.swift in Sources */,

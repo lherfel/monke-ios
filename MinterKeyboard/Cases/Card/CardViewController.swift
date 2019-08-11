@@ -1,9 +1,15 @@
 import UIKit
+import MinterCore
+import MinterExplorer
+import RxSwift
+import EFQRCode
+import SVProgressHUD
 
 class CardViewController: UIViewController {
 
     @IBOutlet weak var handleArea: UIView!
-    @IBOutlet weak var modalView: UIView!
+    @IBOutlet weak var imageQR: UIImageView!
+    @IBOutlet weak var codeText: UITextField!
     
     // Enum for card states
     enum CardState {
@@ -46,7 +52,7 @@ class CardViewController: UIViewController {
     
     func setupCard() {
         // Setup starting and ending card height
-        endCardHeight = 350
+        endCardHeight = 390
         startCardHeight = 1
         
         // Add Visual Effects View
@@ -58,10 +64,17 @@ class CardViewController: UIViewController {
         cardViewController = self
         self.view.frame = CGRect(x: 0, y: homeViewController.view.frame.height - startCardHeight, width: homeViewController.view.bounds.width, height: endCardHeight)
         self.view.clipsToBounds = true
-        self.view.layer.cornerRadius = 30
+        self.view.layer.cornerRadius = 8
         self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         homeViewController.view.addSubview(self.view)
+        
+        let qr = EFQRCode.generate(content: "Mx" + Session.shared.account.address)
+        
+        var image = (qr != nil) ? UIImage(cgImage: qr!) : UIImage()
+        
+        imageQR.image = image
+        codeText.text = "Mx" + Session.shared.account.address
         
         // Add tap and pan recognizers
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CardViewController.handleCardPan(recognizer:)))
