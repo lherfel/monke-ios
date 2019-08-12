@@ -13,7 +13,11 @@ import RxSwift
 
 class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDelegate, UITableViewDataSource {
 
+	// MARK: - IBOutlet
+
 	@IBOutlet weak var turnOnButton: UIButton!
+	@IBOutlet var headerView: UIView!
+	@IBOutlet weak var tableView: UITableView!
 
 	// MARK: - ControllerProtocol
 
@@ -43,9 +47,6 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 	}
 
 	// MARK: -
-
-	@IBOutlet var headerView: UIView!
-	@IBOutlet weak var tableView: UITableView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

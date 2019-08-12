@@ -17,9 +17,6 @@
 		2A83BE3022EED91F007C7930 /* BalanceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A175722E754C800E7503F /* BalanceTVCell.swift */; };
 		2A8566F422F1EEDF001AEB58 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8566F222F1EEDE001AEB58 /* CardViewController.swift */; };
 		2A8566F522F1EEDF001AEB58 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A8566F322F1EEDE001AEB58 /* CardViewController.xib */; };
-		2A9BB64F230086DF00230173 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9BB64C230086DF00230173 /* SF-Pro-Display-Regular.otf */; };
-		2A9BB650230086DF00230173 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9BB64D230086DF00230173 /* SF-Pro-Text-Bold.otf */; };
-		2A9BB651230086DF00230173 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9BB64E230086DF00230173 /* SF-Pro-Text-Heavy.otf */; };
 		2ABF5A2F22E8CCE3001CC6AE /* MenuItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */; };
 		2ABF5A3022E8CCE3001CC6AE /* MenuItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */; };
 		2AD781D222E9B10200CE5533 /* SpacerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */; };
@@ -131,6 +128,8 @@
 		FAB0D33B22C8F325002945E2 /* notificationFilled@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30C22C8F325002945E2 /* notificationFilled@1x.png */; };
 		FAB0D33C22C8F325002945E2 /* notificationOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */; };
 		FAB0D33D22C8F325002945E2 /* notificationOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB0D30D22C8F325002945E2 /* notificationOutline@2x.png */; };
+		FAB6739F23018A60005E5FDF /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA122BA2B34003442CC /* SF-Pro-Display-Regular.otf */; };
+		FAB673A023018A61005E5FDF /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA122BA2B34003442CC /* SF-Pro-Display-Regular.otf */; };
 		FAC5392C22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */; };
 		FAC5392D22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */; };
 		FAC5393422C217070077E181 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5393322C217070077E181 /* Sugar.swift */; };
@@ -237,9 +236,6 @@
 		2A8566F322F1EEDE001AEB58 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		2A9A175722E754C800E7503F /* BalanceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTVCell.swift; sourceTree = "<group>"; };
 		2A9A175822E754D000E7503F /* BalanceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTVCell.xib; sourceTree = "<group>"; };
-		2A9BB64C230086DF00230173 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		2A9BB64D230086DF00230173 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
-		2A9BB64E230086DF00230173 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTVCell.swift; sourceTree = "<group>"; };
 		2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTVCell.xib; sourceTree = "<group>"; };
 		2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTVCell.swift; sourceTree = "<group>"; };
@@ -478,16 +474,6 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
-		2A9BB64B230086C800230173 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				2A9BB64C230086DF00230173 /* SF-Pro-Display-Regular.otf */,
-				2A9BB64D230086DF00230173 /* SF-Pro-Text-Bold.otf */,
-				2A9BB64E230086DF00230173 /* SF-Pro-Text-Heavy.otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		2ABE7F0622E7545C0057F994 /* BalanceTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,7 +653,6 @@
 		FA57095B22B67D5D00F5D0DD /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2A9BB64B230086C800230173 /* Fonts */,
 				2A01EA3E22E708D50098A88B /* Cells */,
 				FAF77AFD22BB8319005D771A /* Helper */,
 				FA57095C22B67D6200F5D0DD /* View */,
@@ -1037,6 +1022,7 @@
 				FAB0D33422C8F325002945E2 /* error@1x.png in Resources */,
 				2A8566F522F1EEDF001AEB58 /* CardViewController.xib in Resources */,
 				FAB0D33022C8F325002945E2 /* alarmOutline@1x.png in Resources */,
+				FAB6739F23018A60005E5FDF /* SF-Pro-Display-Regular.otf in Resources */,
 				FAB0D33A22C8F325002945E2 /* notificationFilled@1x.png in Resources */,
 				FAB0D31422C8F325002945E2 /* notificationOutline@1x.png in Resources */,
 				FAF89AF322BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */,
@@ -1050,7 +1036,6 @@
 				FAB0D31A22C8F325002945E2 /* error@2x.png in Resources */,
 				FAB0D33622C8F325002945E2 /* warningFilled@1x.png in Resources */,
 				FA07C50022B4E25E005D7275 /* Assets.xcassets in Resources */,
-				2A9BB651230086DF00230173 /* SF-Pro-Text-Heavy.otf in Resources */,
 				FAB0D30E22C8F325002945E2 /* warningFilled@3x.png in Resources */,
 				FAF89AEF22BA2B34003442CC /* SF-Pro-Text-Ultralight.otf in Resources */,
 				FAF89B0B22BA2B34003442CC /* SF-Pro-Text-RegularItalic.otf in Resources */,
@@ -1068,11 +1053,9 @@
 				2AD781D322E9B10200CE5533 /* SpacerTVCell.xib in Resources */,
 				FA07C4FE22B4E25C005D7275 /* Main.storyboard in Resources */,
 				FAB0D32022C8F325002945E2 /* alarmOutline@2x.png in Resources */,
-				2A9BB650230086DF00230173 /* SF-Pro-Text-Bold.otf in Resources */,
 				FAB0D32E22C8F325002945E2 /* alarmFilled@1x.png in Resources */,
 				FA57094A22B57C0000F5D0DD /* ConvertView.xib in Resources */,
 				FAB0D31E22C8F325002945E2 /* warningFilled@2x.png in Resources */,
-				2A9BB64F230086DF00230173 /* SF-Pro-Display-Regular.otf in Resources */,
 				FAB0D33822C8F325002945E2 /* warningOutline@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1092,6 +1075,7 @@
 				FAB0D32322C8F325002945E2 /* alarmFilled@2x.png in Resources */,
 				FAF89AD822BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				FAF89AF422BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */,
+				FAB673A023018A61005E5FDF /* SF-Pro-Display-Regular.otf in Resources */,
 				FA57094B22B57C0000F5D0DD /* ConvertView.xib in Resources */,
 				FAB0D32722C8F325002945E2 /* check@1x.png in Resources */,
 				FAF89B0E22BA2B34003442CC /* SF-Pro-Text-Semibold.otf in Resources */,
@@ -1487,7 +1471,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MRXF64768V;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1511,7 +1495,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MRXF64768V;
+				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

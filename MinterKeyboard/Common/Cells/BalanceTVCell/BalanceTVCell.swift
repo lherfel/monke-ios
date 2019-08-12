@@ -34,11 +34,6 @@ class BalanceTVCell: BaseCell {
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-
-		depositButton.rx.tap.subscribe(onNext: { [weak self] (_) in
-			self?.delegate?.didTapDeposit()
-		}).disposed(by: disposeBag)
-
 	}
 
 	// MARK: -
@@ -47,8 +42,13 @@ class BalanceTVCell: BaseCell {
 		guard let item = item as? BalanceTVCellItem else { return }
 
 		coinImage.image = item.image
+
 		item.titleObservable?.asDriver(onErrorJustReturn: nil)
 			.drive(title.rx.text).disposed(by: disposeBag)
+
+		depositButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+			self?.delegate?.didTapDeposit()
+		}).disposed(by: disposeBag)
 	}
 
 }
