@@ -143,6 +143,7 @@
 		FAF359EA22BF85930006A087 /* GateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E822BF85930006A087 /* GateManager.swift */; };
 		FAF359EC22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */; };
 		FAF359ED22BFCE0C0006A087 /* GateManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */; };
+		FAF38E0122E79B0E00E08BE8 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF38E0022E79B0E00E08BE8 /* DefaultKeyboard.swift */; };
 		FAF4B60822D0B3B4009061B7 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60722D0B3B4009061B7 /* SetupViewController.swift */; };
 		FAF4B60A22D0B3D6009061B7 /* SetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60922D0B3D6009061B7 /* SetupViewModel.swift */; };
 		FAF4B60F22D2579B009061B7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4B60E22D2579B009061B7 /* HomeViewModel.swift */; };
@@ -182,8 +183,8 @@
 		FAF89B1722BA2B34003442CC /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AC222BA2B34003442CC /* SF-Pro-Text-Medium.otf */; };
 		FAF89B1822BA2B34003442CC /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AC222BA2B34003442CC /* SF-Pro-Text-Medium.otf */; };
 		FAF89B2222BA41D2003442CC /* HexKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2122BA41D2003442CC /* HexKeyboard.swift */; };
-		FAF89B2422BA4762003442CC /* DemoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2322BA4762003442CC /* DemoButton.swift */; };
-		FAF89B2622BA4775003442CC /* DemoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF89B2522BA4775003442CC /* DemoButton.xib */; };
+		FAF89B2422BA4762003442CC /* CharacterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2322BA4762003442CC /* CharacterButton.swift */; };
+		FAF89B2622BA4775003442CC /* CharacterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF89B2522BA4775003442CC /* CharacterButton.xib */; };
 		FAF89B2922BA47E0003442CC /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF89B2822BA47E0003442CC /* Assets.swift */; };
 		FAF89B2B22BA89C6003442CC /* FakeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFAE85522B81DC1001E7674 /* FakeTextField.swift */; };
 		FAF915C722D2725D00C2117C /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF915C622D2725D00C2117C /* BalanceTableViewCell.swift */; };
@@ -323,6 +324,7 @@
 		FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionConstructor.swift; sourceTree = "<group>"; };
 		FAF359E822BF85930006A087 /* GateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateManager.swift; sourceTree = "<group>"; };
 		FAF359EB22BFCE0C0006A087 /* GateManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GateManager+Rx.swift"; sourceTree = "<group>"; };
+		FAF38E0022E79B0E00E08BE8 /* DefaultKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyboard.swift; sourceTree = "<group>"; };
 		FAF4B60722D0B3B4009061B7 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		FAF4B60922D0B3D6009061B7 /* SetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewModel.swift; sourceTree = "<group>"; };
 		FAF4B60E22D2579B009061B7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -380,8 +382,8 @@
 		FAF89AC522BA2B34003442CC /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		FAF89AC622BA2B34003442CC /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		FAF89B2122BA41D2003442CC /* HexKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexKeyboard.swift; sourceTree = "<group>"; };
-		FAF89B2322BA4762003442CC /* DemoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoButton.swift; sourceTree = "<group>"; };
-		FAF89B2522BA4775003442CC /* DemoButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoButton.xib; sourceTree = "<group>"; };
+		FAF89B2322BA4762003442CC /* CharacterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterButton.swift; sourceTree = "<group>"; };
+		FAF89B2522BA4775003442CC /* CharacterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterButton.xib; sourceTree = "<group>"; };
 		FAF89B2822BA47E0003442CC /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		FAF915C622D2725D00C2117C /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
 		FAF915C822D2739A00C2117C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -885,11 +887,12 @@
 			children = (
 				FAFAE85522B81DC1001E7674 /* FakeTextField.swift */,
 				FAF89B2122BA41D2003442CC /* HexKeyboard.swift */,
-				FAF89B2322BA4762003442CC /* DemoButton.swift */,
-				FAF89B2522BA4775003442CC /* DemoButton.xib */,
+				FAF89B2322BA4762003442CC /* CharacterButton.swift */,
+				FAF89B2522BA4775003442CC /* CharacterButton.xib */,
 				FAF77B0522BB8AB7005D771A /* NumericKeyboard.swift */,
 				FA5A4E3A22BE231D002EAD92 /* ShareKeyboard.swift */,
 				FAF7046522D74F1E00709DB6 /* LettersKeyboard.swift */,
+				FAF38E0022E79B0E00E08BE8 /* DefaultKeyboard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1085,7 +1088,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF89B2622BA4775003442CC /* DemoButton.xib in Resources */,
+				FAF89B2622BA4775003442CC /* CharacterButton.xib in Resources */,
 				FAB0D32322C8F325002945E2 /* alarmFilled@2x.png in Resources */,
 				FAF89AD822BA2B34003442CC /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				FAF89AF422BA2B34003442CC /* SF-Pro-Text-Thin.otf in Resources */,
@@ -1287,6 +1290,7 @@
 				FA5A4E3122BD7572002EAD92 /* Decimal+Fractional.swift in Sources */,
 				FA5A4E3B22BE231D002EAD92 /* ShareKeyboard.swift in Sources */,
 				FA57094222B57BC500F5D0DD /* SendView.swift in Sources */,
+				FAF38E0122E79B0E00E08BE8 /* DefaultKeyboard.swift in Sources */,
 				FAFAE9F922B82854001E7674 /* FakeTextField.swift in Sources */,
 				FAB0D28722C76D4E002945E2 /* Configuration.swift in Sources */,
 				FAFAE9F822B8284F001E7674 /* KeyboardViewController.swift in Sources */,
@@ -1297,7 +1301,7 @@
 				FAF89B2222BA41D2003442CC /* HexKeyboard.swift in Sources */,
 				FAB0D28D22C7B897002945E2 /* PrivateKey+.swift in Sources */,
 				FAF77B0422BB88A4005D771A /* KeyActionHandler.swift in Sources */,
-				FAF89B2422BA4762003442CC /* DemoButton.swift in Sources */,
+				FAF89B2422BA4762003442CC /* CharacterButton.swift in Sources */,
 				FA57095F22B67D7C00F5D0DD /* DefaultTextField.swift in Sources */,
 				FAF89B2922BA47E0003442CC /* Assets.swift in Sources */,
 				FAB0D28A22C7A009002945E2 /* UIColor+Defaults.swift in Sources */,

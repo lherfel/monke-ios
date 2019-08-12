@@ -34,10 +34,6 @@ class Session {
 
 	private init() {
 		self.account = try! AccountManager.shared.restore()
-//
-//		accountSubject.subscribe(onNext: { (account) in
-//
-//		}).disposed(by: disposeBag)
 	}
 
 	// MARK: -
@@ -55,17 +51,26 @@ class Session {
 	func updateBalance() {
 		addressManager.address(address: "Mx" + self.account.address) { [weak self] (res, error) in
 			if let balances = res?["balances"] as? [[String: String]] {
+				var hasBananas = false
 				var ret: [String: Decimal] = [:]
 				balances.forEach({ (balance) in
 					if let key = balance["coin"] {
 						ret[key] = Decimal(string: balance["amount"] ?? "") ?? 0.0
 						if key == "BANANA" {
 							let bananaBalance = Decimal(string: balance["amount"] ?? "") ?? 0.0
+							hasBananas = true
+							AccountManager.shared.setTurnedOn(isTurnedOn: bananaBalance > 0.0)
+
 							if bananaBalance > 1.0 {
 								self?.hasEnoughBananas.onNext(true)
 							}
 						}
 					}
+
+					if !hasBananas {
+						AccountManager.shared.setTurnedOn(isTurnedOn: false)
+					}
+
 				})
 				self?.balanceSubject.onNext(ret)
 			}

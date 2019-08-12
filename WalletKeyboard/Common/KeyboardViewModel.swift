@@ -55,7 +55,7 @@ class KeyboardViewModel {
 		var selectedCoinBalance: Observable<String>
 		var isLoading: Observable<Bool>
 		var addressFieldHasError: Observable<Bool>
-		var isTurnedOn: Bool
+		var isTurnedOn: (Bool)
 		var fee: Observable<String>
 	}
 
@@ -75,6 +75,7 @@ class KeyboardViewModel {
 			self.balancesSubject.onNext(ret)
 		}
 	}
+	private var originalBalances: [String: Decimal] = [:]
 
 	var shouldConvert: Bool {
 		return (balances["BANANA"] ?? 0.0) < Session.minimumBananasNumber
@@ -136,7 +137,9 @@ class KeyboardViewModel {
 												 selectedCoinBalance: selectedCoinBalanceSubject.asObservable(),
 												 isLoading: isLoadingSubject.asObservable(),
 												 addressFieldHasError: addressFieldHasErrorSubject.asObservable(),
-												 isTurnedOn: { return AccountManager.shared.restoreTurnedOn() }(),
+												 isTurnedOn: {
+														return AccountManager.shared.restoreTurnedOn()
+													}(),
 												 fee: feeSubject.asObservable()
 		)
 
@@ -227,6 +230,7 @@ class KeyboardViewModel {
 
 		Session.shared.balanceSubject.map({ [weak self] (res) -> String in
 			self?.balances = res
+			self?.originalBalances = res
 			if let balance = res[Coin.baseCoin().symbol ?? ""] {
 				return CurrencyNumberFormatter.formattedDecimal(with: balance,
 																												formatter: self!.currencyFormatter)
