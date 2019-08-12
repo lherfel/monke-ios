@@ -198,6 +198,7 @@ class KeyboardViewController: KeyboardInputViewController {
 				}
 				return
 			}
+
 			oldValue?.isTyping = false
 			if selectedTextField as? AddressTextField != nil {
 				if nil != oldValue {
@@ -270,9 +271,7 @@ class KeyboardViewController: KeyboardInputViewController {
 						let headerViewObjects = headerViewNib.instantiate(withOwner: nil, options: nil)
 						self.headerView = headerViewObjects.first as? HeaderView
 						guard let headerView = self.headerView else { return }
-						headerView.addressButton.rx.tap.subscribe(onNext: { (_) in
-							self.keyPressed(self.headerView.addressButton)
-						}).disposed(by: self.disposeBag)
+						headerView.addressButton.isHidden = true
 						headerView.translatesAutoresizingMaskIntoConstraints = false
 						self.view.addSubview(headerView)
 
