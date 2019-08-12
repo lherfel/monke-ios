@@ -10,6 +10,28 @@ import Foundation
 import MinterCore
 import RxSwift
 
+class HomeTableCellItem : BaseCellItem {
+    var title: String
+    var type: HomeTableCellType
+    var desc: String?
+    var image: String?
+    
+    enum HomeTableCellType: String {
+        case balance = "BalanceTVCell"
+        case menuItem = "MenuItemTVCell"
+        case menuItemWithImage = "MenuItemWithImageTVCell"
+        case spacer = "SpacerTVCell"
+    }
+    
+    init(title: String = "", type: HomeTableCellType = .spacer, desc: String? = nil, image: String? = nil) {
+        self.title = title
+        self.type = type
+        self.desc = desc
+        self.image = image
+        super.init(reuseIdentifier: type.rawValue, identifier: type.rawValue)
+    }
+}
+
 class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 	// MARK: -
@@ -36,6 +58,23 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	var didTapTurnOnSubject = PublishSubject<Void>()
 	var isTurnedOnSubject = BehaviorSubject(value: AccountManager.shared.restoreTurnedOn())
 
+    // MARK: - DataSource
+    
+    public var dataSource: [HomeTableCellItem] {
+        return [
+            HomeTableCellItem(title: "deposit", type: .balance),
+            HomeTableCellItem(title: "", type: .spacer),
+            HomeTableCellItem(title: "🔑 Backup Phrase", type: .menuItem),
+            HomeTableCellItem(title: "Report 🙈 problem", type: .menuItem),
+            HomeTableCellItem(title: "Rate Monke 💜 in Appstore", type: .menuItem),
+            HomeTableCellItem(title: "Make a 🍩 donation", type: .menuItemWithImage, desc: "We spend  everything on development", image: "monke-icon"),
+            HomeTableCellItem(title: "Buy 🍌 Banana", type: .menuItemWithImage, desc: "Use coins to reduce transaction fees", image: "bip-uppercase"),
+            HomeTableCellItem(title: "", type: .spacer),
+            HomeTableCellItem(title: "Telegram channel", type: .menuItemWithImage, desc: "Updates and announcements from Monke team", image: "telegram-icon"),
+            HomeTableCellItem(title: "About", type: .menuItemWithImage, desc: "Monke.io", image: "banana-icon"),
+        ]
+    }
+    
 	// MARK: -
 
 	override init() {
@@ -68,11 +107,9 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	}
 
 	var balanceCellItem: BaseCellItem {
-		let item = BalanceTableViewCellItem(reuseIdentifier: "BalanceTableViewCell",
-																				identifier: "BalanceTableViewCell")
+		let item = BalanceTVCellItem(reuseIdentifier: "BalanceTVCell", identifier: "BalanceTVCell")
 		item.image = UIImage(named: "bip-logo")
 		item.titleObservable = balanceSubject.asObservable()
 		return item
 	}
-
 }
