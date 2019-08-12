@@ -10,26 +10,37 @@ import Foundation
 import MinterCore
 import RxSwift
 
-class HomeTableCellItem : BaseCellItem {
-    var title: String
-    var type: HomeTableCellType
-    var desc: String?
-    var image: String?
-    
-    enum HomeTableCellType: String {
-        case balance = "BalanceTVCell"
-        case menuItem = "MenuItemTVCell"
-        case menuItemWithImage = "MenuItemWithImageTVCell"
-        case spacer = "SpacerTVCell"
-    }
-    
-    init(title: String = "", type: HomeTableCellType = .spacer, desc: String? = nil, image: String? = nil) {
-        self.title = title
-        self.type = type
-        self.desc = desc
-        self.image = image
-        super.init(reuseIdentifier: type.rawValue, identifier: type.rawValue)
-    }
+class HomeTableCellItem: BaseCellItem {
+	var title: String
+	var type: HomeTableCellItem.`Type`
+	var desc: String?
+	var image: String?
+
+	enum `Type`: String {
+		case balance = "BalanceTVCell"
+		case menuItem = "MenuItemTVCell"
+		case menuItemWithImage = "MenuItemWithImageTVCell"
+		case spacer = "SpacerTVCell"
+	}
+	
+	enum identifiers: String {
+		case deposit
+		case backupPhrase
+		case reportProblem
+		case rate
+		case donate
+		case buyBanana
+		case telegram
+		case about
+	}
+
+	init(identifier: String, title: String = "", type: HomeTableCellItem.`Type` = .spacer, desc: String? = nil, image: String? = nil) {
+		self.title = title
+		self.type = type
+		self.desc = desc
+		self.image = image
+		super.init(reuseIdentifier: type.rawValue, identifier: identifier)
+	}
 }
 
 class HomeViewModel: BaseViewModel, ViewModelProtocol {
@@ -47,10 +58,10 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 	struct Output {
 		var isTurnedOn: Observable<Bool>
+		var cells: [HomeTableCellItem]
 	}
 
 	var input: HomeViewModel.Input!
-
 	var output: HomeViewModel.Output!
 
 	// MARK: -
@@ -58,30 +69,59 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	var didTapTurnOnSubject = PublishSubject<Void>()
 	var isTurnedOnSubject = BehaviorSubject(value: AccountManager.shared.restoreTurnedOn())
 
-    // MARK: - DataSource
-    
-    public var dataSource: [HomeTableCellItem] {
-        return [
-            HomeTableCellItem(title: "deposit", type: .balance),
-            HomeTableCellItem(title: "", type: .spacer),
-            HomeTableCellItem(title: "🔑 Backup Phrase", type: .menuItem),
-            HomeTableCellItem(title: "Report 🙈 problem", type: .menuItem),
-            HomeTableCellItem(title: "Rate Monke 💜 in Appstore", type: .menuItem),
-            HomeTableCellItem(title: "Make a 🍩 donation", type: .menuItemWithImage, desc: "We spend  everything on development", image: "monke-icon"),
-            HomeTableCellItem(title: "Buy 🍌 Banana", type: .menuItemWithImage, desc: "Use coins to reduce transaction fees", image: "bip-uppercase"),
-            HomeTableCellItem(title: "", type: .spacer),
-            HomeTableCellItem(title: "Telegram channel", type: .menuItemWithImage, desc: "Updates and announcements from Monke team", image: "telegram-icon"),
-            HomeTableCellItem(title: "About", type: .menuItemWithImage, desc: "Monke.io", image: "banana-icon"),
-        ]
-    }
-    
+	// MARK: - DataSource
+
+	private var dataSource: [HomeTableCellItem] {
+		return [
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.deposit.rawValue,
+													title: "deposit",
+													type: .balance),
+				HomeTableCellItem(identifier: "spacer_1",
+													title: "",
+													type: .spacer),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.backupPhrase.rawValue,
+													title: "🔑 Backup Phrase",
+													type: .menuItem),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.reportProblem.rawValue,
+													title: "Report 🙈 problem",
+													type: .menuItem),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.rate.rawValue,
+													title: "Rate Monke 💜 in Appstore",
+													type: .menuItem),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.donate.rawValue,
+													title: "Make a 🍩 donation",
+													type: .menuItemWithImage,
+													desc: "We spend  everything on development",
+													image: "monke-icon"),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.buyBanana.rawValue,
+													title: "Buy 🍌 Banana",
+													type: .menuItemWithImage,
+													desc: "Use coins to reduce transaction fees",
+													image: "bip-uppercase"),
+				HomeTableCellItem(identifier: "spacer_2",
+													title: "",
+													type: .spacer),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.telegram.rawValue,
+													title: "Telegram channel",
+													type: .menuItemWithImage,
+													desc: "Updates and announcements from Monke team",
+													image: "telegram-icon"),
+				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.about.rawValue,
+													title: "About",
+													type: .menuItemWithImage,
+													desc: "Monke.io",
+													image: "banana-icon"),
+		]
+	}
+
 	// MARK: -
 
 	override init() {
 		super.init()
 
 		input = Input(didTapTurnOn: didTapTurnOnSubject.asObserver())
-		output = Output(isTurnedOn: isTurnedOnSubject.asObservable())
+		output = Output(isTurnedOn: isTurnedOnSubject.asObservable(),
+										cells: dataSource)
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 			Session.shared.updateBalance()

@@ -24,7 +24,7 @@ public class BaseCellItem : IdentifiableType, Equatable {
 
 	public typealias Identity = String
 
-	public var identity : Identity {
+	public var identity: Identity {
 		return identifier
 	}
 

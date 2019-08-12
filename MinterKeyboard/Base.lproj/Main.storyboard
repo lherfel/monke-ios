@@ -167,6 +167,7 @@
                         <outlet property="headerView" destination="USs-jV-Kdf" id="aor-57-8tg"/>
                         <outlet property="tableView" destination="z1q-5y-4P6" id="C6K-vQ-zFc"/>
                         <outlet property="turnOnButton" destination="LGv-Rp-9hq" id="Jra-Bb-SaI"/>
+                        <segue destination="NIi-eP-m4k" kind="show" identifier="showBackup" id="huz-Ys-pYs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzg-vd-zjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -195,7 +196,7 @@
         <!--Back Phrase-->
         <scene sceneID="8L1-UQ-Fhn">
             <objects>
-                <viewController title="Back Phrase" id="NIi-eP-m4k" customClass="BackupPhraseViewController" customModule="MinterKeyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BackupPhraseViewController" title="Back Phrase" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NIi-eP-m4k" customClass="BackupPhraseViewController" customModule="MinterKeyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6sJ-lz-ffW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

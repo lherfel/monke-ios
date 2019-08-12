@@ -30,6 +30,16 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 			self.turnOnButton.setTitle(isTurnedOn ? "TURN OFF MONKE" : "TURN ON MONKE", for: .normal)
 		}).disposed(by: disposeBag)
 
+		tableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
+			guard let cell = self?.viewModel.output.cells[safe: indexPath.item] else {
+				return
+			}
+
+			if cell.identifier == HomeTableCellItem.identifiers.backupPhrase.rawValue {
+				self?.performSegue(withIdentifier: "showBackup", sender: nil)
+			}
+		}).disposed(by: disposeBag)
+
 	}
 
 	// MARK: -
@@ -41,67 +51,74 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 		super.viewDidLoad()
 
 		configure(with: viewModel)
-        registerCells()
+		registerCells()
 
 		tableView.tableHeaderView = headerView
 		tableView.tableFooterView = UIView()
 	}
-    
+
 	// MARK: - TableView
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let object = viewModel.dataSource[indexPath.item]
-        
-        switch object.type {
-        case .balance:
-            let item = viewModel.balanceCellItem
-            let cell = tableView.dequeueReusableCell(withIdentifier: BalanceTVCell.reuseID) as! BalanceTVCell
-            cell.configure(item: item)
-            cell.delegate = self
-            return cell
-        case .menuItem:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemTVCell.reuseID) as! MenuItemTVCell
-            cell.configure(title: object.title, subtitle: object.desc)
-            return cell
-        case .menuItemWithImage:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemWithImageTVCell.reuseID) as! MenuItemWithImageTVCell
-            guard let image = object.image else { return cell }
-            cell.configure(title: object.title, subtitle: object.desc, image: image)
-            return cell
-        case .spacer:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SpacerTVCell.reuseID) as! SpacerTVCell
-            return cell
-        }
+		guard let object = viewModel.output.cells[safe: indexPath.item] else {
+			assert(true)
+			return UITableViewCell()
+		}
+		switch object.type {
+		case .balance:
+			let item = viewModel.balanceCellItem
+			let cell = tableView.dequeueReusableCell(withIdentifier: BalanceTVCell.reuseID) as! BalanceTVCell
+			cell.configure(item: item)
+			cell.delegate = self
+			return cell
+
+		case .menuItem:
+			let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemTVCell.reuseID) as! MenuItemTVCell
+			cell.configure(title: object.title, subtitle: object.desc)
+			return cell
+
+		case .menuItemWithImage:
+			let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemWithImageTVCell.reuseID) as! MenuItemWithImageTVCell
+			guard let image = object.image else { return cell }
+			cell.configure(title: object.title, subtitle: object.desc, image: image)
+			return cell
+
+		case .spacer:
+			let cell = tableView.dequeueReusableCell(withIdentifier: SpacerTVCell.reuseID) as! SpacerTVCell
+			return cell
+		}
 	}
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let object = viewModel.dataSource[indexPath.item]
-        
-        switch object.type {
-        case .spacer:
-            return 24
-        default:
-            return 60
-        }
-    }
-    
-    func registerCells() {
-        tableView.register(cellReuseID: BalanceTVCell.reuseID)
-        tableView.register(cellReuseID: MenuItemTVCell.reuseID)
-        tableView.register(cellReuseID: MenuItemWithImageTVCell.reuseID)
-        tableView.register(cellReuseID: SpacerTVCell.reuseID)
-    }
+
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		guard let object = viewModel.output.cells[safe: indexPath.item] else {
+			return 0.1
+		}
+
+		switch object.type {
+		case .spacer:
+				return 24
+		default:
+				return 60
+		}
+	}
+
+	func registerCells() {
+		tableView.register(cellReuseID: BalanceTVCell.reuseID)
+		tableView.register(cellReuseID: MenuItemTVCell.reuseID)
+		tableView.register(cellReuseID: MenuItemWithImageTVCell.reuseID)
+		tableView.register(cellReuseID: SpacerTVCell.reuseID)
+	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.dataSource.count
+		return viewModel.output.cells.count
 	}
 }
 
 extension HomeViewController: BalanceTVCellDelegate {
-	
+
 	func didTapDeposit() {
-        let card = CardViewController.init()
-        card.configure(parent: self)
+		let card = CardViewController.init()
+		card.configure(parent: self)
 	}
-	
+
 }
