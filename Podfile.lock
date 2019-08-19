@@ -42,6 +42,7 @@ PODS:
   - RxSwift (4.3.1)
   - secp256k1.swift (0.1.4)
   - SipHash (1.2.2)
+  - SPStorkController (1.7.7)
   - SVProgressHUD (2.2.5)
   - swift_qrcodejs (1.1.1)
   - SwiftValidator (4.0.0)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - RxAppState (= 1.2.0)
   - RxDataSources (~> 3.0)
   - RxSwift (= 4.3.1)
+  - SPStorkController
   - SVProgressHUD
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - TPKeyboardAvoiding (~> 1.3)
@@ -98,6 +100,7 @@ SPEC REPOS:
     - RxSwift
     - secp256k1.swift
     - SipHash
+    - SPStorkController
     - SVProgressHUD
     - swift_qrcodejs
     - TPKeyboardAvoiding
@@ -144,12 +147,13 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SPStorkController: 864d63ba3a689778a3739e0627d0711c72ef7965
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   swift_qrcodejs: 0bacbfe321a99954c7b8e04c75562007ea4e4f7c
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
 
-PODFILE CHECKSUM: 9e1420023fd9b43c73400e432dbdc4b3f5a1a660
+PODFILE CHECKSUM: 36967faa0cd4af6bc0fecb1551b0e770d4223aa4
 
 COCOAPODS: 1.7.5

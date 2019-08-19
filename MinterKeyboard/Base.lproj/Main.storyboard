@@ -126,8 +126,8 @@
                                 <rect key="frame" x="87" y="384" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-5y-4P6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="88" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-5y-4P6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yuL-yQ-Iwi" id="cyB-wq-r1z"/>
@@ -153,7 +153,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="z1q-5y-4P6" secondAttribute="bottom" constant="100" id="CRe-ZR-dP8"/>
+                            <constraint firstItem="TXc-83-mEu" firstAttribute="bottom" secondItem="z1q-5y-4P6" secondAttribute="bottom" id="CRe-ZR-dP8"/>
                             <constraint firstItem="LGv-Rp-9hq" firstAttribute="leading" secondItem="TXc-83-mEu" secondAttribute="leading" constant="10" id="MIH-JR-n0w"/>
                             <constraint firstAttribute="bottom" secondItem="LGv-Rp-9hq" secondAttribute="bottom" constant="47" id="VXC-Pg-lcv"/>
                             <constraint firstItem="z1q-5y-4P6" firstAttribute="top" secondItem="Vzb-jp-8W7" secondAttribute="top" id="fsl-hf-Qbs"/>
