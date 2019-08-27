@@ -10,6 +10,7 @@ import UIKit
 import MinterCore
 import MinterExplorer
 import RxSwift
+import SPStorkController
 
 class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDelegate, UITableViewDataSource {
 
@@ -118,8 +119,14 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 extension HomeViewController: BalanceTVCellDelegate {
 
 	func didTapDeposit() {
-		let card = CardViewController.init()
-		card.configure(parent: self)
-	}
+		let depositViewController = DepositViewController()
+		let transitionDelegate = SPStorkTransitioningDelegate()
 
+		transitionDelegate.customHeight = 360
+		depositViewController.transitioningDelegate = transitionDelegate
+		depositViewController.modalPresentationStyle = .custom
+		depositViewController.modalPresentationCapturesStatusBarAppearance = true
+
+		self.present(depositViewController, animated: true, completion: nil)
+	}
 }

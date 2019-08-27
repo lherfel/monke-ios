@@ -20,6 +20,7 @@ def shared_pods
 	pod 'GoldenKeystore', :git => 'https://github.com/sidorov-panda/GoldenKeystore'
 	pod 'KeyboardKit', '2.2.0'
 	pod 'PickerView'
+	pod 'SPStorkController'
 end
 
 target 'MinterKeyboard' do
