@@ -10,7 +10,14 @@ import UIKit
 import RxSwift
 
 class MenuItemTVCellItem: BaseCellItem {
-	var titleObservable: Observable<String?>?
+	var title: String?
+	var subtitle: String?
+	
+	init(identifier: String, title: String = "", subtitle: String? = nil) {
+		self.title = title
+		self.subtitle = subtitle
+		super.init(reuseIdentifier: "MenuItemTVCell", identifier: identifier)
+	}
 }
 
 class MenuItemTVCell: BaseCell {
@@ -20,11 +27,12 @@ class MenuItemTVCell: BaseCell {
 	
 	// MARK: -
 	
-	func configure(title: String, subtitle: String?) {
-		titleLabel.text = title
-		if let subtitle = subtitle {
-				subtitleLabel.text = subtitle
-				subtitleLabel.isHidden = false
+	override func configure(item: BaseCellItem) {
+		guard let item = item as? MenuItemTVCellItem else { return }
+		titleLabel.text = item.title
+		if let subtitle = item.subtitle {
+			subtitleLabel.text = subtitle
+			subtitleLabel.isHidden = false
 		}
 	}
 }
