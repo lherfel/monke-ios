@@ -52,8 +52,16 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 				self?.performSegue(withIdentifier: "showBackup", sender: nil)
 			}
 			
+			if cell.identifier == "donate" {
+				self?.didTapDeposit(type: .donate)
+			}
+			
+			if cell.identifier == "addWallet" {
+				self?.didTapAddWallet()
+			}
+			
 			if cell.identifier == "deposit" {
-				self?.didTapDeposit()
+				self?.didTapDeposit(type: .deposit)
 			}
 		}).disposed(by: disposeBag)
 	}
@@ -92,17 +100,34 @@ extension HomeViewController: UITableViewDelegate {
 	}
 }
 
-extension HomeViewController: BalanceTVCellDelegate {
+extension HomeViewController {
 
-	func didTapDeposit() {
-		let depositViewController = DepositViewController()
+	func didTapDeposit(type: AddressType) {
+		let addressViewController = AddressViewController()
 		let transitionDelegate = SPStorkTransitioningDelegate()
 
+		addressViewController.configure(type: type)
+		
 		transitionDelegate.customHeight = 360
-		depositViewController.transitioningDelegate = transitionDelegate
-		depositViewController.modalPresentationStyle = .custom
-		depositViewController.modalPresentationCapturesStatusBarAppearance = true
+		addressViewController.transitioningDelegate = transitionDelegate
+		addressViewController.modalPresentationStyle = .custom
+		addressViewController.modalPresentationCapturesStatusBarAppearance = true
 
-		self.present(depositViewController, animated: true, completion: nil)
+		self.present(addressViewController, animated: true, completion: nil)
+	}
+}
+
+extension HomeViewController {
+	
+	func didTapAddWallet() {
+		let addressViewController = AddWalletViewController()
+		let transitionDelegate = SPStorkTransitioningDelegate()
+		
+		transitionDelegate.customHeight = 300
+		addressViewController.transitioningDelegate = transitionDelegate
+		addressViewController.modalPresentationStyle = .custom
+		addressViewController.modalPresentationCapturesStatusBarAppearance = true
+		
+		self.present(addressViewController, animated: true, completion: nil)
 	}
 }

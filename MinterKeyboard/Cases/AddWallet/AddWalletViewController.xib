@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddWalletViewController" customModule="MinterKeyboard" customModuleProvider="target">
+            <connections>
+                <outlet property="doneButton" destination="VQZ-CR-hFg" id="X04-Yf-4Nm"/>
+                <outlet property="phaseTextView" destination="gtJ-GM-WJ8" id="qie-aJ-nNZ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Aw7-Ht-in5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter seed phrase to add  wallet to Monke" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-xx-pW5">
+                    <rect key="frame" x="20" y="40" width="300" height="53"/>
+                    <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gtJ-GM-WJ8">
+                    <rect key="frame" x="10" y="117" width="320" height="102"/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQZ-CR-hFg">
+                    <rect key="frame" x="10" y="227" width="320" height="45"/>
+                    <color key="backgroundColor" red="0.31764705879999999" green="0.14117647059999999" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="bbs-OF-pRI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
+                    <state key="normal" title="DONE">
+                        <color key="titleColor" red="0.98823529409999999" green="0.98431372549999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hQ5-xx-pW5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Cfq-XZ-tx7"/>
+                <constraint firstItem="VQZ-CR-hFg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="GNK-ks-fSi"/>
+                <constraint firstAttribute="bottom" secondItem="VQZ-CR-hFg" secondAttribute="bottom" constant="28" id="RiK-If-NXB"/>
+                <constraint firstItem="gtJ-GM-WJ8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Yvf-9f-anr"/>
+                <constraint firstAttribute="trailing" secondItem="gtJ-GM-WJ8" secondAttribute="trailing" constant="10" id="rVG-Rp-cBi"/>
+                <constraint firstItem="VQZ-CR-hFg" firstAttribute="top" secondItem="gtJ-GM-WJ8" secondAttribute="bottom" constant="8" id="rl1-x9-zfp"/>
+                <constraint firstItem="gtJ-GM-WJ8" firstAttribute="top" secondItem="hQ5-xx-pW5" secondAttribute="bottom" constant="24" id="vfE-eo-UYm"/>
+                <constraint firstAttribute="trailing" secondItem="VQZ-CR-hFg" secondAttribute="trailing" constant="10" id="xmb-Qf-kbr"/>
+                <constraint firstItem="hQ5-xx-pW5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="xqj-35-Qz1"/>
+                <constraint firstAttribute="trailing" secondItem="hQ5-xx-pW5" secondAttribute="trailing" constant="20" id="yLX-jR-hcr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="34.782608695652179" y="34.821428571428569"/>
+        </view>
+    </objects>
+</document>

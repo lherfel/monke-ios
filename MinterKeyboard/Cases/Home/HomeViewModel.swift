@@ -44,6 +44,8 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 				SpacerTVCellItem(identifier: "spacer_1"),
 				MenuItemTVCellItem(identifier: "backupPhrase",
 													title: "🔑 Backup Phrase"),
+				MenuItemTVCellItem(identifier: "addWallet",
+													 title: "Add 👛 wallet"),
 				MenuItemTVCellItem(identifier: "reportProblem",
 													title: "Report 🙈 problem"),
 				MenuItemTVCellItem(identifier: "rate",
