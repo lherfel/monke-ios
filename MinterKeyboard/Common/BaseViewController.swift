@@ -11,6 +11,19 @@ import SafariServices
 import RxSwift
 import Reachability
 import RxAppState
+import RxDataSources
+
+struct SingleSection {
+	var items: [Item]
+}
+
+extension SingleSection: SectionModelType {
+	typealias Item = BaseCellItem
+	init(original: SingleSection, items: [Item]) {
+		self = original
+		self.items = items
+	}
+}
 
 protocol ControllerProtocol: class {
 	associatedtype ViewModelType: ViewModelProtocol

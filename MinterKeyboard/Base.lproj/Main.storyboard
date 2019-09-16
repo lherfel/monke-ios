@@ -129,10 +129,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="88" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-5y-4P6">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="yuL-yQ-Iwi" id="cyB-wq-r1z"/>
-                                    <outlet property="delegate" destination="yuL-yQ-Iwi" id="mz1-NO-NS4"/>
-                                </connections>
                             </tableView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGv-Rp-9hq">
                                 <rect key="frame" x="10" y="803" width="394" height="46"/>
