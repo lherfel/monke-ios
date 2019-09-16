@@ -59,7 +59,7 @@
                     <rect key="frame" x="10" y="0.0" width="398" height="46"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0BZ-ua-VGp" customClass="AddressTextField" customModule="MinterKeyboard" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="353" height="46"/>
+                            <rect key="frame" x="0.0" y="0.0" width="313" height="46"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="CZe-se-1FD"/>
@@ -83,11 +83,13 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07O-2e-KwU">
-                            <rect key="frame" x="368" y="14" width="20" height="20"/>
+                            <rect key="frame" x="328" y="0.0" width="70" height="46"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="kqh-bi-HrD"/>
-                                <constraint firstAttribute="width" constant="20" id="qZw-0h-siz"/>
+                                <constraint firstAttribute="height" constant="46" id="kqh-bi-HrD"/>
+                                <constraint firstAttribute="width" constant="70" id="qZw-0h-siz"/>
                             </constraints>
+                            <color key="tintColor" red="0.31764705882352939" green="0.14117647058823529" blue="0.77254901960784317" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="icon-copy"/>
                             <connections>
                                 <action selector="didTapPasteButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="EPu-Z0-SoL"/>
@@ -96,9 +98,9 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="07O-2e-KwU" secondAttribute="bottom" constant="12" id="36d-YK-HwE"/>
+                        <constraint firstAttribute="bottom" secondItem="07O-2e-KwU" secondAttribute="bottom" id="36d-YK-HwE"/>
                         <constraint firstItem="0BZ-ua-VGp" firstAttribute="leading" secondItem="Z5b-WM-Ohg" secondAttribute="leading" id="95I-6k-Kv9"/>
-                        <constraint firstAttribute="trailing" secondItem="07O-2e-KwU" secondAttribute="trailing" constant="10" id="KDg-Dp-4YU"/>
+                        <constraint firstAttribute="trailing" secondItem="07O-2e-KwU" secondAttribute="trailing" id="KDg-Dp-4YU"/>
                         <constraint firstAttribute="height" constant="46" id="fHN-zv-dI0"/>
                         <constraint firstItem="E0w-7n-FLO" firstAttribute="leading" secondItem="Z5b-WM-Ohg" secondAttribute="leading" constant="10" id="kWI-Y8-RBu"/>
                         <constraint firstItem="07O-2e-KwU" firstAttribute="leading" secondItem="0BZ-ua-VGp" secondAttribute="trailing" constant="15" id="l0n-Es-PnY"/>

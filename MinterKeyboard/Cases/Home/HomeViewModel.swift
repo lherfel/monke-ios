@@ -22,7 +22,7 @@ class HomeTableCellItem: BaseCellItem {
 		case menuItemWithImage = "MenuItemWithImageTVCell"
 		case spacer = "SpacerTVCell"
 	}
-	
+
 	enum identifiers: String {
 		case deposit
 		case backupPhrase
@@ -34,7 +34,10 @@ class HomeTableCellItem: BaseCellItem {
 		case about
 	}
 
-	init(identifier: String, title: String = "", type: HomeTableCellItem.`Type` = .spacer, desc: String? = nil, image: String? = nil) {
+	init(identifier: String, title: String = "",
+			 type: HomeTableCellItem.`Type` = .spacer,
+			 desc: String? = nil,
+			 image: String? = nil) {
 		self.title = title
 		self.type = type
 		self.desc = desc
@@ -93,11 +96,11 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 													type: .menuItemWithImage,
 													desc: "We spend  everything on development",
 													image: "monke-icon"),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.buyBanana.rawValue,
-													title: "Buy 🍌 Banana",
-													type: .menuItemWithImage,
-													desc: "Use coins to reduce transaction fees",
-													image: "bip-uppercase"),
+//				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.buyBanana.rawValue,
+//													title: "Buy 🍌 Banana",
+//													type: .menuItemWithImage,
+//													desc: "Use coins to reduce transaction fees",
+//													image: "bip-uppercase"),
 				HomeTableCellItem(identifier: "spacer_2",
 													title: "",
 													type: .spacer),
@@ -147,7 +150,8 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	}
 
 	var balanceCellItem: BaseCellItem {
-		let item = BalanceTVCellItem(reuseIdentifier: "BalanceTVCell", identifier: "BalanceTVCell")
+		let item = BalanceTVCellItem(reuseIdentifier: "BalanceTVCell",
+																 identifier: "BalanceTVCell")
 		item.image = UIImage(named: "bip-logo")
 		item.titleObservable = balanceSubject.asObservable()
 		return item
