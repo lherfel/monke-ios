@@ -10,9 +10,10 @@ import UIKit
 import MinterCore
 import MinterExplorer
 import RxSwift
+import RxDataSources
 import SPStorkController
 
-class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseViewController, ControllerProtocol {
 
 	// MARK: - IBOutlet
 
@@ -27,24 +28,42 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 	typealias ViewModelType = HomeViewModel
 
 	func configure(with viewModel: HomeViewModel) {
-
-		turnOnButton.rx.tap.asDriver()
-			.drive(viewModel.input.didTapTurnOn).disposed(by: disposeBag)
-
-		viewModel.output.isTurnedOn.subscribe(onNext: { (isTurnedOn) in
-			self.turnOnButton.setTitle(isTurnedOn ? "TURN OFF MONKE" : "TURN ON MONKE", for: .normal)
-		}).disposed(by: disposeBag)
-
+		let datasource = RxTableViewSectionedReloadDataSource<SingleSection> (
+			configureCell: { datasource, tableView, indexPath, item in
+				let cell = tableView.dequeueReusableCell(withIdentifier: item.reuseIdentifier) as! BaseCell
+				cell.configure(item: item)
+				return cell
+		})
+		let section = [SingleSection(items: viewModel.dataSource)]
+		
+		Observable.just(section)
+			.bind(to: tableView.rx.items(dataSource: datasource))
+			.disposed(by: disposeBag)
+		
+		tableView.rx.setDelegate(self)
+			.disposed(by: disposeBag)
+		
 		tableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
 			guard let cell = self?.viewModel.output.cells[safe: indexPath.item] else {
 				return
 			}
-
-			if cell.identifier == HomeTableCellItem.identifiers.backupPhrase.rawValue {
+			
+			if cell.identifier == "backupPhrase" {
 				self?.performSegue(withIdentifier: "showBackup", sender: nil)
 			}
+			
+			if cell.identifier == "donate" {
+				self?.didTapDeposit(type: .donate)
+			}
+			
+			if cell.identifier == "addWallet" {
+				self?.didTapAddWallet()
+			}
+			
+			if cell.identifier == "deposit" {
+				self?.didTapDeposit(type: .deposit)
+			}
 		}).disposed(by: disposeBag)
-
 	}
 
 	// MARK: -
@@ -59,74 +78,56 @@ class HomeViewController: BaseViewController, ControllerProtocol, UITableViewDel
 		tableView.tableFooterView = UIView()
 	}
 
-	// MARK: - TableView
-
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let object = viewModel.output.cells[safe: indexPath.item] else {
-			assert(true)
-			return UITableViewCell()
-		}
-		switch object.type {
-		case .balance:
-			let item = viewModel.balanceCellItem
-			let cell = tableView.dequeueReusableCell(withIdentifier: BalanceTVCell.reuseID) as! BalanceTVCell
-			cell.configure(item: item)
-			cell.delegate = self
-			return cell
-
-		case .menuItem:
-			let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemTVCell.reuseID) as! MenuItemTVCell
-			cell.configure(title: object.title, subtitle: object.desc)
-			return cell
-
-		case .menuItemWithImage:
-			let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemWithImageTVCell.reuseID) as! MenuItemWithImageTVCell
-			guard let image = object.image else { return cell }
-			cell.configure(title: object.title, subtitle: object.desc, image: image)
-			return cell
-
-		case .spacer:
-			let cell = tableView.dequeueReusableCell(withIdentifier: SpacerTVCell.reuseID) as! SpacerTVCell
-			return cell
-		}
-	}
-
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		guard let object = viewModel.output.cells[safe: indexPath.item] else {
-			return 0.1
-		}
-
-		switch object.type {
-		case .spacer:
-				return 24
-		default:
-				return 60
-		}
-	}
-
 	func registerCells() {
 		tableView.register(cellReuseID: BalanceTVCell.reuseID)
 		tableView.register(cellReuseID: MenuItemTVCell.reuseID)
 		tableView.register(cellReuseID: MenuItemWithImageTVCell.reuseID)
 		tableView.register(cellReuseID: SpacerTVCell.reuseID)
 	}
+}
 
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.output.cells.count
+extension HomeViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		guard let item = viewModel.output.cells[safe: indexPath.item] else {
+			return 0.1
+		}
+		
+		if item is SpacerTVCellItem {
+			return 24
+		}
+
+		return 60
 	}
 }
 
-extension HomeViewController: BalanceTVCellDelegate {
+extension HomeViewController {
 
-	func didTapDeposit() {
-		let depositViewController = DepositViewController()
+	func didTapDeposit(type: AddressType) {
+		let addressViewController = AddressViewController()
 		let transitionDelegate = SPStorkTransitioningDelegate()
 
+		addressViewController.configure(type: type)
+		
 		transitionDelegate.customHeight = 360
-		depositViewController.transitioningDelegate = transitionDelegate
-		depositViewController.modalPresentationStyle = .custom
-		depositViewController.modalPresentationCapturesStatusBarAppearance = true
+		addressViewController.transitioningDelegate = transitionDelegate
+		addressViewController.modalPresentationStyle = .custom
+		addressViewController.modalPresentationCapturesStatusBarAppearance = true
 
-		self.present(depositViewController, animated: true, completion: nil)
+		self.present(addressViewController, animated: true, completion: nil)
+	}
+}
+
+extension HomeViewController {
+	
+	func didTapAddWallet() {
+		let addressViewController = AddWalletViewController()
+		let transitionDelegate = SPStorkTransitioningDelegate()
+		
+		transitionDelegate.customHeight = 300
+		addressViewController.transitioningDelegate = transitionDelegate
+		addressViewController.modalPresentationStyle = .custom
+		addressViewController.modalPresentationCapturesStatusBarAppearance = true
+		
+		self.present(addressViewController, animated: true, completion: nil)
 	}
 }

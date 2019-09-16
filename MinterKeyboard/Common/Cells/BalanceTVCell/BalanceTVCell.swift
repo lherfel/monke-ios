@@ -12,6 +12,11 @@ import RxSwift
 class BalanceTVCellItem: BaseCellItem {
 	var image: UIImage?
 	var titleObservable: Observable<String?>?
+	
+	init(identifier: String, imageName: String = "") {
+		image = UIImage(named: imageName)
+		super.init(reuseIdentifier: "BalanceTVCell", identifier: identifier)
+	}
 }
 
 protocol BalanceTVCellDelegate: class {

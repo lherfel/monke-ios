@@ -61,7 +61,7 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 	struct Output {
 		var isTurnedOn: Observable<Bool>
-		var cells: [HomeTableCellItem]
+		var cells: [BaseCellItem]
 	}
 
 	var input: HomeViewModel.Input!
@@ -74,46 +74,35 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 	// MARK: - DataSource
 
-	private var dataSource: [HomeTableCellItem] {
+	public var dataSource: [BaseCellItem] {
 		return [
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.deposit.rawValue,
-													title: "deposit",
-													type: .balance),
-				HomeTableCellItem(identifier: "spacer_1",
-													title: "",
-													type: .spacer),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.backupPhrase.rawValue,
-													title: "🔑 Backup Phrase",
-													type: .menuItem),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.reportProblem.rawValue,
-													title: "Report 🙈 problem",
-													type: .menuItem),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.rate.rawValue,
-													title: "Rate Monke 💜 in Appstore",
-													type: .menuItem),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.donate.rawValue,
+				BalanceTVCellItem(identifier: "deposit", imageName: "bip-logo"),
+				SpacerTVCellItem(identifier: "spacer_1"),
+				MenuItemTVCellItem(identifier: "backupPhrase",
+													title: "🔑 Backup Phrase"),
+				MenuItemTVCellItem(identifier: "addWallet",
+													 title: "Add 👛 wallet"),
+				MenuItemTVCellItem(identifier: "reportProblem",
+													title: "Report 🙈 problem"),
+				MenuItemTVCellItem(identifier: "rate",
+													title: "Rate Monke 💜 in Appstore"),
+				MenuItemWithImageTVCellItem(identifier: "donate",
 													title: "Make a 🍩 donation",
-													type: .menuItemWithImage,
-													desc: "We spend  everything on development",
-													image: "monke-icon"),
-//				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.buyBanana.rawValue,
-//													title: "Buy 🍌 Banana",
-//													type: .menuItemWithImage,
-//													desc: "Use coins to reduce transaction fees",
-//													image: "bip-uppercase"),
-				HomeTableCellItem(identifier: "spacer_2",
-													title: "",
-													type: .spacer),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.telegram.rawValue,
+													subtitle: "We spend  everything on development",
+													imageName: "monke-icon"),
+				MenuItemWithImageTVCellItem(identifier: "buyBanana",
+													title: "Buy 🍌 Banana",
+													subtitle: "Use coins to reduce transaction fees",
+													imageName: "bip-uppercase"),
+				SpacerTVCellItem(identifier: "spacer_2"),
+				MenuItemWithImageTVCellItem(identifier: "telegram",
 													title: "Telegram channel",
-													type: .menuItemWithImage,
-													desc: "Updates and announcements from Monke team",
-													image: "telegram-icon"),
-				HomeTableCellItem(identifier: HomeTableCellItem.identifiers.about.rawValue,
+													subtitle: "Updates and announcements from Monke team",
+													imageName: "telegram-icon"),
+				MenuItemWithImageTVCellItem(identifier: "about",
 													title: "About",
-													type: .menuItemWithImage,
-													desc: "Monke.io",
-													image: "banana-icon"),
+													subtitle: "Monke.io",
+													imageName: "banana-icon"),
 		]
 	}
 
