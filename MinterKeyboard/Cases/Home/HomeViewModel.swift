@@ -137,12 +137,4 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 		}).disposed(by: disposeBag)
 
 	}
-
-	var balanceCellItem: BaseCellItem {
-		let item = BalanceTVCellItem(reuseIdentifier: "BalanceTVCell",
-																 identifier: "BalanceTVCell")
-		item.image = UIImage(named: "bip-logo")
-		item.titleObservable = balanceSubject.asObservable()
-		return item
-	}
 }
