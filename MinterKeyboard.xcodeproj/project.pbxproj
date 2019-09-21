@@ -44,7 +44,6 @@
 		FA57093C22B57B6200F5D0DD /* DelegateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57093A22B57B6200F5D0DD /* DelegateView.swift */; };
 		FA57093E22B57B6F00F5D0DD /* DelegateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57093D22B57B6F00F5D0DD /* DelegateView.xib */; };
 		FA57093F22B57B6F00F5D0DD /* DelegateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57093D22B57B6F00F5D0DD /* DelegateView.xib */; };
-		FA57094122B57BC500F5D0DD /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094022B57BC500F5D0DD /* SendView.swift */; };
 		FA57094222B57BC500F5D0DD /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57094022B57BC500F5D0DD /* SendView.swift */; };
 		FA57094422B57BD200F5D0DD /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57094322B57BD200F5D0DD /* SendView.xib */; };
 		FA57094522B57BD200F5D0DD /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57094322B57BD200F5D0DD /* SendView.xib */; };
@@ -1255,7 +1254,6 @@
 				FA57092B22B5780B00F5D0DD /* Session.swift in Sources */,
 				FAB0D28822C76D4E002945E2 /* Configuration.swift in Sources */,
 				FAF4B61422D257EC009061B7 /* BackupPhraseViewModel.swift in Sources */,
-				FA57094122B57BC500F5D0DD /* SendView.swift in Sources */,
 				2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */,
 				2A240F79230878A30019B5CC /* CopyView.swift in Sources */,
 				FAF359E122BF73F40006A087 /* Account.swift in Sources */,

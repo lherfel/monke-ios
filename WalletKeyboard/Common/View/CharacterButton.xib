@@ -24,7 +24,7 @@
                     <rect key="frame" x="3" y="3" width="408" height="209"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyboard-button" translatesAutoresizingMaskIntoConstraints="NO" id="Szk-Wp-Rcv">
-                            <rect key="frame" x="0.0" y="0.0" width="408" height="209"/>
+                            <rect key="frame" x="9" y="9" width="390" height="191"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmz-HZ-CvF">
@@ -39,13 +39,13 @@
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rmz-HZ-CvF" secondAttribute="bottom" constant="2" id="5bi-Ul-Pgg"/>
                         <constraint firstItem="rmz-HZ-CvF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IbC-mC-CMt" secondAttribute="leading" constant="5" id="806-TJ-0Cp"/>
                         <constraint firstItem="rmz-HZ-CvF" firstAttribute="centerY" secondItem="IbC-mC-CMt" secondAttribute="centerY" constant="-1" id="CJI-XF-nVP"/>
-                        <constraint firstItem="Szk-Wp-Rcv" firstAttribute="top" secondItem="IbC-mC-CMt" secondAttribute="top" id="MeP-aM-RJP"/>
-                        <constraint firstAttribute="bottom" secondItem="Szk-Wp-Rcv" secondAttribute="bottom" id="Pno-uu-ky1"/>
-                        <constraint firstAttribute="trailing" secondItem="Szk-Wp-Rcv" secondAttribute="trailing" id="RNb-24-RKl"/>
+                        <constraint firstItem="Szk-Wp-Rcv" firstAttribute="top" secondItem="IbC-mC-CMt" secondAttribute="top" constant="9" id="MeP-aM-RJP"/>
+                        <constraint firstAttribute="bottom" secondItem="Szk-Wp-Rcv" secondAttribute="bottom" constant="9" id="Pno-uu-ky1"/>
+                        <constraint firstAttribute="trailing" secondItem="Szk-Wp-Rcv" secondAttribute="trailing" constant="9" id="RNb-24-RKl"/>
                         <constraint firstItem="rmz-HZ-CvF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IbC-mC-CMt" secondAttribute="top" constant="2" id="an7-3c-nNH"/>
                         <constraint firstItem="rmz-HZ-CvF" firstAttribute="centerX" secondItem="IbC-mC-CMt" secondAttribute="centerX" id="cS1-Qb-cYb"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rmz-HZ-CvF" secondAttribute="trailing" constant="5" id="sdN-I7-nbm"/>
-                        <constraint firstItem="Szk-Wp-Rcv" firstAttribute="leading" secondItem="IbC-mC-CMt" secondAttribute="leading" id="smw-uZ-Eu2"/>
+                        <constraint firstItem="Szk-Wp-Rcv" firstAttribute="leading" secondItem="IbC-mC-CMt" secondAttribute="leading" constant="9" id="smw-uZ-Eu2"/>
                     </constraints>
                 </view>
             </subviews>

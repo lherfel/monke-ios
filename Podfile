@@ -18,7 +18,7 @@ def shared_pods
 	pod 'ObjectMapper', '~> 3.3'
 	pod 'ReachabilitySwift', '~> 4.3'
 	pod 'GoldenKeystore', :git => 'https://github.com/sidorov-panda/GoldenKeystore'
-	pod 'KeyboardKit', '2.2.0'
+	pod 'KeyboardKit', '2.4.0'
 	pod 'PickerView'
 end
 

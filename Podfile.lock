@@ -14,7 +14,7 @@ PODS:
   - Fabric (1.10.2)
   - GoldenKeystore (1.0.3):
     - TrezorCrypto (= 0.0.9)
-  - KeyboardKit (2.2.0)
+  - KeyboardKit (2.4.0)
   - KeychainSwift (12.0.0)
   - MinterCore (0.1.22):
     - Alamofire (= 4.7.3)
@@ -57,7 +57,7 @@ DEPENDENCIES:
   - EFQRCode (~> 5.0.0)
   - Fabric
   - GoldenKeystore (from `https://github.com/sidorov-panda/GoldenKeystore`)
-  - KeyboardKit (= 2.2.0)
+  - KeyboardKit (= 2.4.0)
   - KeychainSwift (= 12.0.0)
   - MinterCore
   - MinterExplorer
@@ -132,7 +132,7 @@ SPEC CHECKSUMS:
   EFQRCode: 07437cfbce3a1e497397a4f3d766c980d8972608
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   GoldenKeystore: 6d176bbb332a4abb99024ebce06a3e3067c73a8a
-  KeyboardKit: 84143499e58eac2ab31baaf4c9118a4be048df09
+  KeyboardKit: a753a4612477f579168b69a8ce1abbf56ada15fd
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   MinterCore: 936b9d42547c26a61689dbb81e75dec522a93b19
   MinterExplorer: 615b3b4fd6cd8b105a9a950c98b2517a01d499dc
@@ -154,6 +154,6 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
 
-PODFILE CHECKSUM: b8cdb4162c63253aadea50b27dffb3149644e114
+PODFILE CHECKSUM: 1723797b6e2213750bea6eab41ce75b5abfdc7ea
 
 COCOAPODS: 1.7.5
