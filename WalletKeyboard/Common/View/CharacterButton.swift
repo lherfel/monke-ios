@@ -25,12 +25,12 @@ class CharacterButton: KeyboardButtonView {
 										distribution: UIStackView.Distribution = .fillEqually) {
 		super.setup(with: action, in: viewController)
 		backgroundColor = .clear
-//		buttonView?.backgroundColor = action.buttonColor(for: viewController)
-//		DispatchQueue.main.async { self.image?.image = action.buttonImage }
+		buttonView?.backgroundColor = action.buttonColor(for: viewController)
+		DispatchQueue.main.async { self.image?.image = action.buttonImage }
 		textLabel?.font = action.buttonFont
 		textLabel?.text = action.buttonText
-//		textLabel?.textColor = action.tintColor(in: viewController)
-//		buttonView?.tintColor = action.tintColor(in: viewController)
+		textLabel?.textColor = action.tintColor(in: viewController)
+		buttonView?.tintColor = action.tintColor(in: viewController)
 		width = action.buttonWidth(for: distribution)
 		applyShadow(Shadow(alpha: 0.5, blur: 1, spread: 0, x: 1, y: 1))
 	}
@@ -55,8 +55,8 @@ private extension KeyboardAction {
 		let asset = useDarkButton
 			? (isDarkAppearance ? Asset.Colors.darkSystemButton : Asset.Colors.lightSystemButton)
 			: (isDarkAppearance ? Asset.Colors.darkButton : Asset.Colors.lightButton)
-		return UIColor.clear
-//		return asset.color
+
+		return asset.color
 	}
 
 	var buttonFont: UIFont {
@@ -104,7 +104,8 @@ private extension KeyboardAction {
 	var buttonWidth: CGFloat {
 		switch self {
 		case .none: return 10
-		case .shift, .shiftDown, .backspace: return 60
+		case .character("Mx"): return 65
+		case .shift, .shiftDown, .backspace: return 65
 		case .space: return 100
 		default: return 50
 		}

@@ -11,6 +11,9 @@ import Foundation
 import KeyboardKit
 
 open class SelectedTextfieldKeyboardActionHandler: NSObject, KeyboardActionHandler {
+	public func handleRepeat(on action: KeyboardAction, view: UIView) {
+		
+	}
 
 	init(textField: UITextField, inputViewController: UIInputViewController) {
 		self.textField = textField
