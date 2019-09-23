@@ -64,10 +64,11 @@ class KeyboardViewController: KeyboardInputViewController {
 				.drive(self.sendView.addressTextField.rx.text).disposed(by: disposeBag)
 		}
 
-		viewModel.output.showSentView.asDriver(onErrorJustReturn: "").drive(onNext: { [weak self] (val) in
-			self?.sentView.transactionLinkButton?.setTitle(val, for: .normal)
-			self?.sentView.transactionLinkButton?.setTitle("🔗" + val, for: .normal)
-			self?.showSentView()
+		viewModel.output.showSentView
+			.asDriver(onErrorJustReturn: "").drive(onNext: { [weak self] (val) in
+				self?.sentView.transactionLinkButton?.setTitle(val, for: .normal)
+				self?.sentView.transactionLinkButton?.setTitle("🔗" + val, for: .normal)
+				self?.showSentView()
 		}).disposed(by: disposeBag)
 
 		if nil != self.headerView.balanceLabel {
@@ -77,7 +78,6 @@ class KeyboardViewController: KeyboardInputViewController {
 
 		viewModel.output.error.asDriver(onErrorJustReturn: "")
 			.drive(onNext: { (val) in
-//				self.headerView.delegateLabel.text = val
 			let alert = CDAlertView(title: "Error 🙊", message: val, type: .noImage)
 			let closeAction = CDAlertViewAction(title: "Close")
 			alert.add(action: closeAction)
@@ -101,7 +101,8 @@ class KeyboardViewController: KeyboardInputViewController {
 			}
 		}).disposed(by: disposeBag)
 
-		viewModel.output.isLoading.distinctUntilChanged().asDriver(onErrorJustReturn: false)
+		viewModel.output.isLoading
+			.distinctUntilChanged().asDriver(onErrorJustReturn: false)
 			.drive(onNext: { [weak self] (val) in
 			self?.sendView?.activityIndicator.alpha = val ? 1.0 : 0.0
 			self?.sendView?.sendButton.isEnabled = !val
@@ -629,7 +630,7 @@ extension KeyboardViewController {
 		let keyboard = HexKeyboard(in: self)
 		let rows = buttonRows(for: keyboard.actions, distribution: .fillProportionally)
 		let keyboardView = UIStackView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
-		keyboardView.backgroundColor = Asset.Colors.lightBackground.color
+		keyboardView.backgroundColor = isDarkAppearance() ? Asset.Colors.darkBackground.color : Asset.Colors.lightBackground.color
 		keyboardView.axis = .vertical
 		keyboardView.alignment = .fill
 		keyboardView.distribution = .equalSpacing
@@ -652,22 +653,22 @@ extension KeyboardViewController {
 		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
 		keyboardViewWrapper.translatesAutoresizingMaskIntoConstraints = false
 		keyboardViewWrapper.addSubview(keyboardView)
+		keyboardViewWrapper.backgroundColor = isDarkAppearance() ? Asset.Colors.darkBackground.color : Asset.Colors.lightBackground.color
 
 		keyboardViewWrapper.addSubview(okButton)
 		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[okButton]-10-|",
 																																			options: [],
 																																			metrics: nil,
 																																			views: ["okButton": okButton]))
-
 		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(height)]-7-[okButton(46)]-(>=0)-|",
 																																			 options: [],
 																																			 metrics: ["height": height],
 																																			 views: ["keyboard": keyboardView,
 																																							 "okButton": okButton]))
-			keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
-																																				 options: [],
-																																				 metrics: nil,
-																																				 views: ["keyboard": keyboardView]))
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
+																																			options: [],
+																																			metrics: nil,
+																																			views: ["keyboard": keyboardView]))
 
 		return keyboardViewWrapper
 	}
@@ -678,7 +679,7 @@ extension KeyboardViewController {
 		let keyboard = NumericKeyboard(in: self)
 		let rows = buttonRows(for: keyboard.actions, distribution: .fillEqually)
 		let keyboardView = UIStackView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
-		keyboardView.backgroundColor = Asset.Colors.lightBackground.color
+		keyboardView.backgroundColor = isDarkAppearance() ? Asset.Colors.darkBackground.color : Asset.Colors.lightBackground.color
 		keyboardView.axis = .vertical
 		keyboardView.alignment = .fill
 		keyboardView.distribution = .equalSpacing
@@ -698,13 +699,13 @@ extension KeyboardViewController {
 		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
 		keyboardViewWrapper.translatesAutoresizingMaskIntoConstraints = false
 		keyboardViewWrapper.addSubview(keyboardView)
+		keyboardViewWrapper.backgroundColor = isDarkAppearance() ? Asset.Colors.darkBackground.color : Asset.Colors.lightBackground.color
 
 		keyboardViewWrapper.addSubview(okButton)
 		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[okButton]-10-|",
 																																			options: [],
 																																			metrics: nil,
 																																			views: ["okButton": okButton]))
-
 		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(168)]-6-[okButton(46)]",
 																																			options: [],
 																																			metrics: nil,
@@ -719,7 +720,6 @@ extension KeyboardViewController {
 
 	func lettersKeyboardView() -> UIView {
 		let height = Double(178.0)
-
 		let keyboard = AlphabeticKeyboard(uppercased: false, in: self)
 		let rows = buttonRows(for: keyboard.actions, distribution: .fillEqually)
 		let keyboardView = UIStackView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
