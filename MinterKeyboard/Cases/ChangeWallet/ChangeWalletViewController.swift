@@ -1,5 +1,5 @@
 //
-//  AddWalletViewController.swift
+//  ChangeWalletViewController.swift
 //  MinterKeyboard
 //
 //  Created by Freeeon on 04/09/2019.
@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import GoldenKeystore
+import SVProgressHUD
 
-class AddWalletViewController: UIViewController {
+class ChangeWalletViewController: UIViewController {
 	
 	// MARK: - Properties.
 	
@@ -16,7 +18,7 @@ class AddWalletViewController: UIViewController {
 	
 	// MARK: - Outlets.
 	
-	@IBOutlet weak var phaseTextView: UITextView!
+	@IBOutlet weak var mnemonicsTextView: UITextView!
 	@IBOutlet weak var doneButton: UIButton!
 	
 	// MARK: - Lifecycle.
@@ -26,12 +28,31 @@ class AddWalletViewController: UIViewController {
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(willChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(willHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+		
+		if UIScreen.main.bounds.height <= 568 {
+			mnemonicsTextView.font = mnemonicsTextView.font?.withSize(16)
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		height = view.frame.origin.y
+	}
+	
+	//MARK: - IBActions
+	
+	@IBAction func buttonDidTap(_ sender: Any) {
+		guard let mnemonics = mnemonicsTextView.text,
+			GoldenKeystore.mnemonicIsValid(mnemonics) else {
+			SVProgressHUD.showError(withStatus: "Invalid phrase")
+			return
+		}
+		
+		AccountManager.shared.changeAccount(mnemonics: mnemonics)
+
+		SVProgressHUD.showSuccess(withStatus: "Wallet changed!")
+		self.dismiss(animated: true)
 	}
 	
 	// MARK: - Resizing when the keyboard is visible.

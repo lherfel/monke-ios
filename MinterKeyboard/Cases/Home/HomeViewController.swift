@@ -56,8 +56,8 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 				self?.didTapDeposit(type: .donate)
 			}
 			
-			if cell.identifier == "addWallet" {
-				self?.didTapAddWallet()
+			if cell.identifier == "changeWallet" {
+				self?.didTapChangeWallet()
 			}
 			
 			if cell.identifier == "deposit" {
@@ -101,7 +101,6 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 extension HomeViewController {
-
 	func didTapDeposit(type: AddressType) {
 		let addressViewController = AddressViewController()
 		let transitionDelegate = SPStorkTransitioningDelegate()
@@ -118,16 +117,16 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
-	
-	func didTapAddWallet() {
-		let addressViewController = AddWalletViewController()
+	func didTapChangeWallet() {
+		let changeWalletViewController = ChangeWalletViewController()
 		let transitionDelegate = SPStorkTransitioningDelegate()
+		let windowHeight: CGFloat = UIScreen.main.bounds.height <= 568 ? 290 : 330
 		
-		transitionDelegate.customHeight = 300
-		addressViewController.transitioningDelegate = transitionDelegate
-		addressViewController.modalPresentationStyle = .custom
-		addressViewController.modalPresentationCapturesStatusBarAppearance = true
+		transitionDelegate.customHeight = windowHeight
+		changeWalletViewController.transitioningDelegate = transitionDelegate
+		changeWalletViewController.modalPresentationStyle = .custom
+		changeWalletViewController.modalPresentationCapturesStatusBarAppearance = true
 		
-		self.present(addressViewController, animated: true, completion: nil)
+		self.present(changeWalletViewController, animated: true, completion: nil)
 	}
 }

@@ -13,7 +13,8 @@ class BalanceTVCellItem: BaseCellItem {
 	var image: UIImage?
 	var titleObservable: Observable<String?>?
 	
-	init(identifier: String, imageName: String = "") {
+	init(identifier: String, imageName: String = "", titleObservable: Observable<String?>?) {
+		self.titleObservable = titleObservable
 		image = UIImage(named: imageName)
 		super.init(reuseIdentifier: "BalanceTVCell", identifier: identifier)
 	}
