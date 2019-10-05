@@ -14,6 +14,7 @@ import RxSwift
 class TransactionConstructor {
 
 	static let formater = CurrencyNumberFormatter()
+	static let gasCoin = "BANANA"
 
 	enum TransactionConstructorError: Error {
 		case invalidInputParam
@@ -35,7 +36,7 @@ class TransactionConstructor {
 
 			let chainId = MinterCoreSDK.shared.network.rawValue
 			let gasPrice = 1
-			var gasCoin = Coin.baseCoin().symbol ?? ""
+			var gasCoin = TransactionConstructor.gasCoin//Coin.baseCoin().symbol ?? ""
 			let to = address
 			var newValue = value
 			let payload = Data()
@@ -64,9 +65,9 @@ class TransactionConstructor {
 					newValue = BigUInt(decimal: coinBalance * TransactionCoinFactorDecimal) ?? BigUInt(0)
 				}
 				if baseCoinBalance * TransactionCoinFactorDecimal >= baseCoinCommission {
-					gasCoin = Coin.baseCoin().symbol ?? ""
+//					gasCoin = Coin.baseCoin().symbol ?? ""
 				} else {
-					gasCoin = coin
+//					gasCoin = coin
 					let sendTransaction = SendCoinRawTransaction(nonce: nonce!,
 																											 chainId: chainId,
 																											 gasPrice: gasPrice,
@@ -127,7 +128,7 @@ class TransactionConstructor {
 
 			let chainId = MinterCoreSDK.shared.network.rawValue
 			let gasPrice = 1
-			let gasCoin = Coin.baseCoin().symbol ?? ""
+			let gasCoin = TransactionConstructor.gasCoin//Coin.baseCoin().symbol ?? ""
 			let minimumValueToBuy = BigUInt(decimal: 0.9 * amount * TransactionCoinFactorDecimal)
 
 			let tx = SellCoinRawTransaction(nonce: nonce!,

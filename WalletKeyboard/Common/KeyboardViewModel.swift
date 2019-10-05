@@ -176,7 +176,7 @@ class KeyboardViewModel {
 			} catch {
 
 			}
-			self?.feeSubject.onNext((self?.shouldConvert ?? false) ? "Fee 1% + 0.1100 BIP" : "Fee 0.0100 BIP")
+			self?.feeSubject.onNext((self?.shouldConvert ?? false) ? "1% to BANANA + 0.1100 BIP" : "Fee 0.0100 BIP")
 		}).disposed(by: disposeBag)
 
 		sendAddressSubject.asObservable().subscribe(onNext: { [weak self] (address) in

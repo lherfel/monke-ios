@@ -28,18 +28,16 @@ struct ShareKeyboard {
 }
 
 private extension ShareKeyboard {
-	
+
 	static var characters: [[String]] = [
 		["💸Sent ", "Shut up and take my money! "],
 		["👍Thnx ", "No money, no honey🍯 "],
 		["🔗Mt982da7320501…ad6d620110c55"]
 	]
-	
+
 	static func actions(in viewController: KeyboardViewController) -> KeyboardActionRows {
 		return characters
 			.mappedToActions()
-//			.addingSideActions()
-		//			.appending(bottomActions(leftmost: .switchToKeyboard(.alphabetic(uppercased: false)), for: viewController))
 	}
 }
 
@@ -49,16 +47,3 @@ private extension ShareKeyboard {
 		return characters
 	}
 }
-
-//private extension Sequence where Iterator.Element == KeyboardActionRow {
-//
-//	func addingSideActions() -> [Iterator.Element] {
-//		var actions = map { $0 }
-//		actions[1].insert(.none, at: 0)
-//		actions[1].insert(.none, at: 1)
-//		actions[1].append(.backspace)
-//		actions[1].append(.none)
-//		actions[1].append(.none)
-//		return actions
-//	}
-//}
