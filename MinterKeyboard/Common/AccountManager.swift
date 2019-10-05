@@ -97,8 +97,6 @@ class AccountManager {
 		}
 		
 		saveMnemonics(mnemonics)
-		Session.shared.refreshAccount()
-		Session.shared.updateBalance()
 	}
 	
 	// MARK: -

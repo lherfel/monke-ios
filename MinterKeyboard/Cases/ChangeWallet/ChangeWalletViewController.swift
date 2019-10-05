@@ -7,24 +7,53 @@
 //
 
 import UIKit
-import GoldenKeystore
 import SVProgressHUD
 
-class ChangeWalletViewController: UIViewController {
-	
+class ChangeWalletViewController: BaseViewController, ControllerProtocol {
+
+	// MARK: -
+
+	typealias ViewModelType = ChangeWalletViewModel
+
+	var viewModel: ChangeWalletViewModel! = ChangeWalletViewModel()
+
+	func configure(with viewModel: ChangeWalletViewController.ViewModelType) {
+		mnemonicsTextView.rx.text
+			.asDriver(onErrorJustReturn: nil)
+			.drive(viewModel.input.mnemonics)
+			.disposed(by: disposeBag)
+		doneButton.rx.tap.asDriver(onErrorJustReturn: ())
+			.drive(viewModel.input.didTapDoneButton)
+			.disposed(by: disposeBag)
+
+		viewModel.output.errorNotification
+			.asDriver(onErrorJustReturn: nil)
+			.drive(onNext: { (message) in
+				SVProgressHUD.showError(withStatus: message)
+		}).disposed(by: disposeBag)
+
+		viewModel.output.shouldDismiss
+			.asDriver(onErrorJustReturn: ())
+			.drive(onNext: { [weak self] (_) in
+				self?.dismiss(animated: true, completion: nil)
+		}).disposed(by: disposeBag)
+	}
+
 	// MARK: - Properties.
-	
+
 	private var height: CGFloat = 0
-	
+
 	// MARK: - Outlets.
-	
+
 	@IBOutlet weak var mnemonicsTextView: UITextView!
 	@IBOutlet weak var doneButton: UIButton!
-	
+
 	// MARK: - Lifecycle.
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		configure(with: viewModel)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(willChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(willHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -39,24 +68,26 @@ class ChangeWalletViewController: UIViewController {
 		
 		height = view.frame.origin.y
 	}
-	
-	//MARK: - IBActions
-	
-	@IBAction func buttonDidTap(_ sender: Any) {
-		guard let mnemonics = mnemonicsTextView.text,
-			GoldenKeystore.mnemonicIsValid(mnemonics) else {
-			SVProgressHUD.showError(withStatus: "Invalid phrase")
-			return
-		}
-		
-		AccountManager.shared.changeAccount(mnemonics: mnemonics)
 
-		SVProgressHUD.showSuccess(withStatus: "Wallet changed!")
-		self.dismiss(animated: true)
+	// MARK: - IBActions
+
+	@IBAction func buttonDidTap(_ sender: Any) {
+//		guard let mnemonics = mnemonicsTextView.text,
+//			GoldenKeystore.mnemonicIsValid(mnemonics) else {
+//			SVProgressHUD.showError(withStatus: "Invalid phrase")
+//			return
+//		}
+//
+//		AccountManager.shared.changeAccount(mnemonics: mnemonics)
+//		Session.shared.refreshAccount()
+//		Session.shared.updateBalance()
+//
+//		SVProgressHUD.showSuccess(withStatus: "Wallet changed!")
+//		self.dismiss(animated: true)
 	}
-	
+
 	// MARK: - Resizing when the keyboard is visible.
-	
+
 	@objc
 	private func willChangeFrame(_ notification: Notification) {
 		let rectValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
@@ -64,10 +95,9 @@ class ChangeWalletViewController: UIViewController {
 	
 		view.frame.origin.y = height - frame.height
 	}
-	
+
 	@objc
 	private func willHide(_ notification: Notification) {
 		view.frame.origin.y = height
 	}
 }
-

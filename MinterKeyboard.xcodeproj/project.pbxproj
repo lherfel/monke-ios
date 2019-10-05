@@ -137,6 +137,7 @@
 		FAC5392D22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */; };
 		FAC5393422C217070077E181 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5393322C217070077E181 /* Sugar.swift */; };
 		FAC5393522C217070077E181 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC5393322C217070077E181 /* Sugar.swift */; };
+		FADB0CD52349151C00396C72 /* ChangeWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB0CD42349151C00396C72 /* ChangeWalletViewModel.swift */; };
 		FAF359E122BF73F40006A087 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E022BF73F40006A087 /* Account.swift */; };
 		FAF359E222BF73F40006A087 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E022BF73F40006A087 /* Account.swift */; };
 		FAF359E622BF84DA0006A087 /* TransactionConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF359E522BF84DA0006A087 /* TransactionConstructor.swift */; };
@@ -320,6 +321,7 @@
 		FAC5392622BFEC550077E181 /* ConfigurationTestnet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTestnet.swift; sourceTree = "<group>"; };
 		FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinterSDKConfigurator.swift; sourceTree = "<group>"; };
 		FAC5393322C217070077E181 /* Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
+		FADB0CD42349151C00396C72 /* ChangeWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeWalletViewModel.swift; sourceTree = "<group>"; };
 		FAF359E022BF73F40006A087 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		FAF359E322BF81280006A087 /* MinterKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinterKeyboard.entitlements; sourceTree = "<group>"; };
 		FAF359E422BF81C70006A087 /* WalletKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WalletKeyboard.entitlements; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 			children = (
 				2A8FAF00231FFB7D0056D548 /* ChangeWalletViewController.xib */,
 				2A8FAF02231FFF480056D548 /* ChangeWalletViewController.swift */,
+				FADB0CD42349151C00396C72 /* ChangeWalletViewModel.swift */,
 			);
 			path = ChangeWallet;
 			sourceTree = "<group>";
@@ -1234,6 +1237,7 @@
 				FAF4B60A22D0B3D6009061B7 /* SetupViewModel.swift in Sources */,
 				FAB0D28C22C7B897002945E2 /* PrivateKey+.swift in Sources */,
 				FA07C4FB22B4E25C005D7275 /* ViewController.swift in Sources */,
+				FADB0CD52349151C00396C72 /* ChangeWalletViewModel.swift in Sources */,
 				FAF915C722D2725D00C2117C /* BalanceTableViewCell.swift in Sources */,
 				FAF77AFF22BB832A005D771A /* UIFont+Default.swift in Sources */,
 				FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */,
@@ -1483,7 +1487,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1508,7 +1512,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1572,6 +1576,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WalletKeyboard/WalletKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = WalletKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1594,6 +1599,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WalletKeyboard/WalletKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = WalletKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
