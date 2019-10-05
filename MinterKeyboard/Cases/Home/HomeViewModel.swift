@@ -10,42 +10,6 @@ import Foundation
 import MinterCore
 import RxSwift
 
-class HomeTableCellItem: BaseCellItem {
-	var title: String
-	var type: HomeTableCellItem.`Type`
-	var desc: String?
-	var image: String?
-
-	enum `Type`: String {
-		case balance = "BalanceTVCell"
-		case menuItem = "MenuItemTVCell"
-		case menuItemWithImage = "MenuItemWithImageTVCell"
-		case spacer = "SpacerTVCell"
-	}
-
-	enum identifiers: String {
-		case deposit
-		case backupPhrase
-		case reportProblem
-		case rate
-		case donate
-		case buyBanana
-		case telegram
-		case about
-	}
-
-	init(identifier: String, title: String = "",
-			 type: HomeTableCellItem.`Type` = .spacer,
-			 desc: String? = nil,
-			 image: String? = nil) {
-		self.title = title
-		self.type = type
-		self.desc = desc
-		self.image = image
-		super.init(reuseIdentifier: type.rawValue, identifier: identifier)
-	}
-}
-
 class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 	// MARK: -
@@ -76,12 +40,16 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 	public var dataSource: [BaseCellItem] {
 		return [
-				BalanceTVCellItem(identifier: "deposit", imageName: "bip-logo"),
-				SpacerTVCellItem(identifier: "spacer_1"),
+				BalanceTVCellItem(identifier: "deposit",
+													imageName: "bip-logo",
+													titleObservable: balanceSubject.asObservable()),
+				MenuItemTVCellItem(identifier: "transaction",
+													title: "Transactions 💸"),
 				MenuItemTVCellItem(identifier: "backupPhrase",
 													title: "🔑 Backup Phrase"),
-				MenuItemTVCellItem(identifier: "addWallet",
-													 title: "Add 👛 wallet"),
+				SpacerTVCellItem(identifier: "spacer_1"),
+				MenuItemTVCellItem(identifier: "changeWallet",
+													 title: "Change 👛 wallet"),
 				MenuItemTVCellItem(identifier: "reportProblem",
 													title: "Report 🙈 problem"),
 				MenuItemTVCellItem(identifier: "rate",

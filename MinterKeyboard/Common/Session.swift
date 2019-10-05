@@ -48,6 +48,10 @@ class Session {
 	private let defaultHttp = APIClient()
 	lazy private var addressManager = ExplorerAddressManager(httpClient: defaultHttp)
 
+	func refreshAccount() {
+		self.account = try! AccountManager.shared.restore()
+	}
+	
 	func updateBalance() {
 		addressManager.address(address: "Mx" + self.account.address) { [weak self] (res, error) in
 			if let balances = res?["balances"] as? [[String: String]] {
