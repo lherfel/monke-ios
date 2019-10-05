@@ -10,7 +10,7 @@ import UIKit
 import MinterCore
 import Fabric
 import Crashlytics
-
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		
-		Fabric.with([Crashlytics.self])
 
+		Fabric.with([Crashlytics.self])
 
 		MinterSDKConfigurator.configure(isTestnet: false)
 
@@ -29,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().isTranslucent = true
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 
+//		registerBackgroundTaks()
+//		registerLocalNotification()
+		
 		return true
 	}
 
@@ -38,8 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationDidEnterBackground(_ application: UIApplication) {
-		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+		if #available(iOS 13.0, *) {
+//			cancelAllPandingBGTask()
+//			scheduleAppRefresh()
+//			scheduleAutodelegator()
+		} else {
+			// Fallback on earlier versions
+		}
 	}
 
 	func applicationWillEnterForeground(_ application: UIApplication) {
@@ -53,6 +60,122 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
+	
+	//MARK: Regiater BackGround Tasks
+	private func registerBackgroundTaks() {
+			if #available(iOS 13.0, *) {
+			BGTaskScheduler.shared.register(forTaskWithIdentifier: "io.monke.autodelegator", using: nil) { task in
+				//This task is cast with processing request (BGProcessingTask)
+				self.scheduleLocalNotification()
+				self.handleImageFetcherTask(task: task as! BGProcessingTask)
+			}
+			
+			BGTaskScheduler.shared.register(forTaskWithIdentifier: "io.monke.apprefresh", using: nil) { task in
+				//This task is cast with processing request (BGAppRefreshTask)
+				self.scheduleLocalNotification()
+				self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
+			}
+		}
+	}
+}
 
+// MARK: - BGTask Helper
 
+extension AppDelegate {
+
+	@available(iOS 13.0, *)
+	func cancelAllPandingBGTask() {
+		BGTaskScheduler.shared.cancelAllTaskRequests()
+	}
+
+	@available(iOS 13.0, *)
+	func scheduleAutodelegator() {
+		let request = BGProcessingTaskRequest(identifier: "io.monke.autodelegator")
+		request.requiresNetworkConnectivity = true // Need to true if your task need to network process. Defaults to false.
+		request.requiresExternalPower = false
+		
+		request.earliestBeginDate = Date(timeIntervalSinceNow: 60) // Featch Image Count after 1 minute.
+		//Note :: EarliestBeginDate should not be set to too far into the future.
+		do {
+				try BGTaskScheduler.shared.submit(request)
+		} catch {
+				print("Could not schedule image featch: \(error)")
+		}
+	}
+
+	@available(iOS 13.0, *)
+	func scheduleAppRefresh() {
+		let request = BGAppRefreshTaskRequest(identifier: "io.monke.apprefresh")
+		request.earliestBeginDate = Date(timeIntervalSinceNow: 2 * 60) // App Refresh after 2 minute.
+		//Note :: EarliestBeginDate should not be set to too far into the future.
+		do {
+				try BGTaskScheduler.shared.submit(request)
+		} catch {
+				print("Could not schedule app refresh: \(error)")
+		}
+	}
+
+	@available(iOS 13.0, *)
+	func handleAppRefreshTask(task: BGAppRefreshTask) {
+		scheduleAppRefresh()
+
+		task.expirationHandler = {}
+		scheduleLocalNotification()
+		task.setTaskCompleted(success: true)
+	}
+
+	@available(iOS 13.0, *)
+	func handleImageFetcherTask(task: BGProcessingTask) {
+		scheduleAutodelegator()
+		task.expirationHandler = {}
+		task.setTaskCompleted(success: true)
+	}
+}
+
+// MARK: - Notification Helper
+
+extension AppDelegate {
+
+	func registerLocalNotification() {
+		let notificationCenter = UNUserNotificationCenter.current()
+		let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+
+		notificationCenter.requestAuthorization(options: options) {
+				(didAllow, error) in
+			if !didAllow {
+					print("User has declined notifications")
+			}
+		}
+	}
+
+	func scheduleLocalNotification() {
+		let notificationCenter = UNUserNotificationCenter.current()
+		notificationCenter.getNotificationSettings { (settings) in
+			if settings.authorizationStatus == .authorized {
+				self.fireNotification()
+			}
+		}
+	}
+
+	func fireNotification() {
+		// Create Notification Content
+		let notificationContent = UNMutableNotificationContent()
+
+		// Configure Notification Content
+		notificationContent.title = "Bg"
+		notificationContent.body = "BG Notifications. " + Date().description
+
+		// Add Trigger
+		let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+
+		// Create Notification Request
+		let notificationRequest = UNNotificationRequest(identifier: "local_notification" + Date().description, content: notificationContent, trigger: notificationTrigger)
+
+		// Add Request to User Notification Center
+		UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+			if let error = error {
+					print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+			}
+		}
+	}
 }

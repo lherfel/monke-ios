@@ -94,7 +94,7 @@ class KeyboardViewController: KeyboardInputViewController {
 			.drive(self.headerView.delegateLabel.rx.text).disposed(by: disposeBag)
 
 		viewModel.output.balances.subscribe(onNext: { [weak self] (balances) in
-			self?.balances = balances
+			self?.balances = balances.sorted()
 		}).disposed(by: disposeBag)
 
 		viewModel.output.selectedCoin.asDriver(onErrorJustReturn: "").drive(onNext: { [weak self] (coin) in
@@ -812,7 +812,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 		coinPicker.translatesAutoresizingMaskIntoConstraints = false
 		coinPicker.delegate = self
 		coinPicker.dataSource = self
-
+		coinPicker.backgroundColor = backgroundColor
 		pickerViewWrapper.addSubview(coinPicker)
 		pickerViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[picker]-0-|",
 																											 options: [],
@@ -837,7 +837,7 @@ extension KeyboardViewController: UIGestureRecognizerDelegate, PickerViewDelegat
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["okButton": okButton]))
-		pickerViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[okButton(46)]-(0)-|",
+		pickerViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[okButton(46)]-(15)-|",
 																																		options: [],
 																																		metrics: nil,
 																																		views: ["okButton": okButton]))

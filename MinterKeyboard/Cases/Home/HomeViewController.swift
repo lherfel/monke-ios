@@ -12,6 +12,7 @@ import MinterExplorer
 import RxSwift
 import RxDataSources
 import SPStorkController
+import SafariServices
 
 class HomeViewController: BaseViewController, ControllerProtocol {
 
@@ -35,33 +36,41 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 				return cell
 		})
 		let section = [SingleSection(items: viewModel.dataSource)]
-		
+
 		Observable.just(section)
 			.bind(to: tableView.rx.items(dataSource: datasource))
 			.disposed(by: disposeBag)
-		
+
 		tableView.rx.setDelegate(self)
 			.disposed(by: disposeBag)
-		
+
 		tableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexPath) in
 			guard let cell = self?.viewModel.output.cells[safe: indexPath.item] else {
 				return
 			}
-			
+
 			if cell.identifier == "backupPhrase" {
 				self?.performSegue(withIdentifier: "showBackup", sender: nil)
 			}
-			
+
 			if cell.identifier == "donate" {
 				self?.didTapDeposit(type: .donate)
 			}
-			
+
 			if cell.identifier == "changeWallet" {
 				self?.didTapChangeWallet()
 			}
-			
+
 			if cell.identifier == "deposit" {
 				self?.didTapDeposit(type: .deposit)
+			}
+			
+			if cell.identifier == "transaction" {
+				self?.didTapTransactions()
+			}
+			
+			if cell.identifier == "about" {
+				self?.didTapAbout()
 			}
 		}).disposed(by: disposeBag)
 	}
@@ -128,5 +137,19 @@ extension HomeViewController {
 		changeWalletViewController.modalPresentationCapturesStatusBarAppearance = true
 		
 		self.present(changeWalletViewController, animated: true, completion: nil)
+	}
+	
+	func didTapTransactions() {
+		if let url = URL(string: "https://explorer.minter.network/address/Mx" + Session.shared.account.address) {
+			let safariVC = SFSafariViewController(url: url)
+			self.present(safariVC, animated: true, completion: nil)
+		}
+	}
+	
+	func didTapAbout() {
+		if let url = URL(string: "https://monke.io") {
+			let safariVC = SFSafariViewController(url: url)
+			self.present(safariVC, animated: true, completion: nil)
+		}
 	}
 }
