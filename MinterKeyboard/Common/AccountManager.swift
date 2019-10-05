@@ -73,21 +73,10 @@ class AccountManager {
 		}
 
 		var account: Account!
+		account = restoreAccount()
 
-		do {
-			account = restoreAccount()
-			if account == nil {
-				let acc = try AccountManager.shared.account(from: mnemonics, at: 0)
-				
-				if nil == acc {
-					fatalError("Can't get Private key or address")
-				}
-
-				try saveAccount(acc!)
-				account = acc
-			}
-		} catch {
-			fatalError("Can't get Account")
+		if account == nil {
+			account = getAccount(mnemonics)
 		}
 
 		return Account(address: account.address,
@@ -96,6 +85,22 @@ class AccountManager {
 									 isTurnedOn: restoreTurnedOn())
 	}
 
+	// MARK: - Public methods
+	
+	func changeAccount(mnemonics: String) {
+		let acc = getAccount(mnemonics)
+		
+		do {
+			try saveAccount(acc!)
+		} catch {
+			fatalError("Can't save Account")
+		}
+		
+		saveMnemonics(mnemonics)
+		Session.shared.refreshAccount()
+		Session.shared.updateBalance()
+	}
+	
 	// MARK: -
 
 	private func restoreAccount() -> Account? {
@@ -148,6 +153,21 @@ class AccountManager {
 	private func saveAddress(_ address: String) {
 		accountStorage.set(key: StorageKeys.address.rawValue, value: address)
 	}
+	
+	private func getAccount(_ mnemonics: String) -> Account? {
+		do {
+			let acc = try AccountManager.shared.account(from: mnemonics, at: 0)
+			if nil == acc {
+				fatalError("Can't get Private key or address")
+			}
+
+			return acc
+			
+		} catch {
+			fatalError("Can't get Account")
+		}
+	}
+	
 
 	private func generateMnemonics() -> String? {
 		return String.generateMnemonicString()

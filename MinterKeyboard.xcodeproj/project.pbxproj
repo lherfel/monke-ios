@@ -12,14 +12,15 @@
 		2A240F79230878A30019B5CC /* CopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A240F78230878A30019B5CC /* CopyView.swift */; };
 		2A5750F622EF4FA7006BFB75 /* MenuItemWithImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */; };
 		2A5750F722EF4FAB006BFB75 /* MenuItemWithImageTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */; };
+		2A6554E9234141640001082A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA322BA2B34003442CC /* SF-Pro-Display-Bold.otf */; };
 		2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */; };
 		2A83BE2E22EED5DD007C7930 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2D22EED5DD007C7930 /* UITableViewCell+Extensions.swift */; };
 		2A83BE2F22EED91B007C7930 /* BalanceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A175822E754D000E7503F /* BalanceTVCell.xib */; };
 		2A83BE3022EED91F007C7930 /* BalanceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A175722E754C800E7503F /* BalanceTVCell.swift */; };
 		2A8566F422F1EEDF001AEB58 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8566F222F1EEDE001AEB58 /* AddressViewController.swift */; };
 		2A8566F522F1EEDF001AEB58 /* AddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A8566F322F1EEDE001AEB58 /* AddressViewController.xib */; };
-		2A8FAF01231FFB7D0056D548 /* AddWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A8FAF00231FFB7D0056D548 /* AddWalletViewController.xib */; };
-		2A8FAF03231FFF480056D548 /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8FAF02231FFF480056D548 /* AddWalletViewController.swift */; };
+		2A8FAF01231FFB7D0056D548 /* ChangeWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A8FAF00231FFB7D0056D548 /* ChangeWalletViewController.xib */; };
+		2A8FAF03231FFF480056D548 /* ChangeWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8FAF02231FFF480056D548 /* ChangeWalletViewController.swift */; };
 		2ABF5A2F22E8CCE3001CC6AE /* MenuItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */; };
 		2ABF5A3022E8CCE3001CC6AE /* MenuItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */; };
 		2AD781D222E9B10200CE5533 /* SpacerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */; };
@@ -237,8 +238,8 @@
 		2A83BE2D22EED5DD007C7930 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		2A8566F222F1EEDE001AEB58 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		2A8566F322F1EEDE001AEB58 /* AddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressViewController.xib; sourceTree = "<group>"; };
-		2A8FAF00231FFB7D0056D548 /* AddWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddWalletViewController.xib; sourceTree = "<group>"; };
-		2A8FAF02231FFF480056D548 /* AddWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletViewController.swift; sourceTree = "<group>"; };
+		2A8FAF00231FFB7D0056D548 /* ChangeWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeWalletViewController.xib; sourceTree = "<group>"; };
+		2A8FAF02231FFF480056D548 /* ChangeWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeWalletViewController.swift; sourceTree = "<group>"; };
 		2A9A175722E754C800E7503F /* BalanceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTVCell.swift; sourceTree = "<group>"; };
 		2A9A175822E754D000E7503F /* BalanceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTVCell.xib; sourceTree = "<group>"; };
 		2ABF5A2D22E8CCE3001CC6AE /* MenuItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTVCell.swift; sourceTree = "<group>"; };
@@ -472,13 +473,13 @@
 			path = Address;
 			sourceTree = "<group>";
 		};
-		2A8FAEFF231FFB430056D548 /* AddWallet */ = {
+		2A8FAEFF231FFB430056D548 /* ChangeWallet */ = {
 			isa = PBXGroup;
 			children = (
-				2A8FAF00231FFB7D0056D548 /* AddWalletViewController.xib */,
-				2A8FAF02231FFF480056D548 /* AddWalletViewController.swift */,
+				2A8FAF00231FFB7D0056D548 /* ChangeWalletViewController.xib */,
+				2A8FAF02231FFF480056D548 /* ChangeWalletViewController.swift */,
 			);
-			path = AddWallet;
+			path = ChangeWallet;
 			sourceTree = "<group>";
 		};
 		2ABE7F0622E7545C0057F994 /* BalanceTVCell */ = {
@@ -577,7 +578,7 @@
 		FA07C52822B4E877005D7275 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
-				2A8FAEFF231FFB430056D548 /* AddWallet */,
+				2A8FAEFF231FFB430056D548 /* ChangeWallet */,
 				2A8566F122F1EEDE001AEB58 /* Address */,
 				FAF4B61022D257B8009061B7 /* BackupPhrase */,
 				FAF4B60B22D25772009061B7 /* Home */,
@@ -1027,8 +1028,9 @@
 				FAB0D31022C8F325002945E2 /* notificationFilled@2x.png in Resources */,
 				FA57093822B57B3500F5D0DD /* BalanceView.xib in Resources */,
 				FAB0D32822C8F325002945E2 /* alarmOutline@3x.png in Resources */,
-				2A8FAF01231FFB7D0056D548 /* AddWalletViewController.xib in Resources */,
+				2A8FAF01231FFB7D0056D548 /* ChangeWalletViewController.xib in Resources */,
 				FAB0D33422C8F325002945E2 /* error@1x.png in Resources */,
+				2A6554E9234141640001082A /* SF-Pro-Display-Bold.otf in Resources */,
 				2A8566F522F1EEDF001AEB58 /* AddressViewController.xib in Resources */,
 				FAB0D33022C8F325002945E2 /* alarmOutline@1x.png in Resources */,
 				FAB6739F23018A60005E5FDF /* SF-Pro-Display-Regular.otf in Resources */,
@@ -1242,7 +1244,7 @@
 				FA5A4E3322BD80D9002EAD92 /* String+.swift in Sources */,
 				FAF359E622BF84DA0006A087 /* TransactionConstructor.swift in Sources */,
 				FAF4B61622D25A5D009061B7 /* RootViewController.swift in Sources */,
-				2A8FAF03231FFF480056D548 /* AddWalletViewController.swift in Sources */,
+				2A8FAF03231FFF480056D548 /* ChangeWalletViewController.swift in Sources */,
 				FA57095522B66A1300F5D0DD /* HeaderView.swift in Sources */,
 				FAC5393422C217070077E181 /* Sugar.swift in Sources */,
 				FAF89B2B22BA89C6003442CC /* FakeTextField.swift in Sources */,
