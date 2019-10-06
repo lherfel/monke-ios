@@ -39,6 +39,7 @@ class Session {
 	// MARK: -
 
 	var accountSubject = ReplaySubject<Account>.create(bufferSize: 1)
+	var addressSubject = ReplaySubject<String>.create(bufferSize: 1)
 	var balanceSubject = ReplaySubject<[String: Decimal]>.create(bufferSize: 1)
 	var delegationsSubject = ReplaySubject<Decimal>.create(bufferSize: 1)
 	var hasEnoughBananas = BehaviorSubject<Bool>(value: false)
@@ -52,6 +53,10 @@ class Session {
 		self.account = try! AccountManager.shared.restore()
 	}
 	
+	func updateAddress() {
+		addressSubject.onNext("Mx" + self.account.address)
+	}
+
 	func updateBalance() {
 		addressManager.address(address: "Mx" + self.account.address) { [weak self] (res, error) in
 			if let balances = res?["balances"] as? [[String: String]] {
