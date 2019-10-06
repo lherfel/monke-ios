@@ -63,7 +63,6 @@ class AccountManager {
 	var hasMnemonics = false
 
 	func restore() throws -> Account {
-
 		var mnemonics: String!
 		let mnem = restoreMnemonics()
 		mnemonics = mnem != nil ? mnem : generateMnemonics()
@@ -89,22 +88,19 @@ class AccountManager {
 	
 	func changeAccount(mnemonics: String) {
 		let acc = getAccount(mnemonics)
-		
 		do {
 			try saveAccount(acc!)
 		} catch {
 			fatalError("Can't save Account")
 		}
-		
 		saveMnemonics(mnemonics)
 	}
-	
+
 	// MARK: -
 
 	private func restoreAccount() -> Account? {
 		let restored = accountStorage.get(key: StorageKeys.account.rawValue)?
 			.data(using: .utf8) ?? Data()
-
 		return try? JSONDecoder().decode(Account.self, from: restored)
 	}
 
@@ -143,7 +139,7 @@ class AccountManager {
 	private func saveMnemonics(_ mnemonics: String) {
 		accountStorage.set(key: StorageKeys.mnemonics.rawValue, value: mnemonics)
 	}
-	
+
 	private func savePrivateKey(_ key: String) {
 		accountStorage.set(key: StorageKeys.privateKey.rawValue, value: key)
 	}
@@ -151,21 +147,18 @@ class AccountManager {
 	private func saveAddress(_ address: String) {
 		accountStorage.set(key: StorageKeys.address.rawValue, value: address)
 	}
-	
+
 	private func getAccount(_ mnemonics: String) -> Account? {
 		do {
 			let acc = try AccountManager.shared.account(from: mnemonics, at: 0)
 			if nil == acc {
 				fatalError("Can't get Private key or address")
 			}
-
 			return acc
-			
 		} catch {
 			fatalError("Can't get Account")
 		}
 	}
-	
 
 	private func generateMnemonics() -> String? {
 		return String.generateMnemonicString()
