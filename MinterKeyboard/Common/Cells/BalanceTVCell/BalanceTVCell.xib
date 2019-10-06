@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="82c-0E-DEO" id="Ogq-XK-Z8L">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bip-logo" translatesAutoresizingMaskIntoConstraints="NO" id="AsE-Bh-sVA">
@@ -30,12 +30,23 @@
                             <constraint firstAttribute="height" constant="24" id="BCW-gk-SXB"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000 BIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeV-M4-9Lh">
-                        <rect key="frame" x="44" y="19.5" width="94" height="21"/>
-                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-m1-enn">
+                        <rect key="frame" x="46" y="14" width="248.5" height="32.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000 BIP" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeV-M4-9Lh">
+                                <rect key="frame" x="0.0" y="0.0" width="248.5" height="18"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4x-SL-uzT">
+                                <rect key="frame" x="0.0" y="18" width="248.5" height="14.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCI-hg-0P5">
                         <rect key="frame" x="345" y="15" width="53" height="30"/>
                         <state key="normal" title="Deposit">
@@ -46,18 +57,23 @@
                 <constraints>
                     <constraint firstItem="AsE-Bh-sVA" firstAttribute="centerY" secondItem="Ogq-XK-Z8L" secondAttribute="centerY" id="1uM-Hg-VUS"/>
                     <constraint firstItem="HCI-hg-0P5" firstAttribute="centerY" secondItem="Ogq-XK-Z8L" secondAttribute="centerY" id="2Na-hT-Z0Y"/>
-                    <constraint firstItem="VeV-M4-9Lh" firstAttribute="leading" secondItem="AsE-Bh-sVA" secondAttribute="trailing" constant="8" id="E0B-rp-8eq"/>
+                    <constraint firstItem="Ej4-m1-enn" firstAttribute="leading" secondItem="AsE-Bh-sVA" secondAttribute="trailing" constant="10" id="XAU-W3-3Tj"/>
                     <constraint firstAttribute="trailing" secondItem="HCI-hg-0P5" secondAttribute="trailing" constant="16" id="eGR-yN-cKd"/>
+                    <constraint firstItem="Ej4-m1-enn" firstAttribute="width" secondItem="Ogq-XK-Z8L" secondAttribute="width" multiplier="0.6" id="g4n-Jf-1Va"/>
                     <constraint firstItem="AsE-Bh-sVA" firstAttribute="leading" secondItem="Ogq-XK-Z8L" secondAttribute="leading" constant="12" id="mca-1T-kpa"/>
-                    <constraint firstItem="VeV-M4-9Lh" firstAttribute="centerY" secondItem="Ogq-XK-Z8L" secondAttribute="centerY" id="nZg-f9-iPf"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="Ej4-m1-enn" firstAttribute="centerY" secondItem="82c-0E-DEO" secondAttribute="centerY" id="CZY-ht-EpT"/>
+            </constraints>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="coinImage" destination="AsE-Bh-sVA" id="2pX-t4-6uM"/>
                 <outlet property="depositButton" destination="HCI-hg-0P5" id="rgh-2o-h6V"/>
+                <outlet property="subtitle" destination="C4x-SL-uzT" id="9Yb-Id-K2k"/>
                 <outlet property="title" destination="VeV-M4-9Lh" id="mXx-la-7Fy"/>
             </connections>
+            <point key="canvasLocation" x="132" y="98"/>
         </tableViewCell>
     </objects>
     <resources>

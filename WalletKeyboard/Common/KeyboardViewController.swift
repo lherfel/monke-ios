@@ -39,7 +39,7 @@ class KeyboardViewController: KeyboardInputViewController {
 	}
 
 	var keyboardSwitcherAction: KeyboardAction {
-		return needsInputModeSwitchKey ? .switchKeyboard : .none
+		return needsInputModeSwitchKey && !isTurnedOn ? .switchKeyboard : .none
 	}
 
 	func customize(viewModel: KeyboardViewModel) {
@@ -429,6 +429,7 @@ class KeyboardViewController: KeyboardInputViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			self.setGlobeButton()
 			self.setAppearance()
 		}
 	}
@@ -439,6 +440,53 @@ class KeyboardViewController: KeyboardInputViewController {
 																	 action: #selector(UIInputViewController.handleInputModeList(from:with:)),
 																	 for: .allTouchEvents)
 		}
+	}
+
+	func setGlobeButton() {
+		if needsInputModeSwitchKey && nextKeyboardButton.superview == nil && isTurnedOn {
+			nextKeyboardButton.setImage(UIImage(named: "globe-icon"), for: .normal)
+			if isDarkAppearance() {
+				nextKeyboardButton.tintColor = .white
+			} else {
+				nextKeyboardButton.tintColor = UIColor(red: 0.31, green: 0.33, blue: 0.36, alpha: 1)
+			}
+			nextKeyboardButton.sizeToFit()
+			nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
+
+			nextKeyboardButton.addTarget(self,
+																	 action: #selector(UIInputViewController.advanceToNextInputMode),
+																	 for: .touchUpInside)
+
+			view.addSubview(self.nextKeyboardButton)
+
+			let nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: nextKeyboardButton,
+																																		attribute: .left,
+																																		relatedBy: .equal,
+																																		toItem: view,
+																																		attribute: .left,
+																																		multiplier: 1.0,
+																																		constant: 16.0)
+			let nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: nextKeyboardButton,
+																																	attribute: .bottom,
+																																	relatedBy: .equal,
+																																	toItem: view,
+																																	attribute: .top,
+																																	multiplier: 1.0,
+																																	constant: view.bounds.height - 46.0 - (self.isTurnedOn ? 0 : 20))
+
+			if (bottomConstraint?.constant ?? 0.0) != -40.0 {
+				bottomConstraint?.constant = -40.0
+			}
+
+			view.addConstraints([nextKeyboardButtonLeftSideConstraint,
+													 nextKeyboardButtonBottomConstraint])
+		} else {
+			nextKeyboardButton.removeFromSuperview()
+			if (bottomConstraint?.constant ?? 0.0) != 0.0 {
+				bottomConstraint?.constant = 0.0
+			}
+		}
+
 	}
 
 	override func textWillChange(_ textInput: UITextInput?) {

@@ -15,6 +15,7 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	// MARK: -
 
 	private var balanceSubject: BehaviorSubject<String?> = BehaviorSubject(value: "0.0000 BIP")
+	private var addressSubject: BehaviorSubject<String?> = BehaviorSubject(value: "MX")
 	private let currencyFormatter = CurrencyNumberFormatter.coinFormatter
 
 	// MARK: -
@@ -42,7 +43,8 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 		return [
 				BalanceTVCellItem(identifier: "deposit",
 													imageName: "bip-logo",
-													titleObservable: balanceSubject.asObservable()),
+													titleObservable: balanceSubject.asObservable(),
+													addressObservable: addressSubject.asObservable()),
 				MenuItemTVCellItem(identifier: "transaction",
 													title: "Transactions 💸"),
 				MenuItemTVCellItem(identifier: "backupPhrase",
@@ -85,6 +87,7 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 			Session.shared.updateBalance()
+			Session.shared.updateAddress()
 		}
 
 		Session.shared.balanceSubject.map({ [weak self] (res) -> String in
@@ -96,6 +99,10 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 			return ""
 		}).subscribe(onNext: { (val) in
 			self.balanceSubject.onNext(val)
+		}).disposed(by: disposeBag)
+
+		Session.shared.addressSubject.subscribe(onNext: {
+			self.addressSubject.onNext($0)
 		}).disposed(by: disposeBag)
 
 		didTapTurnOnSubject.asObservable().subscribe(onNext: { (val) in

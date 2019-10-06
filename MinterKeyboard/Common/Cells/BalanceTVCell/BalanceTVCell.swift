@@ -12,9 +12,13 @@ import RxSwift
 class BalanceTVCellItem: BaseCellItem {
 	var image: UIImage?
 	var titleObservable: Observable<String?>?
-	
-	init(identifier: String, imageName: String = "", titleObservable: Observable<String?>?) {
+	var addressObservable: Observable<String?>?
+
+	init(identifier: String, imageName: String = "",
+			 titleObservable: Observable<String?>?,
+			 addressObservable: Observable<String?>?) {
 		self.titleObservable = titleObservable
+		self.addressObservable = addressObservable
 		image = UIImage(named: imageName)
 		super.init(reuseIdentifier: "BalanceTVCell", identifier: identifier)
 	}
@@ -34,6 +38,7 @@ class BalanceTVCell: BaseCell {
 
 	@IBOutlet weak var coinImage: UIImageView!
 	@IBOutlet weak var title: UILabel!
+	@IBOutlet weak var subtitle: UILabel!
 	@IBOutlet weak var depositButton: UIButton!
 
 	// MARK: -
@@ -49,8 +54,11 @@ class BalanceTVCell: BaseCell {
 
 		coinImage.image = item.image
 
-		item.titleObservable?.asDriver(onErrorJustReturn: nil)
+		item.addressObservable?.asDriver(onErrorJustReturn: nil)
 			.drive(title.rx.text).disposed(by: disposeBag)
+
+		item.titleObservable?.asDriver(onErrorJustReturn: nil)
+			.drive(subtitle.rx.text).disposed(by: disposeBag)
 
 		depositButton.rx.tap.subscribe(onNext: { [weak self] (_) in
 			self?.delegate?.didTapDeposit()
