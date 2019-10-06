@@ -49,6 +49,7 @@ class ChangeWalletViewModel: BaseViewModel, ViewModelProtocol {
 				AccountManager.shared.changeAccount(mnemonics: mnemonics)
 				Session.shared.refreshAccount()
 				Session.shared.updateBalance()
+				Session.shared.updateAddress()
 				self?.shouldDismissSubject.onNext(())
 			} else {
 				self?.errorSubject.onNext("Invalid Phrase")

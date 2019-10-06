@@ -348,7 +348,7 @@ class KeyboardViewModel {
 		let formatter = self.currencyFormatter
 		let balance = CurrencyNumberFormatter.formattedDecimal(with: amount,
 																													 formatter: formatter)
-		return "Available " + balance + " " + coin
+		return "Available " + balance
 	}
 
 	private func convertToBananas(coinFrom: String, amount: Decimal) {

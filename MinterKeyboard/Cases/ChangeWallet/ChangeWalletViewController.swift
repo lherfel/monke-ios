@@ -61,6 +61,10 @@ class ChangeWalletViewController: BaseViewController, ControllerProtocol {
 		if UIScreen.main.bounds.height <= 568 {
 			mnemonicsTextView.font = mnemonicsTextView.font?.withSize(16)
 		}
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			self.mnemonicsTextView.becomeFirstResponder()
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -69,31 +73,14 @@ class ChangeWalletViewController: BaseViewController, ControllerProtocol {
 		height = view.frame.origin.y
 	}
 
-	// MARK: - IBActions
-
-	@IBAction func buttonDidTap(_ sender: Any) {
-//		guard let mnemonics = mnemonicsTextView.text,
-//			GoldenKeystore.mnemonicIsValid(mnemonics) else {
-//			SVProgressHUD.showError(withStatus: "Invalid phrase")
-//			return
-//		}
-//
-//		AccountManager.shared.changeAccount(mnemonics: mnemonics)
-//		Session.shared.refreshAccount()
-//		Session.shared.updateBalance()
-//
-//		SVProgressHUD.showSuccess(withStatus: "Wallet changed!")
-//		self.dismiss(animated: true)
-	}
-
 	// MARK: - Resizing when the keyboard is visible.
 
 	@objc
 	private func willChangeFrame(_ notification: Notification) {
 		let rectValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
 		guard let frame = rectValue?.cgRectValue else { return }
-	
-		view.frame.origin.y = height - frame.height
+		let frameY = height - frame.height
+		view.frame.origin.y = frameY > 0 ? frameY : 1
 	}
 
 	@objc
