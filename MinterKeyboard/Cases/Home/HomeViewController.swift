@@ -13,6 +13,7 @@ import RxSwift
 import RxDataSources
 import SPStorkController
 import SafariServices
+import SVProgressHUD
 
 class HomeViewController: BaseViewController, ControllerProtocol {
 
@@ -49,28 +50,25 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 				return
 			}
 
-			if cell.identifier == "backupPhrase" {
-				self?.performSegue(withIdentifier: "showBackup", sender: nil)
-			}
-
-			if cell.identifier == "donate" {
-				self?.didTapDeposit(type: .donate)
-			}
-
-			if cell.identifier == "changeWallet" {
-				self?.didTapChangeWallet()
-			}
-
-			if cell.identifier == "deposit" {
-				self?.didTapDeposit(type: .deposit)
-			}
-			
-			if cell.identifier == "transaction" {
-				self?.didTapTransactions()
-			}
-			
-			if cell.identifier == "about" {
-				self?.didTapAbout()
+			switch cell.identifier {
+				case "deposit":
+					self?.didTapDeposit(type: .deposit)
+				case "backupPhrase":
+					self?.performSegue(withIdentifier: "showBackup", sender: nil)
+				case "donate":
+					self?.didTapDeposit(type: .donate)
+				case "changeWallet":
+					self?.didTapChangeWallet()
+				case "reportProblem":
+					self?.didTapReportProblem()
+				case "transaction":
+					self?.didTapTransactions()
+				case "telegram":
+					self?.didTapTelegram()
+				case "about":
+					self?.didTapAbout()
+				default:
+					break
 			}
 		}).disposed(by: disposeBag)
 	}
@@ -146,8 +144,28 @@ extension HomeViewController {
 		}
 	}
 	
+	func didTapReportProblem() {
+		let email = "monkeapp@gmail.com"
+		if let url = URL(string: "mailto:\(email)") {
+			if UIApplication.shared.canOpenURL(url){
+				UIApplication.shared.open(url)
+			} else {
+				SVProgressHUD.showError(withStatus: "There is no any mail application")
+			}
+		}
+	}
+	
+	func didTapTelegram() {
+		if let appUrl = URL(string: "tg://resolve?domain=MonkeApp"), UIApplication.shared.canOpenURL(appUrl) {
+			UIApplication.shared.open(appUrl)
+		} else {
+			guard let webUrl = URL(string: "https://t.me/MonkeApp") else { return }
+			UIApplication.shared.open(webUrl)
+		}
+	}
+	
 	func didTapAbout() {
-		if let url = URL(string: "https://monke.io") {
+		if let url = URL(string: "https://en.monke.io") {
 			let safariVC = SFSafariViewController(url: url)
 			self.present(safariVC, animated: true, completion: nil)
 		}

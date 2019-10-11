@@ -13,6 +13,7 @@
 		2A5750F622EF4FA7006BFB75 /* MenuItemWithImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */; };
 		2A5750F722EF4FAB006BFB75 /* MenuItemWithImageTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */; };
 		2A6554E9234141640001082A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAF89AA322BA2B34003442CC /* SF-Pro-Display-Bold.otf */; };
+		2A7BAC64234DB95400CF954D /* DecimalKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7BAC63234DB93000CF954D /* DecimalKeyboard.swift */; };
 		2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */; };
 		2A83BE2E22EED5DD007C7930 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83BE2D22EED5DD007C7930 /* UITableViewCell+Extensions.swift */; };
 		2A83BE2F22EED91B007C7930 /* BalanceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A175822E754D000E7503F /* BalanceTVCell.xib */; };
@@ -235,6 +236,7 @@
 		2A240F78230878A30019B5CC /* CopyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyView.swift; sourceTree = "<group>"; };
 		2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemWithImageTVCell.swift; sourceTree = "<group>"; };
 		2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemWithImageTVCell.xib; sourceTree = "<group>"; };
+		2A7BAC63234DB93000CF954D /* DecimalKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalKeyboard.swift; sourceTree = "<group>"; };
 		2A83BE2B22EED594007C7930 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		2A83BE2D22EED5DD007C7930 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		2A8566F222F1EEDE001AEB58 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
@@ -887,6 +889,7 @@
 				FAF89B2322BA4762003442CC /* CharacterButton.swift */,
 				FAF89B2522BA4775003442CC /* CharacterButton.xib */,
 				FAF77B0522BB8AB7005D771A /* NumericKeyboard.swift */,
+				2A7BAC63234DB93000CF954D /* DecimalKeyboard.swift */,
 				FA5A4E3A22BE231D002EAD92 /* ShareKeyboard.swift */,
 				FAF7046522D74F1E00709DB6 /* LettersKeyboard.swift */,
 				FAF38E0022E79B0E00E08BE8 /* DefaultKeyboard.swift */,
@@ -1309,6 +1312,7 @@
 				FAC5392D22BFEC890077E181 /* MinterSDKConfigurator.swift in Sources */,
 				FAF77B0622BB8AB7005D771A /* NumericKeyboard.swift in Sources */,
 				FA57093C22B57B6200F5D0DD /* DelegateView.swift in Sources */,
+				2A7BAC64234DB95400CF954D /* DecimalKeyboard.swift in Sources */,
 				FA57095622B66A1300F5D0DD /* HeaderView.swift in Sources */,
 				FAF7046622D74F1E00709DB6 /* LettersKeyboard.swift in Sources */,
 				FA57095222B63A2500F5D0DD /* AccountManager.swift in Sources */,
