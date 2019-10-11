@@ -266,7 +266,7 @@ class KeyboardViewController: KeyboardInputViewController {
 			let viewModel = KeyboardViewModel()
 			if !self.hasFullAccess || !viewModel.output.isTurnedOn {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-					self.showKeyboard(type: .hex, forSelectedTextField: false, topPadding: 40)
+					self.showKeyboard(type: self.getKeyboardType(), forSelectedTextField: false, topPadding: 40)
 					self.heightConstraint?.constant = 60.0
 					if self.hasFullAccess {
 						let headerViewNib = UINib(nibName: "HeaderView", bundle: nil)
@@ -290,8 +290,12 @@ class KeyboardViewController: KeyboardInputViewController {
 					}
 				}
 			} else {
-				self.initializeScrollView()
-				self.customize(viewModel: viewModel)
+				if self.getKeyboardType() == .hex {
+					self.initializeScrollView()
+					self.customize(viewModel: viewModel)
+				} else {
+					self.showKeyboard(type: self.getKeyboardType(), forSelectedTextField: false, topPadding: 40)
+				}
 			}
 		}
 	}
@@ -580,6 +584,8 @@ extension KeyboardViewController {
 	enum KeyboardType {
 		case none
 		case numeric
+		case number
+		case decimal
 		case hex
 		case letters
 	}
@@ -608,6 +614,16 @@ extension KeyboardViewController {
 		case .numeric:
 			setNeedsChangeHeight(forKeyboard: .numeric)
 			keyboard = numericKeyboardView()
+			topPadding = max(20.0, topPadding)
+			break
+		case .number:
+			setNeedsChangeHeight(forKeyboard: .decimal)
+			keyboard = decimalKeyboardView(isDecimal: false)
+			topPadding = max(20.0, topPadding)
+			break
+		case .decimal:
+			setNeedsChangeHeight(forKeyboard: .decimal)
+			keyboard = decimalKeyboardView(isDecimal: true)
 			topPadding = max(20.0, topPadding)
 			break
 
@@ -753,6 +769,35 @@ extension KeyboardViewController {
 																																			views: ["keyboard": keyboardView]))
 		return keyboardViewWrapper
 	}
+	
+	func decimalKeyboardView(isDecimal: Bool) -> UIView {
+		let height = Double(210.0)
+
+		let keyboard = DecimalKeyboard(in: self, isDecimal: isDecimal)
+		let rows = buttonRows(for: keyboard.actions, distribution: .fillEqually, buttonHeight: 52)
+		let keyboardView = UIStackView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
+		keyboardView.backgroundColor = isDarkAppearance() ? Asset.Colors.darkBackground.color : Asset.Colors.lightBackground.color
+		keyboardView.axis = .vertical
+		keyboardView.alignment = .fill
+		keyboardView.distribution = .equalSpacing
+		keyboardView.translatesAutoresizingMaskIntoConstraints = false
+		keyboardView.addArrangedSubviews(rows)
+
+		let keyboardViewWrapper = UIView(frame: CGRect(x: 0, y: 0, width: Double(width), height: height))
+		keyboardViewWrapper.translatesAutoresizingMaskIntoConstraints = false
+		keyboardViewWrapper.addSubview(keyboardView)
+		keyboardViewWrapper.backgroundColor = self.backgroundColor
+	//		keyboardViewWrapper.backgroundColor = isDarkAppearance() ? Asset.Colors.darkBackground.color : Asset.Colors.lightBackground.color
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[keyboard(210)]-6-|",
+																																				options: [],
+																																				metrics: nil,
+																																				views: ["keyboard": keyboardView]))
+		keyboardViewWrapper.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[keyboard]-0-|",
+																																				options: [],
+																																				metrics: nil,
+																																				views: ["keyboard": keyboardView]))
+		return keyboardViewWrapper
+	}
 
 	func lettersKeyboardView() -> UIView {
 		let height = Double(178.0)
@@ -788,14 +833,14 @@ extension KeyboardViewController {
 		return view
 	}
 
-	func buttonRow(for actions: KeyboardActionRow, distribution: UIStackView.Distribution) -> KeyboardButtonRow {
-		return KeyboardButtonRow(height: 42, actions: actions, distribution: distribution) {
+	func buttonRow(for actions: KeyboardActionRow, distribution: UIStackView.Distribution, buttonHeight: CGFloat) -> KeyboardButtonRow {
+		return KeyboardButtonRow(height: buttonHeight, actions: actions, distribution: distribution) {
 			return button(for: $0, distribution: distribution)
 		}
 	}
 
-	func buttonRows(for actions: KeyboardActionRows, distribution: UIStackView.Distribution) -> [KeyboardButtonRow] {
-		var rows = actions.map { buttonRow(for: $0, distribution: distribution) }
+	func buttonRows(for actions: KeyboardActionRows, distribution: UIStackView.Distribution, buttonHeight: CGFloat = 42) -> [KeyboardButtonRow] {
+		var rows = actions.map { buttonRow(for: $0, distribution: distribution, buttonHeight: buttonHeight) }
 		guard rows.count > 2 else { return rows }
 		rows[0].buttonStackView.distribution = .fillEqually
 		rows[1].buttonStackView.distribution = .fillEqually
@@ -957,5 +1002,16 @@ extension KeyboardViewController {
 
 	func isDarkAppearance() -> Bool {
 		return self.textDocumentProxy.keyboardAppearance == .dark
+	}
+	
+	func getKeyboardType() -> KeyboardType {
+		switch textDocumentProxy.keyboardType {
+		case .decimalPad:
+			return .decimal
+		case .numberPad:
+			return .number
+		default:
+			return .hex
+		}
 	}
 }

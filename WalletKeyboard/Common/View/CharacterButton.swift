@@ -131,6 +131,7 @@ private extension KeyboardAction {
 
 	var useDarkButton: Bool {
 		switch self {
+		case .character(","): return true
 		case .character, .image, .shiftDown, .space: return false
 		default: return true
 		}
