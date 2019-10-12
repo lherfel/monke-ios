@@ -24,22 +24,13 @@ class BalanceTVCellItem: BaseCellItem {
 	}
 }
 
-protocol BalanceTVCellDelegate: class {
-	func didTapDeposit()
-}
-
 class BalanceTVCell: BaseCell {
-
-	// MARK: -
-
-	weak var delegate: BalanceTVCellDelegate?
 
 	// MARK: -
 
 	@IBOutlet weak var coinImage: UIImageView!
 	@IBOutlet weak var title: UILabel!
 	@IBOutlet weak var subtitle: UILabel!
-	@IBOutlet weak var depositButton: UIButton!
 
 	// MARK: -
 
@@ -59,10 +50,6 @@ class BalanceTVCell: BaseCell {
 
 		item.titleObservable?.asDriver(onErrorJustReturn: nil)
 			.drive(subtitle.rx.text).disposed(by: disposeBag)
-
-		depositButton.rx.tap.subscribe(onNext: { [weak self] (_) in
-			self?.delegate?.didTapDeposit()
-		}).disposed(by: disposeBag)
 	}
 
 }

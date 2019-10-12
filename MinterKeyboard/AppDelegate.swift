@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().shadowImage = UIImage()
 		UINavigationBar.appearance().isTranslucent = true
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		UINavigationBar.appearance().tintColor = UIColor.init(red: 0.32, green: 0.14, blue: 0.77, alpha: 1)
 
 //		registerBackgroundTaks()
 //		registerLocalNotification()

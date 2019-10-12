@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -47,29 +45,28 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCI-hg-0P5">
-                        <rect key="frame" x="345" y="15" width="53" height="30"/>
-                        <state key="normal" title="Deposit">
-                            <color key="titleColor" red="0.31764705879999999" green="0.14117647059999999" blue="0.7725490196" alpha="1" colorSpace="deviceRGB"/>
-                        </state>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wi-cg-GIb">
+                        <rect key="frame" x="336" y="20" width="62" height="20.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                        <color key="textColor" red="0.31764705879999999" green="0.14117647059999999" blue="0.7725490196" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="AsE-Bh-sVA" firstAttribute="centerY" secondItem="Ogq-XK-Z8L" secondAttribute="centerY" id="1uM-Hg-VUS"/>
-                    <constraint firstItem="HCI-hg-0P5" firstAttribute="centerY" secondItem="Ogq-XK-Z8L" secondAttribute="centerY" id="2Na-hT-Z0Y"/>
                     <constraint firstItem="Ej4-m1-enn" firstAttribute="leading" secondItem="AsE-Bh-sVA" secondAttribute="trailing" constant="10" id="XAU-W3-3Tj"/>
-                    <constraint firstAttribute="trailing" secondItem="HCI-hg-0P5" secondAttribute="trailing" constant="16" id="eGR-yN-cKd"/>
                     <constraint firstItem="Ej4-m1-enn" firstAttribute="width" secondItem="Ogq-XK-Z8L" secondAttribute="width" multiplier="0.6" id="g4n-Jf-1Va"/>
                     <constraint firstItem="AsE-Bh-sVA" firstAttribute="leading" secondItem="Ogq-XK-Z8L" secondAttribute="leading" constant="12" id="mca-1T-kpa"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="8Wi-cg-GIb" secondAttribute="trailing" constant="16" id="2uO-KH-x7y"/>
                 <constraint firstItem="Ej4-m1-enn" firstAttribute="centerY" secondItem="82c-0E-DEO" secondAttribute="centerY" id="CZY-ht-EpT"/>
+                <constraint firstItem="8Wi-cg-GIb" firstAttribute="centerY" secondItem="82c-0E-DEO" secondAttribute="centerY" id="dHT-fx-Kql"/>
             </constraints>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="coinImage" destination="AsE-Bh-sVA" id="2pX-t4-6uM"/>
-                <outlet property="depositButton" destination="HCI-hg-0P5" id="rgh-2o-h6V"/>
                 <outlet property="subtitle" destination="C4x-SL-uzT" id="9Yb-Id-K2k"/>
                 <outlet property="title" destination="VeV-M4-9Lh" id="mXx-la-7Fy"/>
             </connections>
