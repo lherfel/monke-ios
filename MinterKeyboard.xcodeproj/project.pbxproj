@@ -1491,7 +1491,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1516,7 +1516,7 @@
 				CODE_SIGN_ENTITLEMENTS = MinterKeyboard/MinterKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = MinterKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1580,7 +1580,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WalletKeyboard/WalletKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = WalletKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1603,7 +1603,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WalletKeyboard/WalletKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = J2C5SYC7R8;
 				INFOPLIST_FILE = WalletKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

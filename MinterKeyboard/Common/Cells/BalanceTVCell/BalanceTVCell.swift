@@ -14,12 +14,14 @@ class BalanceTVCellItem: BaseCellItem {
 	var titleObservable: Observable<String?>?
 	var addressObservable: Observable<String?>?
 
-	init(identifier: String, imageName: String = "",
+	init(identifier: String,
+			 imageName: String = "",
 			 titleObservable: Observable<String?>?,
 			 addressObservable: Observable<String?>?) {
+
 		self.titleObservable = titleObservable
 		self.addressObservable = addressObservable
-		image = UIImage(named: imageName)
+		self.image = UIImage(named: imageName)
 		super.init(reuseIdentifier: "BalanceTVCell", identifier: identifier)
 	}
 }
@@ -50,6 +52,7 @@ class BalanceTVCell: BaseCell {
 
 		item.titleObservable?.asDriver(onErrorJustReturn: nil)
 			.drive(subtitle.rx.text).disposed(by: disposeBag)
+
 	}
 
 }
