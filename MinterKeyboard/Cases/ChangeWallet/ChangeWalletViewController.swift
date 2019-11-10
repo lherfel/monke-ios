@@ -52,24 +52,25 @@ class ChangeWalletViewController: BaseViewController, ControllerProtocol {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		configure(with: viewModel)
-		
+
 		NotificationCenter.default.addObserver(self, selector: #selector(willChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(willHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-		
+
 		if UIScreen.main.bounds.height <= 568 {
 			mnemonicsTextView.font = mnemonicsTextView.font?.withSize(16)
 		}
-		
+
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+			self.mnemonicsTextView.isEditable = true
 			self.mnemonicsTextView.becomeFirstResponder()
 		}
 	}
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
+
 		height = view.frame.origin.y
 	}
 
@@ -80,6 +81,7 @@ class ChangeWalletViewController: BaseViewController, ControllerProtocol {
 		let rectValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
 		guard let frame = rectValue?.cgRectValue else { return }
 		let frameY = height - frame.height
+		print("Height: ", view.frame.origin.y)
 		view.frame.origin.y = frameY > 0 ? frameY : 1
 	}
 

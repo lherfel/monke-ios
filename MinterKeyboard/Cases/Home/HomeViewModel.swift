@@ -40,40 +40,50 @@ class HomeViewModel: BaseViewModel, ViewModelProtocol {
 	// MARK: - DataSource
 
 	public var dataSource: [BaseCellItem] {
-		return [
+		var dataSource = [
 				BalanceTVCellItem(identifier: "deposit",
 													imageName: "bip-logo",
 													titleObservable: balanceSubject.asObservable(),
 													addressObservable: addressSubject.asObservable()),
 				MenuItemTVCellItem(identifier: "transaction",
-													title: "Transactions 💸"),
-				MenuItemTVCellItem(identifier: "backupPhrase",
-													title: "🔑 Backup Phrase"),
-				SpacerTVCellItem(identifier: "spacer_1"),
-				MenuItemTVCellItem(identifier: "changeWallet",
-													 title: "Change 👛 wallet"),
-				MenuItemTVCellItem(identifier: "reportProblem",
-													title: "Report 🙈 problem"),
-//				MenuItemTVCellItem(identifier: "rate",
-//													title: "Rate Monke 💜 in Appstore"),
-				MenuItemWithImageTVCellItem(identifier: "donate",
-													title: "Make a 🍩 donation",
-													subtitle: "We spend everything on development",
-													imageName: "monke-icon"),
-//				MenuItemWithImageTVCellItem(identifier: "buyBanana",
-//													title: "Buy 🍌 Banana",
-//													subtitle: "Use coins to reduce transaction fees",
-//													imageName: "bip-uppercase"),
-				SpacerTVCellItem(identifier: "spacer_2"),
-				MenuItemWithImageTVCellItem(identifier: "telegram",
-													title: "Telegram channel",
-													subtitle: "Updates and announcements from Monke team",
-													imageName: "telegram-icon"),
-				MenuItemWithImageTVCellItem(identifier: "about",
-													title: "About",
-													subtitle: "Monke.io",
-													imageName: "banana-icon"),
+													title: "Transactions 💸")
 		]
+		
+		if AuthManager.shared.isTouchIDEnabled == .success {
+			dataSource += [
+				MenuItemTVCellItem(identifier: "backupPhrase",
+													 title: "🔑 Backup Phrase")
+			]
+		}
+		
+		dataSource += [
+			SpacerTVCellItem(identifier: "spacer_1"),
+			MenuItemTVCellItem(identifier: "changeWallet",
+												 title: "Change 👛 wallet"),
+			MenuItemTVCellItem(identifier: "reportProblem",
+												 title: "Report 🙈 problem"),
+//			MenuItemTVCellItem(identifier: "rate",
+//												 title: "Rate Monke 💜 in Appstore"),
+			MenuItemWithImageTVCellItem(identifier: "donate",
+																	title: "Make a 🍩 donation",
+																	subtitle: "We spend everything on development",
+																	imageName: "monke-icon"),
+//		 MenuItemWithImageTVCellItem(identifier: "buyBanana",
+//																 title: "Buy 🍌 Banana",
+//																 subtitle: "Use coins to reduce transaction fees",
+//																 imageName: "bip-uppercase"),
+			SpacerTVCellItem(identifier: "spacer_2"),
+			MenuItemWithImageTVCellItem(identifier: "telegram",
+																	title: "Telegram channel",
+																	subtitle: "Updates and announcements from Monke team",
+																	imageName: "telegram-icon"),
+			MenuItemWithImageTVCellItem(identifier: "about",
+																	title: "About",
+																	subtitle: "Monke.io",
+																	imageName: "banana-icon"),
+		]
+		
+		return dataSource
 	}
 
 	// MARK: -

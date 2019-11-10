@@ -26,6 +26,7 @@
 		2ABF5A3022E8CCE3001CC6AE /* MenuItemTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */; };
 		2AD781D222E9B10200CE5533 /* SpacerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */; };
 		2AD781D322E9B10200CE5533 /* SpacerTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD781D122E9B10200CE5533 /* SpacerTVCell.xib */; };
+		2AE48F962355E5D7001F3D8A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE48F952355E5D7001F3D8A /* AuthManager.swift */; };
 		C79501A8F3FEFE7D90058EDB /* Pods_WalletKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D35E96BBB6157CA0F7E7129 /* Pods_WalletKeyboard.framework */; };
 		FA07C4F922B4E25C005D7275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C4F822B4E25C005D7275 /* AppDelegate.swift */; };
 		FA07C4FB22B4E25C005D7275 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07C4FA22B4E25C005D7275 /* ViewController.swift */; };
@@ -233,6 +234,7 @@
 
 /* Begin PBXFileReference section */
 		2A01EA3B22E7011F0098A88B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2A03948B2354D519007FABEA /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		2A240F78230878A30019B5CC /* CopyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyView.swift; sourceTree = "<group>"; };
 		2A5750F422EF4F77006BFB75 /* MenuItemWithImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemWithImageTVCell.swift; sourceTree = "<group>"; };
 		2A5750F522EF4F7C006BFB75 /* MenuItemWithImageTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemWithImageTVCell.xib; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		2ABF5A2E22E8CCE3001CC6AE /* MenuItemTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTVCell.xib; sourceTree = "<group>"; };
 		2AD781D022E9B10200CE5533 /* SpacerTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTVCell.swift; sourceTree = "<group>"; };
 		2AD781D122E9B10200CE5533 /* SpacerTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacerTVCell.xib; sourceTree = "<group>"; };
+		2AE48F952355E5D7001F3D8A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		707B5471115715700492F2F5 /* Pods-WalletKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-WalletKeyboard/Pods-WalletKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		8730DB8C197EB360B724497B /* Pods-MinterKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinterKeyboard.debug.xcconfig"; path = "Target Support Files/Pods-MinterKeyboard/Pods-MinterKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		8D35E96BBB6157CA0F7E7129 /* Pods_WalletKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -431,6 +434,7 @@
 		08616C5A258CBC41EA118D86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A03948B2354D519007FABEA /* LocalAuthentication.framework */,
 				D54DBABACF222D16CAF2BE13 /* Pods_MinterKeyboard.framework */,
 				8D35E96BBB6157CA0F7E7129 /* Pods_WalletKeyboard.framework */,
 			);
@@ -683,6 +687,7 @@
 				FAC5392B22BFEC890077E181 /* MinterSDKConfigurator.swift */,
 				FAB0D28B22C7B897002945E2 /* PrivateKey+.swift */,
 				FAF4B61522D25A5D009061B7 /* RootViewController.swift */,
+				2AE48F952355E5D7001F3D8A /* AuthManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1261,6 +1266,7 @@
 				FA5A4E2C22BD749C002EAD92 /* CurrencyNumberFormatter.swift in Sources */,
 				FAF915CB22D273A100C2117C /* BaseViewModel.swift in Sources */,
 				FA57092B22B5780B00F5D0DD /* Session.swift in Sources */,
+				2AE48F962355E5D7001F3D8A /* AuthManager.swift in Sources */,
 				FAB0D28822C76D4E002945E2 /* Configuration.swift in Sources */,
 				FAF4B61422D257EC009061B7 /* BackupPhraseViewModel.swift in Sources */,
 				2A83BE2C22EED594007C7930 /* UITableView+Extensions.swift in Sources */,

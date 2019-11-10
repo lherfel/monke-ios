@@ -54,7 +54,7 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 				case "deposit":
 					self?.didTapDeposit(type: .deposit)
 				case "backupPhrase":
-					self?.performSegue(withIdentifier: "showBackup", sender: nil)
+					self?.didTapBackupPhrase()
 				case "donate":
 					self?.didTapDeposit(type: .donate)
 				case "changeWallet":
@@ -141,6 +141,16 @@ extension HomeViewController {
 		if let url = URL(string: "https://explorer.minter.network/address/Mx" + Session.shared.account.address) {
 			let safariVC = SFSafariViewController(url: url)
 			self.present(safariVC, animated: true, completion: nil)
+		}
+	}
+	
+	func didTapBackupPhrase() {
+		AuthManager.shared.presentTouchID("Open backup phrase", fallbackTitle: "Enter Passcode") { (response) in
+			if response == .success {
+				self.performSegue(withIdentifier: "showBackup", sender: nil)
+			} else if response == .error(.passcodeNotSet) {
+				SVProgressHUD.showError(withStatus: "Add a passcode or biometric identification to see the backup phrase.")
+			}
 		}
 	}
 	
