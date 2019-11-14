@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import MinterMy
 
 class BalanceTVCellItem: BaseCellItem {
 	var image: UIImage?
@@ -28,7 +29,7 @@ class BalanceTVCellItem: BaseCellItem {
 
 class BalanceTVCell: BaseCell {
 
-	// MARK: -
+	// MARK: - IBOutlets.
 
 	@IBOutlet weak var coinImage: UIImageView!
 	@IBOutlet weak var title: UILabel!
@@ -40,7 +41,7 @@ class BalanceTVCell: BaseCell {
 		super.awakeFromNib()
 	}
 
-	// MARK: -
+	// MARK: - Configure.
 
 	override func configure(item: BaseCellItem) {
 		guard let item = item as? BalanceTVCellItem else { return }
@@ -49,6 +50,12 @@ class BalanceTVCell: BaseCell {
 
 		item.addressObservable?.asDriver(onErrorJustReturn: nil)
 			.drive(title.rx.text).disposed(by: disposeBag)
+
+		item.addressObservable?.bind(onNext: { address in
+			guard let address = address else { return }
+			let avatarURL = MinterMyAPIURL.avatarAddress(address: address).url()
+			self.coinImage.af_setImage(withURL: avatarURL)
+		}).disposed(by: disposeBag)
 
 		item.titleObservable?.asDriver(onErrorJustReturn: nil)
 			.drive(subtitle.rx.text).disposed(by: disposeBag)

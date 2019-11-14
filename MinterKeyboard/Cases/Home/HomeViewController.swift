@@ -29,6 +29,8 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 
 	typealias ViewModelType = HomeViewModel
 
+	// MARK: - Configure
+
 	func configure(with viewModel: HomeViewModel) {
 		let datasource = RxTableViewSectionedReloadDataSource<SingleSection> (
 			configureCell: { datasource, tableView, indexPath, item in
@@ -73,7 +75,7 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 		}).disposed(by: disposeBag)
 	}
 
-	// MARK: -
+	// MARK: - lifecycle.
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -83,7 +85,12 @@ class HomeViewController: BaseViewController, ControllerProtocol {
 
 		tableView.tableHeaderView = headerView
 		tableView.tableFooterView = UIView()
+
+		let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		navigationItem.backBarButtonItem = backBarButtton
 	}
+
+	// MARK: - Custom Cells Registration.
 
 	func registerCells() {
 		tableView.register(cellReuseID: BalanceTVCell.reuseID)
@@ -98,7 +105,7 @@ extension HomeViewController: UITableViewDelegate {
 		guard let item = viewModel.output.cells[safe: indexPath.item] else {
 			return 0.1
 		}
-		
+
 		if item is SpacerTVCellItem {
 			return 24
 		}
@@ -113,7 +120,7 @@ extension HomeViewController {
 		let transitionDelegate = SPStorkTransitioningDelegate()
 
 		addressViewController.configure(type: type)
-		
+
 		transitionDelegate.customHeight = 360
 		addressViewController.transitioningDelegate = transitionDelegate
 		addressViewController.modalPresentationStyle = .custom
@@ -128,13 +135,13 @@ extension HomeViewController {
 		let changeWalletViewController = ChangeWalletViewController()
 		let transitionDelegate = SPStorkTransitioningDelegate()
 		let windowHeight: CGFloat = UIScreen.main.bounds.height <= 568 ? 290 : 330
-		
+
 		transitionDelegate.customHeight = windowHeight
 		changeWalletViewController.transitioningDelegate = transitionDelegate
 		changeWalletViewController.modalPresentationStyle = .custom
 		changeWalletViewController.modalPresentationCapturesStatusBarAppearance = true
-		
-		self.present(changeWalletViewController, animated: true, completion: nil)
+
+		self.present(changeWalletViewController, animated: true)
 	}
 	
 	func didTapTransactions() {

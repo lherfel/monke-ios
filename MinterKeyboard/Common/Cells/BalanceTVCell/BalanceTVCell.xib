@@ -27,6 +27,11 @@
                             <constraint firstAttribute="width" constant="24" id="5Vy-u4-b4n"/>
                             <constraint firstAttribute="height" constant="24" id="BCW-gk-SXB"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-m1-enn">
                         <rect key="frame" x="46" y="14" width="248.5" height="32.5"/>
