@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 		UINavigationBar.appearance().tintColor = UIColor.init(red: 0.32, green: 0.14, blue: 0.77, alpha: 1)
 
+		let attributes = [
+			NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 25)!
+		]
+
+		UINavigationBar.appearance().titleTextAttributes = attributes
 //		registerBackgroundTaks()
 //		registerLocalNotification()
 		
